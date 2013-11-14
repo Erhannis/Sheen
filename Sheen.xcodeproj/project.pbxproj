@@ -393,6 +393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sheen/Sheen-Prefix.pch";
 				INFOPLIST_FILE = "Sheen/Sheen-Info.plist";
@@ -406,6 +407,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sheen/Sheen-Prefix.pch";
 				INFOPLIST_FILE = "Sheen/Sheen-Info.plist";
@@ -475,6 +477,7 @@
 				C7DED323182F468300F953A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7DED324182F468300F953A5 /* Build configuration list for PBXNativeTarget "SheenTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +486,7 @@
 				C7DED326182F468300F953A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
