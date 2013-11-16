@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C740694D183755EA00817BE2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C740694C183755EA00817BE2 /* SpriteKit.framework */; };
+		C7406950183756D900817BE2 /* TitlePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C740694F183756D900817BE2 /* TitlePageVC.m */; };
+		C7406957183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C7406956183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 */; };
+		C74069591837594200817BE2 /* _ghost_-_Reverie_(small_theme).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C74069581837594200817BE2 /* _ghost_-_Reverie_(small_theme).mp3 */; };
+		C74069611837598100817BE2 /* djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C740695A1837598100817BE2 /* djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3 */; };
+		C74069621837598100817BE2 /* Pitx_-_Chords_For_David.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C740695B1837598100817BE2 /* Pitx_-_Chords_For_David.mp3 */; };
+		C74069631837598100817BE2 /* gurdonark_-_Restless_Sleep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C740695C1837598100817BE2 /* gurdonark_-_Restless_Sleep.mp3 */; };
+		C74069641837598100817BE2 /* gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C740695D1837598100817BE2 /* gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve.mp3 */; };
+		C74069651837598100817BE2 /* gurdonark_-_Homework.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C740695E1837598100817BE2 /* gurdonark_-_Homework.mp3 */; };
+		C74069661837598100817BE2 /* onlymeith_-_Truth_.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C740695F1837598100817BE2 /* onlymeith_-_Truth_.mp3 */; };
+		C74069671837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C74069601837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 */; };
+		C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C740696918375A3F00817BE2 /* TitlePageScene.m */; };
+		C740696E18375E5700817BE2 /* Mote.m in Sources */ = {isa = PBXBuildFile; fileRef = C740696D18375E5700817BE2 /* Mote.m */; };
+		C74069711837665100817BE2 /* MathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C74069701837665100817BE2 /* MathUtils.m */; };
+		C740697418376B2100817BE2 /* Drop.m in Sources */ = {isa = PBXBuildFile; fileRef = C740697318376B2100817BE2 /* Drop.m */; };
 		C7DED2F0182F468200F953A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2EF182F468200F953A5 /* Foundation.framework */; };
 		C7DED2F2182F468200F953A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2F1182F468200F953A5 /* CoreGraphics.framework */; };
 		C7DED2F4182F468200F953A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2F3182F468200F953A5 /* UIKit.framework */; };
@@ -15,7 +30,6 @@
 		C7DED300182F468200F953A5 /* SheenAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DED2FF182F468200F953A5 /* SheenAppDelegate.m */; };
 		C7DED303182F468200F953A5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DED301182F468200F953A5 /* Main_iPhone.storyboard */; };
 		C7DED306182F468200F953A5 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DED304182F468200F953A5 /* Main_iPad.storyboard */; };
-		C7DED309182F468200F953A5 /* SheenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DED308182F468200F953A5 /* SheenViewController.m */; };
 		C7DED30B182F468200F953A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7DED30A182F468200F953A5 /* Images.xcassets */; };
 		C7DED312182F468300F953A5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED311182F468300F953A5 /* XCTest.framework */; };
 		C7DED313182F468300F953A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2EF182F468200F953A5 /* Foundation.framework */; };
@@ -35,6 +49,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C740694C183755EA00817BE2 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		C740694E183756D900817BE2 /* TitlePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlePageVC.h; sourceTree = "<group>"; };
+		C740694F183756D900817BE2 /* TitlePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlePageVC.m; sourceTree = "<group>"; };
+		C7406951183757EF00817BE2 /* debugging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = debugging.h; sourceTree = "<group>"; };
+		C7406956183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "_ghost_-_Empty_rooms_(small_theme).mp3"; sourceTree = "<group>"; };
+		C74069581837594200817BE2 /* _ghost_-_Reverie_(small_theme).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "_ghost_-_Reverie_(small_theme).mp3"; sourceTree = "<group>"; };
+		C740695A1837598100817BE2 /* djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3"; sourceTree = "<group>"; };
+		C740695B1837598100817BE2 /* Pitx_-_Chords_For_David.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pitx_-_Chords_For_David.mp3"; sourceTree = "<group>"; };
+		C740695C1837598100817BE2 /* gurdonark_-_Restless_Sleep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "gurdonark_-_Restless_Sleep.mp3"; sourceTree = "<group>"; };
+		C740695D1837598100817BE2 /* gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve.mp3"; sourceTree = "<group>"; };
+		C740695E1837598100817BE2 /* gurdonark_-_Homework.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "gurdonark_-_Homework.mp3"; sourceTree = "<group>"; };
+		C740695F1837598100817BE2 /* onlymeith_-_Truth_.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "onlymeith_-_Truth_.mp3"; sourceTree = "<group>"; };
+		C74069601837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "flatwound_-_The_Long_Goodbye.mp3"; sourceTree = "<group>"; };
+		C740696818375A3F00817BE2 /* TitlePageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlePageScene.h; sourceTree = "<group>"; };
+		C740696918375A3F00817BE2 /* TitlePageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlePageScene.m; sourceTree = "<group>"; };
+		C740696C18375E5700817BE2 /* Mote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mote.h; sourceTree = "<group>"; };
+		C740696D18375E5700817BE2 /* Mote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mote.m; sourceTree = "<group>"; };
+		C740696F1837665100817BE2 /* MathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
+		C74069701837665100817BE2 /* MathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathUtils.m; sourceTree = "<group>"; };
+		C740697218376B2100817BE2 /* Drop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drop.h; sourceTree = "<group>"; };
+		C740697318376B2100817BE2 /* Drop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drop.m; sourceTree = "<group>"; };
 		C7DED2EC182F468200F953A5 /* Sheen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sheen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DED2EF182F468200F953A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7DED2F1182F468200F953A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,8 +82,6 @@
 		C7DED2FF182F468200F953A5 /* SheenAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SheenAppDelegate.m; sourceTree = "<group>"; };
 		C7DED302182F468200F953A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		C7DED305182F468200F953A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		C7DED307182F468200F953A5 /* SheenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SheenViewController.h; sourceTree = "<group>"; };
-		C7DED308182F468200F953A5 /* SheenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SheenViewController.m; sourceTree = "<group>"; };
 		C7DED30A182F468200F953A5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C7DED310182F468300F953A5 /* SheenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SheenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DED311182F468300F953A5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -62,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C740694D183755EA00817BE2 /* SpriteKit.framework in Frameworks */,
 				C7DED2F2182F468200F953A5 /* CoreGraphics.framework in Frameworks */,
 				C7DED2F4182F468200F953A5 /* UIKit.framework in Frameworks */,
 				C7DED2F0182F468200F953A5 /* Foundation.framework in Frameworks */,
@@ -81,6 +115,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C74069521837588600817BE2 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				C7406955183758A400817BE2 /* Sounds */,
+				C74069531837588F00817BE2 /* Music */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		C74069531837588F00817BE2 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C740695A1837598100817BE2 /* djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3 */,
+				C740695B1837598100817BE2 /* Pitx_-_Chords_For_David.mp3 */,
+				C740695C1837598100817BE2 /* gurdonark_-_Restless_Sleep.mp3 */,
+				C740695D1837598100817BE2 /* gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve.mp3 */,
+				C740695E1837598100817BE2 /* gurdonark_-_Homework.mp3 */,
+				C740695F1837598100817BE2 /* onlymeith_-_Truth_.mp3 */,
+				C74069601837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 */,
+				C74069581837594200817BE2 /* _ghost_-_Reverie_(small_theme).mp3 */,
+				C7406956183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
+		C74069541837589A00817BE2 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				C74069521837588600817BE2 /* Audio */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		C7406955183758A400817BE2 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		C740696B18375DDA00817BE2 /* Beings */ = {
+			isa = PBXGroup;
+			children = (
+				C740696C18375E5700817BE2 /* Mote.h */,
+				C740696D18375E5700817BE2 /* Mote.m */,
+				C740697218376B2100817BE2 /* Drop.h */,
+				C740697318376B2100817BE2 /* Drop.m */,
+			);
+			name = Beings;
+			sourceTree = "<group>";
+		};
 		C7DED2E3182F468200F953A5 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +188,7 @@
 		C7DED2EE182F468200F953A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C740694C183755EA00817BE2 /* SpriteKit.framework */,
 				C7DED2EF182F468200F953A5 /* Foundation.framework */,
 				C7DED2F1182F468200F953A5 /* CoreGraphics.framework */,
 				C7DED2F3182F468200F953A5 /* UIKit.framework */,
@@ -114,13 +200,17 @@
 		C7DED2F5182F468200F953A5 /* Sheen */ = {
 			isa = PBXGroup;
 			children = (
+				C740696818375A3F00817BE2 /* TitlePageScene.h */,
+				C740696918375A3F00817BE2 /* TitlePageScene.m */,
 				C7DED2FE182F468200F953A5 /* SheenAppDelegate.h */,
 				C7DED2FF182F468200F953A5 /* SheenAppDelegate.m */,
 				C7DED301182F468200F953A5 /* Main_iPhone.storyboard */,
+				C740694E183756D900817BE2 /* TitlePageVC.h */,
+				C740694F183756D900817BE2 /* TitlePageVC.m */,
 				C7DED304182F468200F953A5 /* Main_iPad.storyboard */,
-				C7DED307182F468200F953A5 /* SheenViewController.h */,
-				C7DED308182F468200F953A5 /* SheenViewController.m */,
 				C7DED30A182F468200F953A5 /* Images.xcassets */,
+				C740696B18375DDA00817BE2 /* Beings */,
+				C74069541837589A00817BE2 /* Media */,
 				C7DED2F6182F468200F953A5 /* Supporting Files */,
 			);
 			path = Sheen;
@@ -133,6 +223,9 @@
 				C7DED2F8182F468200F953A5 /* InfoPlist.strings */,
 				C7DED2FB182F468200F953A5 /* main.m */,
 				C7DED2FD182F468200F953A5 /* Sheen-Prefix.pch */,
+				C7406951183757EF00817BE2 /* debugging.h */,
+				C740696F1837665100817BE2 /* MathUtils.h */,
+				C74069701837665100817BE2 /* MathUtils.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -232,10 +325,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C74069651837598100817BE2 /* gurdonark_-_Homework.mp3 in Resources */,
 				C7DED306182F468200F953A5 /* Main_iPad.storyboard in Resources */,
+				C74069661837598100817BE2 /* onlymeith_-_Truth_.mp3 in Resources */,
+				C74069621837598100817BE2 /* Pitx_-_Chords_For_David.mp3 in Resources */,
+				C7406957183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 in Resources */,
+				C74069671837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 in Resources */,
+				C74069591837594200817BE2 /* _ghost_-_Reverie_(small_theme).mp3 in Resources */,
 				C7DED30B182F468200F953A5 /* Images.xcassets in Resources */,
 				C7DED303182F468200F953A5 /* Main_iPhone.storyboard in Resources */,
 				C7DED2FA182F468200F953A5 /* InfoPlist.strings in Resources */,
+				C74069631837598100817BE2 /* gurdonark_-_Restless_Sleep.mp3 in Resources */,
+				C74069611837598100817BE2 /* djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3 in Resources */,
+				C74069641837598100817BE2 /* gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +356,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C740696E18375E5700817BE2 /* Mote.m in Sources */,
+				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
+				C7406950183756D900817BE2 /* TitlePageVC.m in Sources */,
 				C7DED300182F468200F953A5 /* SheenAppDelegate.m in Sources */,
-				C7DED309182F468200F953A5 /* SheenViewController.m in Sources */,
 				C7DED2FC182F468200F953A5 /* main.m in Sources */,
+				C74069711837665100817BE2 /* MathUtils.m in Sources */,
+				C740697418376B2100817BE2 /* Drop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,12 @@
         <!--Title Page-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="Title Page" customClass="SheenViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="Title Page" customClass="TitlePageVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7xC-W7-lOD"/>
                         <viewControllerLayoutGuide type="bottom" id="0Cp-Vo-CBX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -23,7 +23,7 @@
                                 <color key="textColor" red="0.64881306886672974" green="0.65173763036727905" blue="0.50592076778411865" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-9-green" translatesAutoresizingMaskIntoConstraints="NO" id="6hf-TB-O8g">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-9-green" translatesAutoresizingMaskIntoConstraints="NO" id="6hf-TB-O8g">
                                 <rect key="frame" x="85" y="209" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
