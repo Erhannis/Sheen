@@ -13,6 +13,7 @@
 
 @interface TitlePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
+@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation TitlePageScene
@@ -44,12 +45,25 @@
     self = [super initWithSize:size];
     
     if (self) {
+        //start a background sound
+        NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"_ghost_-_Reverie_(small_theme)" ofType: @"mp3"];
+        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+        self.player.numberOfLoops = -1; //infinite loop
+        [self.player play];
+        
         self.backgroundColor = [SKColor colorWithRed:BG_COLOR_RED green:BG_COLOR_GREEN blue:BG_COLOR_BLUE alpha:BG_COLOR_ALPHA];
 
+        //  Whoa!  SKBlendModeAdd is pretty!
+        //  Screen similar
+        //  SKBlendModeSubtract is kinda like negative world
+        SKBlendMode blendMode = SKBlendModeAlpha;
+        
         Drop *drop = [[Drop alloc] initWithImageNamed:@"drop-9-green"];
         drop.position = CGPointMake(CGRectGetMidX(self.frame),
                                     CGRectGetMidY(self.frame));
         drop.zPosition = 0.0;
+        drop.blendMode = blendMode;
         [self addChild:drop];
         
         for (int i = 0; i < MOTE_COUNT; i++) {
@@ -68,6 +82,7 @@
             mote.physicsBody.categoryBitMask = 0x0;
             mote.physicsBody.contactTestBitMask = 0x0;
             mote.physicsBody.velocity = CGVectorMake(mote.scale * MOTE_BASE_VELOCITY, -(mote.scale) * MOTE_BASE_VELOCITY);
+            mote.blendMode = blendMode;
             [self.motes addObject:mote];
             [self addChild:mote];
         }
