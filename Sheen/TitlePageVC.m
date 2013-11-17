@@ -9,6 +9,7 @@
 #import "TitlePageVC.h"
 #import "debugging.h"
 #import "TitlePageScene.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface TitlePageVC ()
 @property (strong, nonatomic) SKView *skView;

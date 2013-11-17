@@ -8,29 +8,52 @@
 
 #import "GamePageVC.h"
 #import <CoreImage/CoreImage.h>
+#import <SpriteKit/SpriteKit.h>
 #import "BGImageNavigationController.h"
+#import "debugging.h"
+#import "GamePageScene.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface GamePageVC ()
 @property (strong, nonatomic) NSTimer *navHideTimer;
+@property (strong, nonatomic) SKView *skView;
+@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation GamePageVC
 
 #define NAV_BAR_HIDE_DELAY (2)
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (SKView *)skView
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    if (!_skView) _skView = (SKView *)self.view;
+    return _skView;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    //TODO Music manager?
+    // Start music
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve" ofType: @"mp3"];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+    self.player.numberOfLoops = -1; //infinite loop
+    [self.player play];
+    
+    // Set up scene
+    self.skView.showsFPS = DEBUGGING;
+    self.skView.showsNodeCount = DEBUGGING;
+    self.skView.showsDrawCount = DEBUGGING;
+    
+    //TODO Investigate the merits of other options.
+    SKScene *scene = [GamePageScene sceneWithSize:self.skView.bounds.size];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    [self.skView presentScene:scene];
 }
 
 - (void)viewDidAppear:(BOOL)animated

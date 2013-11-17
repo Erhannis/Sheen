@@ -273,7 +273,7 @@
                         <viewControllerLayoutGuide type="top" id="zFu-GK-gvc"/>
                         <viewControllerLayoutGuide type="bottom" id="fag-zx-FJP"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WZL-zk-93F">
+                    <view key="view" contentMode="scaleToFill" id="WZL-zk-93F" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -400,6 +400,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xEd-9H-HCR"/>
+        <segue reference="Rzb-4S-Cjq"/>
     </inferredMetricsTieBreakers>
 </document>
