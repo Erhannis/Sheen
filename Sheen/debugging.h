@@ -9,6 +9,6 @@
 #ifndef Sheen_debugging_h
 #define Sheen_debugging_h
 
-#define DEBUGGING NO
+#define DEBUGGING YES
 
 #endif

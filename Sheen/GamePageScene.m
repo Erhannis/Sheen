@@ -13,6 +13,10 @@
 
 @interface GamePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
+@property (strong, nonatomic) SKNode *focus;
+@property (nonatomic) CGFloat xScaleTrue;
+@property (nonatomic) CGFloat yScaleTrue;
+@property (nonatomic) CGFloat lastWidth;
 @end
 
 @implementation GamePageScene
@@ -27,11 +31,11 @@
 #define MOTE_COUNT (200)
 #define MOTE_MIN_RADIUS (10.0)
 #define MOTE_MAX_RADIUS (20.0)
-#define MOTE_MIN_HEIGHT (-400.0)
+#define MOTE_MIN_HEIGHT (-20.0)
 #define MOTE_MAX_HEIGHT (30.0)
 #define MOTE_BASE_VELOCITY (20)
 
-#define SIDE_SPACE (0.1)
+#define SIDE_SPACE (0.5)
 
 - (NSMutableArray *)motes
 {
@@ -44,6 +48,8 @@
     self = [super initWithSize:size];
     
     if (self) {
+        self.lastWidth = size.width;
+        self.scaleMode = SKSceneScaleModeResizeFill;
         self.backgroundColor = [SKColor colorWithRed:BG_COLOR_RED green:BG_COLOR_GREEN blue:BG_COLOR_BLUE alpha:BG_COLOR_ALPHA];
         
         //  Whoa!  SKBlendModeAdd is pretty!
@@ -78,27 +84,58 @@
             [self.motes addObject:mote];
             [self addChild:mote];
         }
+        [self scaleTo:0.75];
+        self.focus = drop;//self.motes.firstObject;
+        NSLog(@"anchor %f,%f", self.anchorPoint.x, self.anchorPoint.y);
     }
-    
+
     return self;
+}
+
+- (void)scaleBy:(CGFloat)factor
+{
+    [self runAction:[SKAction scaleBy:factor duration:0]];
+    self.xScaleTrue *= factor;
+    self.yScaleTrue *= factor;
+}
+
+- (void)scaleTo:(CGFloat)scale
+{
+    [self runAction:[SKAction scaleTo:scale duration:0]];
+    self.xScaleTrue = scale;
+    self.yScaleTrue = scale;
 }
 
 - (void)update:(NSTimeInterval)currentTime
 {
+    //NSLog(@"size: %@", NSStringFromCGSize(self.view.frame.size));
+    if (self.view.frame.size.width != self.lastWidth) {
+        CGFloat screenScale = self.lastWidth / self.view.frame.size.width;
+        [self scaleBy:screenScale];
+        self.lastWidth = self.view.frame.size.width;
+    }
+    self.anchorPoint = CGPointMake((0.5 / self.xScaleTrue) - (self.xScaleTrue * self.focus.position.x / self.frame.size.width), (0.5 / self.yScaleTrue) - (self.yScaleTrue * self.focus.position.y / self.frame.size.height));
+    //TODO Consider that user zooming in and out should not affect the wrapping of the motes,
+    //         because they might notice that.
+    CGRect viewport = CGRectMake(self.focus.position.x - ((1 + (2 * SIDE_SPACE)) * self.size.width / 2), self.focus.position.y - ((1 + (2 * SIDE_SPACE)) * self.size.height / 2), (1 + (2 * SIDE_SPACE)) * self.size.width, (1 + (2 * SIDE_SPACE)) * self.size.height);
     for (Mote *mote in self.motes) {
-        if (mote.position.x > (1 + SIDE_SPACE) * self.size.width ||
-            mote.position.x < -SIDE_SPACE * self.size.width ||
-            mote.position.y > (1 + SIDE_SPACE) * self.size.height ||
-            mote.position.y < -SIDE_SPACE * self.size.height) {
+        if (mote.position.x > (viewport.origin.x + viewport.size.width) ||
+            mote.position.x < viewport.origin.x ||
+            mote.position.y > (viewport.origin.y + viewport.size.height) ||
+            mote.position.y < viewport.origin.y) {
             //TODO Change color and maybe height:velocity, to add to the illusion
             mote.position = CGPointMake([MathUtils mod:mote.position.x
-                                               between:(-SIDE_SPACE * self.size.width)
-                                                   and:((1 + SIDE_SPACE) * self.size.width)],
+                                               between:(viewport.origin.x + viewport.size.width)
+                                                   and:viewport.origin.x],
                                         [MathUtils mod:mote.position.y
-                                               between:(-SIDE_SPACE * self.size.height)
-                                                   and:((1 + SIDE_SPACE) * self.size.height)]);
+                                               between:(viewport.origin.y + viewport.size.height)
+                                                   and:viewport.origin.y]);
         }
     }
+}
+
+- (void)didChangeSize:(CGSize)oldSize {
+    NSLog(@"Changed size: %@", NSStringFromCGSize(self.size));
 }
 
 @end
