@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C710314A18382B3200C7CB91 /* PauseMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C710314918382B3200C7CB91 /* PauseMenuVC.m */; };
+		C710314D18382B9400C7CB91 /* GamePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C710314C18382B9400C7CB91 /* GamePageVC.m */; };
+		C71031501838366500C7CB91 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C710314F1838366500C7CB91 /* CoreDataTableViewController.m */; };
 		C740694D183755EA00817BE2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C740694C183755EA00817BE2 /* SpriteKit.framework */; };
 		C7406950183756D900817BE2 /* TitlePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C740694F183756D900817BE2 /* TitlePageVC.m */; };
 		C7406957183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C7406956183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 */; };
@@ -50,6 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C710314818382B3200C7CB91 /* PauseMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenuVC.h; sourceTree = "<group>"; };
+		C710314918382B3200C7CB91 /* PauseMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenuVC.m; sourceTree = "<group>"; };
+		C710314B18382B9400C7CB91 /* GamePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePageVC.h; sourceTree = "<group>"; };
+		C710314C18382B9400C7CB91 /* GamePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePageVC.m; sourceTree = "<group>"; };
+		C710314E1838366500C7CB91 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		C710314F1838366500C7CB91 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		C740694C183755EA00817BE2 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		C740694E183756D900817BE2 /* TitlePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlePageVC.h; sourceTree = "<group>"; };
 		C740694F183756D900817BE2 /* TitlePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlePageVC.m; sourceTree = "<group>"; };
@@ -204,13 +213,19 @@
 		C7DED2F5182F468200F953A5 /* Sheen */ = {
 			isa = PBXGroup;
 			children = (
+				C710314818382B3200C7CB91 /* PauseMenuVC.h */,
+				C710314918382B3200C7CB91 /* PauseMenuVC.m */,
 				C740696818375A3F00817BE2 /* TitlePageScene.h */,
 				C740696918375A3F00817BE2 /* TitlePageScene.m */,
 				C7DED2FE182F468200F953A5 /* SheenAppDelegate.h */,
 				C7DED2FF182F468200F953A5 /* SheenAppDelegate.m */,
-				C7DED301182F468200F953A5 /* Main_iPhone.storyboard */,
 				C740694E183756D900817BE2 /* TitlePageVC.h */,
 				C740694F183756D900817BE2 /* TitlePageVC.m */,
+				C710314B18382B9400C7CB91 /* GamePageVC.h */,
+				C710314C18382B9400C7CB91 /* GamePageVC.m */,
+				C710314E1838366500C7CB91 /* CoreDataTableViewController.h */,
+				C710314F1838366500C7CB91 /* CoreDataTableViewController.m */,
+				C7DED301182F468200F953A5 /* Main_iPhone.storyboard */,
 				C7DED304182F468200F953A5 /* Main_iPad.storyboard */,
 				C7DED30A182F468200F953A5 /* Images.xcassets */,
 				C740696B18375DDA00817BE2 /* Beings */,
@@ -364,8 +379,11 @@
 				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
 				C7406950183756D900817BE2 /* TitlePageVC.m in Sources */,
 				C7DED300182F468200F953A5 /* SheenAppDelegate.m in Sources */,
+				C71031501838366500C7CB91 /* CoreDataTableViewController.m in Sources */,
+				C710314A18382B3200C7CB91 /* PauseMenuVC.m in Sources */,
 				C7DED2FC182F468200F953A5 /* main.m in Sources */,
 				C74069711837665100817BE2 /* MathUtils.m in Sources */,
+				C710314D18382B9400C7CB91 /* GamePageVC.m in Sources */,
 				C740697418376B2100817BE2 /* Drop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
