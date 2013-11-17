@@ -118,6 +118,7 @@
     //TODO Consider that user zooming in and out should not affect the wrapping of the motes,
     //         because they might notice that.
     CGRect viewport = CGRectMake(self.focus.position.x - ((1 + (2 * SIDE_SPACE)) * self.size.width / 2), self.focus.position.y - ((1 + (2 * SIDE_SPACE)) * self.size.height / 2), (1 + (2 * SIDE_SPACE)) * self.size.width, (1 + (2 * SIDE_SPACE)) * self.size.height);
+    //TODO Move motes according to viewport pos AND mote height.
     for (Mote *mote in self.motes) {
         if (mote.position.x > (viewport.origin.x + viewport.size.width) ||
             mote.position.x < viewport.origin.x ||
@@ -136,6 +137,15 @@
 
 - (void)didChangeSize:(CGSize)oldSize {
     NSLog(@"Changed size: %@", NSStringFromCGSize(self.size));
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesMoved:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    CGPoint loc = [touch locationInNode:self];
+    CGPoint ploc = [touch previousLocationInNode:self];
+    self.focus.position = CGPointMake(self.focus.position.x + ploc.x - loc.x, self.focus.position.y + ploc.y - loc.y);
 }
 
 @end
