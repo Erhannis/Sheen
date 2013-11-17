@@ -11,10 +11,17 @@
 #import "TitlePageScene.h"
 
 @interface TitlePageVC ()
-
+@property (strong, nonatomic) SKView *skView;
+@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation TitlePageVC
+
+- (SKView *)skView
+{
+    if (!_skView) _skView = (SKView *)self.view;
+    return _skView;
+}
 
 - (void)viewDidLoad
 {
@@ -22,22 +29,45 @@
     
     [self.navigationController setNavigationBarHidden:YES];
 
-    SKView *skView = (SKView *)self.view;
-    skView.showsFPS = DEBUGGING;
-    skView.showsNodeCount = DEBUGGING;
-    skView.showsDrawCount = DEBUGGING;
+    //TODO Music manager?
+    // Start music
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"_ghost_-_Reverie_(small_theme)" ofType: @"mp3"];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+    self.player.numberOfLoops = -1; //infinite loop
+    [self.player play];
+    
+    // Set up scene
+    self.skView.showsFPS = DEBUGGING;
+    self.skView.showsNodeCount = DEBUGGING;
+    self.skView.showsDrawCount = DEBUGGING;
 
     //TODO Investigate the merits of other options.
-    SKScene *scene = [TitlePageScene sceneWithSize:skView.bounds.size];
+    SKScene *scene = [TitlePageScene sceneWithSize:self.skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
-    [skView presentScene:scene];
+    [self.skView presentScene:scene];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"TitlePageVC did disappear");
+    self.skView.paused = YES;
+    [self.player stop];
+    self.player.currentTime = 0;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES];
+    self.skView.paused = NO;
+    [self.player play];
 }
 
 @end

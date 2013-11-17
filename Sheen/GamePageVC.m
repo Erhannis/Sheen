@@ -101,4 +101,9 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"GamePageVC did disappear");
+}
+
 @end

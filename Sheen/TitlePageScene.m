@@ -13,7 +13,6 @@
 
 @interface TitlePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
-@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation TitlePageScene
@@ -45,13 +44,6 @@
     self = [super initWithSize:size];
     
     if (self) {
-        //start a background sound
-        NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"_ghost_-_Reverie_(small_theme)" ofType: @"mp3"];
-        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
-        self.player.numberOfLoops = -1; //infinite loop
-        [self.player play];
-        
         self.backgroundColor = [SKColor colorWithRed:BG_COLOR_RED green:BG_COLOR_GREEN blue:BG_COLOR_BLUE alpha:BG_COLOR_ALPHA];
 
         //  Whoa!  SKBlendModeAdd is pretty!
