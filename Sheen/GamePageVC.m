@@ -7,8 +7,8 @@
 //
 
 #import "GamePageVC.h"
-#import "PauseMenuVC.h"
 #import <CoreImage/CoreImage.h>
+#import "BGImageNavigationController.h"
 
 @interface GamePageVC ()
 @property (strong, nonatomic) NSTimer *navHideTimer;
@@ -70,6 +70,8 @@
     [self.navHideTimer invalidate];
     self.navHideTimer = nil;
     if ([segue.identifier isEqualToString:@"Pause Game"]) {
+        //TODO Pause
+        
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, self.view.window.screen.scale);
         [self.view drawViewHierarchyInRect:self.view.frame afterScreenUpdates:YES];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -93,7 +95,7 @@
         ciImage = [ciImage imageByCroppingToRect:origExtent];
         image = [UIImage imageWithCIImage:ciImage];
 
-        ((PauseMenuVC *)(segue.destinationViewController)).background = image;
+        ((BGImageNavigationController *)(segue.destinationViewController)).background = image;
     } else {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }

@@ -9,6 +9,7 @@
 #import "PauseMenuVC.h"
 
 @interface PauseMenuVC ()
+@property (strong, nonatomic) UIImage *background;
 @end
 
 @implementation PauseMenuVC
@@ -20,6 +21,11 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)setBackgroundImage:(UIImage *)image
+{
+    self.background = image;
 }
 
 - (void)setBackground:(UIImage *)background
@@ -39,6 +45,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)clickUnpause:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Pause menu dismissed");
+    }];
 }
 
 @end

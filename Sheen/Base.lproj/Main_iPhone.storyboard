@@ -155,7 +155,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hKG-NZ-srP">
-                        <barButtonItem key="rightBarButtonItem" title="Unpause" id="Fy6-zR-6O2"/>
+                        <barButtonItem key="leftBarButtonItem" title="Unpause" id="Fy6-zR-6O2">
+                            <connections>
+                                <action selector="clickUnpause:" destination="uBC-AI-CdT" id="yrk-eS-w6k"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="DYN-m0-mmb" id="u6W-nv-2O7"/>
@@ -175,7 +179,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0Or-5Q-xHB">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Or-5Q-xHB" id="pRA-yX-fZW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -204,7 +208,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="30I-Hz-MLC">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="30I-Hz-MLC" id="lvS-cF-QSe">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -282,7 +286,7 @@
                                 </state>
                                 <connections>
                                     <action selector="clickPause:" destination="eZo-QM-Vqf" eventType="touchUpInside" id="MJk-8Z-wgd"/>
-                                    <segue destination="uBC-AI-CdT" kind="modal" identifier="Pause Game" modalTransitionStyle="crossDissolve" id="rTs-TD-biw"/>
+                                    <segue destination="w8C-AD-UCk" kind="modal" identifier="Pause Game" modalTransitionStyle="crossDissolve" id="CqI-Xy-Slh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QC9-sY-Oww">
@@ -370,10 +374,10 @@
             </objects>
             <point key="canvasLocation" x="1674" y="-635"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Image Navigation Controller-->
         <scene sceneID="q6W-2c-vSA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w8C-AD-UCk" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w8C-AD-UCk" customClass="BGImageNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ylj-1b-Ang"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1bf-ep-bXf">
@@ -397,6 +401,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="xEd-9H-HCR"/>
-        <segue reference="rTs-TD-biw"/>
     </inferredMetricsTieBreakers>
 </document>

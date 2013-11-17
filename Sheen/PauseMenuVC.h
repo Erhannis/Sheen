@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BGImageRecipient.h"
 
-@interface PauseMenuVC : UIViewController
+@interface PauseMenuVC : UIViewController <BGImageRecipient>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) UIImage *background;
 @end
