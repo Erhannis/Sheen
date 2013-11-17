@@ -7,6 +7,8 @@
 //
 
 #import "GamePageVC.h"
+#import "PauseMenuVC.h"
+#import <CoreImage/CoreImage.h>
 
 @interface GamePageVC ()
 @property (strong, nonatomic) NSTimer *navHideTimer;
@@ -29,6 +31,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"GamePageVC did appear");
+    [self hideNavBar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,7 +69,34 @@
 {
     [self.navHideTimer invalidate];
     self.navHideTimer = nil;
-    [self hideNavBar];
+    if ([segue.identifier isEqualToString:@"Pause Game"]) {
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, self.view.window.screen.scale);
+        [self.view drawViewHierarchyInRect:self.view.frame afterScreenUpdates:YES];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        CIImage *ciImage = image.CIImage ? image.CIImage : [CIImage imageWithCGImage:image.CGImage];
+        CGRect origExtent = ciImage.extent;
+        CIFilter *filter;
+        
+        filter = [CIFilter filterWithName:@"CIAffineClamp"];
+        [filter setValue:ciImage forKey:kCIInputImageKey];
+        CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 1.0);
+        [filter setValue:[NSValue valueWithBytes:&transform objCType:@encode(CGAffineTransform)] forKey:@"inputTransform"];
+        ciImage = [filter valueForKey:kCIOutputImageKey];
+        
+        filter = [CIFilter filterWithName:[CIFilter filterNamesInCategory:kCICategoryBlur].firstObject];
+        [filter setValue:ciImage forKey:kCIInputImageKey];
+        [filter setValue:[NSNumber numberWithFloat:10.0] forKey:kCIInputRadiusKey];
+        ciImage = [filter valueForKey:kCIOutputImageKey];
+        
+        ciImage = [ciImage imageByCroppingToRect:origExtent];
+        image = [UIImage imageWithCIImage:ciImage];
+
+        ((PauseMenuVC *)(segue.destinationViewController)).background = image;
+    } else {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
 }
 
 @end

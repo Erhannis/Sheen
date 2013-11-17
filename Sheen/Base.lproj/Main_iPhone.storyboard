@@ -91,6 +91,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DYN-m0-mmb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KR7-pX-Y9g">
                                 <rect key="frame" x="133" y="269" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -142,15 +146,20 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.64881306890000001" green="0.65173763039999999" blue="0.50592076779999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="DYN-m0-mmb" firstAttribute="leading" secondItem="et2-mo-e6Y" secondAttribute="leading" id="DPg-In-yXT"/>
+                            <constraint firstAttribute="trailing" secondItem="DYN-m0-mmb" secondAttribute="trailing" id="JV2-o9-sVu"/>
+                            <constraint firstItem="YbM-GZ-zPF" firstAttribute="top" secondItem="DYN-m0-mmb" secondAttribute="bottom" id="SOo-Us-MEW"/>
+                            <constraint firstItem="DYN-m0-mmb" firstAttribute="top" secondItem="et2-mo-e6Y" secondAttribute="top" id="eGD-2Z-BAI"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hKG-NZ-srP">
-                        <barButtonItem key="rightBarButtonItem" title="Unpause" id="Fy6-zR-6O2">
-                            <connections>
-                                <segue destination="eZo-QM-Vqf" kind="push" id="xtg-iq-cR8"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Unpause" id="Fy6-zR-6O2"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="DYN-m0-mmb" id="u6W-nv-2O7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QnZ-zA-Cvk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -166,7 +175,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0Or-5Q-xHB">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Or-5Q-xHB" id="pRA-yX-fZW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -250,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g52-b9-Def" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="-1311"/>
+            <point key="canvasLocation" x="1813" y="-1311"/>
         </scene>
         <!--Game Page-->
         <scene sceneID="b0z-zN-0Qi">
@@ -273,6 +282,7 @@
                                 </state>
                                 <connections>
                                     <action selector="clickPause:" destination="eZo-QM-Vqf" eventType="touchUpInside" id="MJk-8Z-wgd"/>
+                                    <segue destination="uBC-AI-CdT" kind="modal" identifier="Pause Game" modalTransitionStyle="crossDissolve" id="rTs-TD-biw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QC9-sY-Oww">
@@ -306,10 +316,10 @@
             </objects>
             <point key="canvasLocation" x="884" y="-635"/>
         </scene>
-        <!--Table View Controller - Inventory-->
+        <!--InventoryCDTVC - Inventory-->
         <scene sceneID="ORJ-u7-f2S">
             <objects>
-                <tableViewController id="YaQ-6c-5dD" sceneMemberID="viewController">
+                <tableViewController id="YaQ-6c-5dD" customClass="InventoryCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rUN-ZD-wd1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -360,6 +370,25 @@
             </objects>
             <point key="canvasLocation" x="1674" y="-635"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q6W-2c-vSA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w8C-AD-UCk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ylj-1b-Ang"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1bf-ep-bXf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uBC-AI-CdT" kind="relationship" relationship="rootViewController" id="rqk-oK-FO0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCW-8g-3Ze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-709" y="-1311"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -367,7 +396,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Rzb-4S-Cjq"/>
-        <segue reference="LG7-fx-Pb1"/>
+        <segue reference="xEd-9H-HCR"/>
+        <segue reference="rTs-TD-biw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PauseMenuVC : UIViewController
-
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) UIImage *background;
 @end

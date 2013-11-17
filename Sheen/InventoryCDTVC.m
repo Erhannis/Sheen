@@ -1,17 +1,18 @@
 //
-//  PauseMenuVC.m
+//  InventoryCDTVC.m
 //  Sheen
 //
 //  Created by Matthew Ewer on 11/16/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
-#import "PauseMenuVC.h"
+#import "InventoryCDTVC.h"
 
-@interface PauseMenuVC ()
+@interface InventoryCDTVC ()
+
 @end
 
-@implementation PauseMenuVC
+@implementation InventoryCDTVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,17 +23,10 @@
     return self;
 }
 
-- (void)setBackground:(UIImage *)background
-{
-    _background = background;
-    self.imageView.image = background;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"PauseMenu did load");
-    self.imageView.image = self.background;
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
