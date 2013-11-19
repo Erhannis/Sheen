@@ -10,4 +10,10 @@
 
 @implementation Debugging
 
++ (void)logMessage:(NSString *)msg
+        andCGPoint:(CGPoint)point
+{
+    NSLog(@"%@ - %f,%f", msg, point.x, point.y);
+}
+
 @end

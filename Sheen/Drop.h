@@ -14,4 +14,6 @@
 
 @property (nonatomic) CGFloat radius;
 
+@property (nonatomic) CGPoint lastPosition;
+
 @end

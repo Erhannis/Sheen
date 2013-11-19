@@ -311,7 +311,7 @@
                     <navigationItem key="navigationItem" id="BDa-QU-Kvx">
                         <barButtonItem key="rightBarButtonItem" title="Inventory" id="CTk-zM-Vba">
                             <connections>
-                                <segue destination="YaQ-6c-5dD" kind="push" id="Nox-wS-EaG"/>
+                                <segue destination="YaQ-6c-5dD" kind="push" identifier="Go To Inventory" id="Nox-wS-EaG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

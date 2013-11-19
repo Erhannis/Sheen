@@ -31,6 +31,7 @@
 		C74069761837834E00817BE2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74069751837834E00817BE2 /* AVFoundation.framework */; };
 		C756E62D183884830015A240 /* GamePageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C756E62C183884830015A240 /* GamePageScene.m */; };
 		C75E139F1838789A0032048E /* BGImageNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75E139E1838789A0032048E /* BGImageNavigationController.m */; };
+		C794E897183B5E2E00019BF2 /* Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = C794E896183B5E2E00019BF2 /* Debugging.m */; };
 		C7DED2F0182F468200F953A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2EF182F468200F953A5 /* Foundation.framework */; };
 		C7DED2F2182F468200F953A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2F1182F468200F953A5 /* CoreGraphics.framework */; };
 		C7DED2F4182F468200F953A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2F3182F468200F953A5 /* UIKit.framework */; };
@@ -72,7 +73,6 @@
 		C740694C183755EA00817BE2 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		C740694E183756D900817BE2 /* TitlePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlePageVC.h; sourceTree = "<group>"; };
 		C740694F183756D900817BE2 /* TitlePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlePageVC.m; sourceTree = "<group>"; };
-		C7406951183757EF00817BE2 /* debugging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = debugging.h; sourceTree = "<group>"; };
 		C7406956183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "_ghost_-_Empty_rooms_(small_theme).mp3"; sourceTree = "<group>"; };
 		C74069581837594200817BE2 /* _ghost_-_Reverie_(small_theme).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "_ghost_-_Reverie_(small_theme).mp3"; sourceTree = "<group>"; };
 		C740695A1837598100817BE2 /* djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3"; sourceTree = "<group>"; };
@@ -96,6 +96,8 @@
 		C75E139D1838789A0032048E /* BGImageNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGImageNavigationController.h; sourceTree = "<group>"; };
 		C75E139E1838789A0032048E /* BGImageNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGImageNavigationController.m; sourceTree = "<group>"; };
 		C75E13A0183879980032048E /* BGImageRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGImageRecipient.h; sourceTree = "<group>"; };
+		C794E895183B5E2E00019BF2 /* Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugging.h; sourceTree = "<group>"; };
+		C794E896183B5E2E00019BF2 /* Debugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debugging.m; sourceTree = "<group>"; };
 		C7DED2EC182F468200F953A5 /* Sheen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sheen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DED2EF182F468200F953A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7DED2F1182F468200F953A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -264,11 +266,12 @@
 		C7DED2F6182F468200F953A5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C794E895183B5E2E00019BF2 /* Debugging.h */,
+				C794E896183B5E2E00019BF2 /* Debugging.m */,
 				C7DED2F7182F468200F953A5 /* Sheen-Info.plist */,
 				C7DED2F8182F468200F953A5 /* InfoPlist.strings */,
 				C7DED2FB182F468200F953A5 /* main.m */,
 				C7DED2FD182F468200F953A5 /* Sheen-Prefix.pch */,
-				C7406951183757EF00817BE2 /* debugging.h */,
 				C740696F1837665100817BE2 /* MathUtils.h */,
 				C74069701837665100817BE2 /* MathUtils.m */,
 			);
@@ -402,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C710315318383EBF00C7CB91 /* InventoryCDTVC.m in Sources */,
+				C794E897183B5E2E00019BF2 /* Debugging.m in Sources */,
 				C740696E18375E5700817BE2 /* Mote.m in Sources */,
 				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
 				C7406950183756D900817BE2 /* TitlePageVC.m in Sources */,

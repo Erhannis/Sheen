@@ -39,6 +39,7 @@
     //TODO Music manager?
     // Start music
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve" ofType: @"mp3"];
+//    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_)" ofType: @"mp3"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
     self.player.numberOfLoops = -1; //infinite loop
@@ -73,13 +74,14 @@
 }
 
 - (IBAction)clickShow:(id)sender {
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.navHideTimer invalidate];
-    self.navHideTimer = [NSTimer scheduledTimerWithTimeInterval:NAV_BAR_HIDE_DELAY
-                                                         target:self
-                                                       selector:@selector(hideNavBar)
-                                                       userInfo:nil
-                                                        repeats:NO];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self.navHideTimer invalidate];
+//    self.navHideTimer = [NSTimer scheduledTimerWithTimeInterval:NAV_BAR_HIDE_DELAY
+//                                                         target:self
+//                                                       selector:@selector(hideNavBar)
+//                                                       userInfo:nil
+//                                                        repeats:NO];
+    [self performSegueWithIdentifier:@"Go To Inventory" sender:self];
 }
 
 - (void)hideNavBar
@@ -113,6 +115,16 @@
         filter = [CIFilter filterWithName:[CIFilter filterNamesInCategory:kCICategoryBlur].firstObject];
         [filter setValue:ciImage forKey:kCIInputImageKey];
         [filter setValue:[NSNumber numberWithFloat:10.0] forKey:kCIInputRadiusKey];
+        ciImage = [filter valueForKey:kCIOutputImageKey];
+
+        filter = [CIFilter filterWithName:@"CIColorMatrix"];
+        [filter setValue:ciImage forKey:kCIInputImageKey];
+        CGFloat white = 0.01;
+        [filter setValue:[CIVector vectorWithX:(1-white) Y:0 Z:0 W:0] forKey:@"inputRVector"];
+        [filter setValue:[CIVector vectorWithX:0 Y:(1-white) Z:0 W:0] forKey:@"inputGVector"];
+        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:(1-white) W:0] forKey:@"inputBVector"];
+        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:1] forKey:@"inputAVector"];
+        [filter setValue:[CIVector vectorWithX:white Y:white Z:white W:0] forKey:@"inputBiasVector"];
         ciImage = [filter valueForKey:kCIOutputImageKey];
         
         ciImage = [ciImage imageByCroppingToRect:origExtent];

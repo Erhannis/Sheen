@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#define DEBUGGING YES
+
 @interface Debugging : NSObject
+
++ (void)logMessage:(NSString *)msg
+        andCGPoint:(CGPoint)point;
 
 @end

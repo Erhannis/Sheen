@@ -16,4 +16,6 @@
 //   However, it's a frequently used and seldom changed property.
 @property (nonatomic) CGFloat scale;
 
+@property (nonatomic) CGPoint lastPosition;
+
 @end
