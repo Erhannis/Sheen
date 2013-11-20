@@ -9,11 +9,10 @@
 #import "TitlePageVC.h"
 #import "debugging.h"
 #import "TitlePageScene.h"
-#import <AVFoundation/AVFoundation.h>
+#import "MusicManager.h"
 
 @interface TitlePageVC ()
 @property (strong, nonatomic) SKView *skView;
-@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation TitlePageVC
@@ -29,14 +28,6 @@
     [super viewDidLoad];
     
     [self.navigationController setNavigationBarHidden:YES];
-
-    //TODO Music manager?
-    // Start music
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"_ghost_-_Reverie_(small_theme)" ofType: @"mp3"];
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
-    self.player.numberOfLoops = -1; //infinite loop
-    [self.player play];
     
     // Set up scene
     self.skView.showsFPS = DEBUGGING;
@@ -60,15 +51,16 @@
 {
     NSLog(@"TitlePageVC did disappear");
     self.skView.paused = YES;
-    [self.player stop];
-    self.player.currentTime = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES];
     self.skView.paused = NO;
-    [self.player play];
+    // Start music
+    [[NSNotificationCenter defaultCenter] postNotificationName:ChangeSongRequestNotification
+                                                        object:self
+                                                      userInfo:@{ChangeSongRequestFilename : @"_ghost_-_Reverie_(small_theme)"}];
 }
 
 @end

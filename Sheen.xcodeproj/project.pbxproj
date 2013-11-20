@@ -30,6 +30,7 @@
 		C740697418376B2100817BE2 /* Drop.m in Sources */ = {isa = PBXBuildFile; fileRef = C740697318376B2100817BE2 /* Drop.m */; };
 		C74069761837834E00817BE2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74069751837834E00817BE2 /* AVFoundation.framework */; };
 		C756E62D183884830015A240 /* GamePageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C756E62C183884830015A240 /* GamePageScene.m */; };
+		C759EC16183C7312009A0D60 /* MusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C759EC15183C7312009A0D60 /* MusicManager.m */; };
 		C75E139F1838789A0032048E /* BGImageNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75E139E1838789A0032048E /* BGImageNavigationController.m */; };
 		C794E897183B5E2E00019BF2 /* Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = C794E896183B5E2E00019BF2 /* Debugging.m */; };
 		C7DED2F0182F468200F953A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2EF182F468200F953A5 /* Foundation.framework */; };
@@ -93,6 +94,8 @@
 		C74069751837834E00817BE2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C756E62B183884830015A240 /* GamePageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePageScene.h; sourceTree = "<group>"; };
 		C756E62C183884830015A240 /* GamePageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePageScene.m; sourceTree = "<group>"; };
+		C759EC14183C7312009A0D60 /* MusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicManager.h; sourceTree = "<group>"; };
+		C759EC15183C7312009A0D60 /* MusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicManager.m; sourceTree = "<group>"; };
 		C75E139D1838789A0032048E /* BGImageNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGImageNavigationController.h; sourceTree = "<group>"; };
 		C75E139E1838789A0032048E /* BGImageNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGImageNavigationController.m; sourceTree = "<group>"; };
 		C75E13A0183879980032048E /* BGImageRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGImageRecipient.h; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 		C7DED2F5182F468200F953A5 /* Sheen */ = {
 			isa = PBXGroup;
 			children = (
+				C759EC14183C7312009A0D60 /* MusicManager.h */,
+				C759EC15183C7312009A0D60 /* MusicManager.m */,
 				C710314818382B3200C7CB91 /* PauseMenuVC.h */,
 				C710314918382B3200C7CB91 /* PauseMenuVC.m */,
 				C740696818375A3F00817BE2 /* TitlePageScene.h */,
@@ -409,6 +414,7 @@
 				C740696E18375E5700817BE2 /* Mote.m in Sources */,
 				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
 				C7406950183756D900817BE2 /* TitlePageVC.m in Sources */,
+				C759EC16183C7312009A0D60 /* MusicManager.m in Sources */,
 				C7DED300182F468200F953A5 /* SheenAppDelegate.m in Sources */,
 				C75E139F1838789A0032048E /* BGImageNavigationController.m in Sources */,
 				C710315618383EF900C7CB91 /* SaveLoadCDTVC.m in Sources */,

@@ -12,12 +12,11 @@
 #import "BGImageNavigationController.h"
 #import "debugging.h"
 #import "GamePageScene.h"
-#import <AVFoundation/AVFoundation.h>
+#import "MusicManager.h"
 
 @interface GamePageVC ()
 @property (strong, nonatomic) NSTimer *navHideTimer;
 @property (strong, nonatomic) SKView *skView;
-@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation GamePageVC
@@ -36,14 +35,10 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-    //TODO Music manager?
     // Start music
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve" ofType: @"mp3"];
-//    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_)" ofType: @"mp3"];
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
-    self.player.numberOfLoops = -1; //infinite loop
-    [self.player play];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ChangeSongRequestNotification
+                                                        object:self
+                                                      userInfo:@{ChangeSongRequestFilename : @"gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve"}];
     
     // Set up scene
     self.skView.showsFPS = DEBUGGING;
@@ -74,14 +69,14 @@
 }
 
 - (IBAction)clickShow:(id)sender {
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//    [self.navHideTimer invalidate];
-//    self.navHideTimer = [NSTimer scheduledTimerWithTimeInterval:NAV_BAR_HIDE_DELAY
-//                                                         target:self
-//                                                       selector:@selector(hideNavBar)
-//                                                       userInfo:nil
-//                                                        repeats:NO];
-    [self performSegueWithIdentifier:@"Go To Inventory" sender:self];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navHideTimer invalidate];
+    self.navHideTimer = [NSTimer scheduledTimerWithTimeInterval:NAV_BAR_HIDE_DELAY
+                                                         target:self
+                                                       selector:@selector(hideNavBar)
+                                                       userInfo:nil
+                                                        repeats:NO];
+//    [self performSegueWithIdentifier:@"Go To Inventory" sender:self];
 }
 
 - (void)hideNavBar
