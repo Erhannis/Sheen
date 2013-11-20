@@ -55,7 +55,7 @@
         self.lastWidth = size.width;
         self.xScaleTrue = 1;
         self.yScaleTrue = 1;
-        self.scaleMode = SKSceneScaleModeResizeFill;
+        self.scaleMode = SKSceneScaleModeAspectFill;
         self.backgroundColor = [SKColor colorWithRed:BG_COLOR_RED green:BG_COLOR_GREEN blue:BG_COLOR_BLUE alpha:BG_COLOR_ALPHA];
         
         //  Whoa!  SKBlendModeAdd is pretty!
@@ -151,7 +151,6 @@
             mote.zPosition = (drand48() * (MOTE_MAX_HEIGHT - MOTE_MIN_HEIGHT)) + MOTE_MIN_HEIGHT;
             CGFloat dist = CAMERA_HEIGHT - mote.zPosition;
             mote.scale = CAMERA_HEIGHT / dist;
-            NSLog(@"scale %f", mote.scale);
             mote.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:(mote.radius * mote.scale)];
             mote.size = CGSizeMake(mote.radius * mote.scale, mote.radius * mote.scale);
             mote.position = CGPointMake(((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.width, ((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.height);
@@ -175,8 +174,7 @@
         [self addChild:wall];
         
         [self scaleTo:0.75];
-        self.focus = drop;//self.motes.firstObject;
-        NSLog(@"anchor %f,%f", self.anchorPoint.x, self.anchorPoint.y);
+        self.focus = drop;
         self.anchorPoint = CGPointMake((0.5 / self.xScaleTrue) - (self.xScaleTrue * self.focus.position.x / self.frame.size.width), (0.5 / self.yScaleTrue) - (self.yScaleTrue * self.focus.position.y / self.frame.size.height));
     }
 

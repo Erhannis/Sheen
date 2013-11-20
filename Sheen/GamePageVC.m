@@ -47,7 +47,6 @@
     
     //TODO Investigate the merits of other options.
     SKScene *scene = [GamePageScene sceneWithSize:self.skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
     
     [self.skView presentScene:scene];
 }
