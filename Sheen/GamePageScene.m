@@ -39,7 +39,8 @@
 
 #define PLAYER_VELOCITY_FACTOR (5)
 
-#define SIDE_SPACE (0.5)
+#define SIDE_SPACE (1.0)
+#define MIN_ZOOM (1/2.5)
 
 - (NSMutableArray *)motes
 {
@@ -184,19 +185,24 @@
 - (void)scaleBy:(CGFloat)factor
 {
     __weak GamePageScene *weakself = self;
-    [self runAction:[SKAction scaleBy:factor duration:0] completion:^{
-        weakself.xScaleTrue *= factor;
-        weakself.yScaleTrue *= factor;
-    }];
+    //TODO This might leave open a loophole.
+    if (self.xScaleTrue * factor >= MIN_ZOOM) {
+        [self runAction:[SKAction scaleBy:factor duration:0] completion:^{
+            weakself.xScaleTrue *= factor;
+            weakself.yScaleTrue *= factor;
+        }];
+    }
 }
 
 - (void)scaleTo:(CGFloat)scale
 {
     __weak GamePageScene *weakself = self;
-    [self runAction:[SKAction scaleTo:scale duration:0] completion:^{
-        weakself.xScaleTrue = scale;
-        weakself.yScaleTrue = scale;
-    }];
+    if (scale >= MIN_ZOOM) {
+        [self runAction:[SKAction scaleTo:scale duration:0] completion:^{
+            weakself.xScaleTrue = scale;
+            weakself.yScaleTrue = scale;
+        }];
+    }
 }
 
 - (void)update:(NSTimeInterval)currentTime
@@ -238,14 +244,14 @@
     NSLog(@"Changed size: %@", NSStringFromCGSize(self.size));
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [super touchesMoved:touches withEvent:event];
-    UITouch *touch = [touches anyObject];
-    CGPoint loc = [touch locationInNode:self];
-    CGPoint ploc = [touch previousLocationInNode:self];
-    self.focus.physicsBody.velocity = CGVectorMake(PLAYER_VELOCITY_FACTOR * (ploc.x - loc.x), PLAYER_VELOCITY_FACTOR * (ploc.y - loc.y));
-}
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    [super touchesMoved:touches withEvent:event];
+//    UITouch *touch = [touches anyObject];
+//    CGPoint loc = [touch locationInNode:self];
+//    CGPoint ploc = [touch previousLocationInNode:self];
+//    self.focus.physicsBody.velocity = CGVectorMake(PLAYER_VELOCITY_FACTOR * (ploc.x - loc.x), PLAYER_VELOCITY_FACTOR * (ploc.y - loc.y));
+//}
 
 - (void)didTap:(UITapGestureRecognizer *)sender {
     [sender locationInView:self.view];
@@ -253,7 +259,8 @@
 }
 
 - (void)didPinch:(UIPinchGestureRecognizer *)sender {
-    [self scaleTo:sender.scale];
+    [self scaleBy:sender.scale];
+    sender.scale = 1.0;
     NSLog(@"recognized pinch");
 }
 
@@ -262,7 +269,16 @@
 }
 
 - (void)didPan:(UIPanGestureRecognizer *)sender {
-    NSLog(@"recognized pan");
+    CGPoint loc = [sender translationInView:self.view];
+    loc = [self convertPointFromView:loc];
+    CGPoint ploc = [self convertPointFromView:CGPointZero];
+    CGVector velocity = CGVectorMake(PLAYER_VELOCITY_FACTOR * (ploc.x-loc.x), PLAYER_VELOCITY_FACTOR * (ploc.y - loc.y));
+    if (velocity.dx != 0 || velocity.dy != 0) {
+        self.focus.physicsBody.velocity = velocity;
+    }
+    [sender setTranslation:CGPointZero inView:self.view];
+//    NSLog(@"velocity %f,%f", self.focus.physicsBody.velocity.dx, self.focus.physicsBody.velocity.dy);
+//    NSLog(@"recognized pan");
 }
 
 - (void)didLongPress:(UILongPressGestureRecognizer *)sender {
