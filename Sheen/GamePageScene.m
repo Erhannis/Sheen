@@ -119,8 +119,8 @@
         ciImage = [filter valueForKey:kCIOutputImageKey];
         
         ciImage = [ciImage imageByCroppingToRect:origExtent];
-        cgir = [[CIContext contextWithOptions:@{}] createCGImage:ciImage fromRect:ciImage.extent];
-        SKTexture *green = [SKTexture textureWithCGImage:cgir];
+//        cgir = [[CIContext contextWithOptions:@{}] createCGImage:ciImage fromRect:ciImage.extent];
+//        SKTexture *green = [SKTexture textureWithCGImage:cgir];
 
         filter = [CIFilter filterWithName:@"CIColorMatrix"];
         [filter setValue:ciWhite forKey:kCIInputImageKey];
@@ -132,8 +132,8 @@
         ciImage = [filter valueForKey:kCIOutputImageKey];
         
         ciImage = [ciImage imageByCroppingToRect:origExtent];
-        cgir = [[CIContext contextWithOptions:@{}] createCGImage:ciImage fromRect:ciImage.extent];
-        SKTexture *blue = [SKTexture textureWithCGImage:cgir];
+//        cgir = [[CIContext contextWithOptions:@{}] createCGImage:ciImage fromRect:ciImage.extent];
+//        SKTexture *blue = [SKTexture textureWithCGImage:cgir];
         
 //        NSArray *colors = @[red, green, blue];
         

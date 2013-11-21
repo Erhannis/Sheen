@@ -55,16 +55,13 @@
 {
     NSLog(@"GamePageVC did appear");
     [self hideNavBar];
+    self.skView.paused = NO;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)clickPause:(id)sender {
-    //TODO Pause.
 }
 
 - (IBAction)clickShow:(id)sender {
@@ -90,6 +87,7 @@
     self.navHideTimer = nil;
     if ([segue.identifier isEqualToString:@"Pause Game"]) {
         //TODO Pause
+        self.skView.paused = YES;
         
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, self.view.window.screen.scale);
         [self.view drawViewHierarchyInRect:self.view.frame afterScreenUpdates:YES];
@@ -133,6 +131,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     NSLog(@"GamePageVC did disappear");
+    self.skView.paused = YES;
 }
 
 @end

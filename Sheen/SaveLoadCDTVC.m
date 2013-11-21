@@ -26,7 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+- (void)setSaveMode:(BOOL)saveMode
+{
+    _saveMode = saveMode;
+	self.title = _saveMode ? @"Save" : @"Load";
 }
 
 - (void)didReceiveMemoryWarning

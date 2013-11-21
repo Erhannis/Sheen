@@ -40,7 +40,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eZo-QM-Vqf" kind="push" id="LG7-fx-Pb1"/>
+                                    <segue destination="eZo-QM-Vqf" kind="push" identifier="Go New Game" id="LG7-fx-Pb1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -172,7 +172,7 @@
         <!--Save Load Screen-->
         <scene sceneID="DYC-pH-fIq">
             <objects>
-                <tableViewController id="9xi-JR-nsr" userLabel="Save Load Screen" sceneMemberID="viewController">
+                <tableViewController id="9xi-JR-nsr" userLabel="Save Load Screen" customClass="SaveLoadCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rGB-Pu-eXn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -285,7 +285,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="clickPause:" destination="eZo-QM-Vqf" eventType="touchUpInside" id="MJk-8Z-wgd"/>
                                     <segue destination="w8C-AD-UCk" kind="modal" identifier="Pause Game" modalTransitionStyle="crossDissolve" id="CqI-Xy-Slh"/>
                                 </connections>
                             </button>

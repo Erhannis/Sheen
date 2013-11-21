@@ -7,6 +7,7 @@
 //
 
 #import "PauseMenuVC.h"
+#import "SaveLoadCDTVC.h"
 
 @interface PauseMenuVC ()
 @property (strong, nonatomic) UIImage *background;
@@ -51,6 +52,18 @@
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"Pause menu dismissed");
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Go Save"]) {
+        SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
+        loadCDTV.saveMode = YES;
+    } else if ([segue.identifier isEqualToString:@"Go Load"]) {
+        SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
+        loadCDTV.saveMode = NO;
+    }
 }
 
 @end

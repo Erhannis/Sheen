@@ -10,6 +10,7 @@
 #import "debugging.h"
 #import "TitlePageScene.h"
 #import "MusicManager.h"
+#import "SaveLoadCDTVC.h"
 
 @interface TitlePageVC ()
 @property (strong, nonatomic) SKView *skView;
@@ -56,11 +57,26 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     self.skView.paused = NO;
     // Start music
     [[NSNotificationCenter defaultCenter] postNotificationName:ChangeSongRequestNotification
                                                         object:self
                                                       userInfo:@{ChangeSongRequestFilename : @"_ghost_-_Reverie_(small_theme)"}];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    self.skView.paused = YES;
+    if ([segue.identifier isEqualToString:@"Go New Game"]) {
+    } else if ([segue.identifier isEqualToString:@"Go Load"]) {
+        SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
+        loadCDTV.saveMode = NO;
+    }
 }
 
 @end

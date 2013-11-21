@@ -10,4 +10,6 @@
 
 @interface SaveLoadCDTVC : CoreDataTableViewController
 
+@property (nonatomic) BOOL saveMode;
+
 @end
