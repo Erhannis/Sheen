@@ -10,4 +10,10 @@
 
 @interface GamePageScene : SKScene
 
+- (void)didTap:(UITapGestureRecognizer *)sender;
+- (void)didPinch:(UIPinchGestureRecognizer *)sender;
+- (void)didRotation:(UIRotationGestureRecognizer *)sender;
+- (void)didPan:(UIPanGestureRecognizer *)sender;
+- (void)didLongPress:(UILongPressGestureRecognizer *)sender;
+
 @end

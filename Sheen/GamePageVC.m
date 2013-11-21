@@ -16,12 +16,20 @@
 
 @interface GamePageVC ()
 @property (strong, nonatomic) NSTimer *navHideTimer;
+@property (strong, nonatomic) GamePageScene *gamePageScene;
 @property (strong, nonatomic) SKView *skView;
 @end
 
 @implementation GamePageVC
 
 #define NAV_BAR_HIDE_DELAY (2)
+
+- (GamePageScene *)gamePageScene
+{
+    //TODO Investigate the merits of other options.
+    if (!_gamePageScene) _gamePageScene = [GamePageScene sceneWithSize:self.skView.bounds.size];
+    return _gamePageScene;
+}
 
 - (SKView *)skView
 {
@@ -45,10 +53,7 @@
     self.skView.showsNodeCount = DEBUGGING;
     self.skView.showsDrawCount = DEBUGGING;
     
-    //TODO Investigate the merits of other options.
-    SKScene *scene = [GamePageScene sceneWithSize:self.skView.bounds.size];
-    
-    [self.skView presentScene:scene];
+    [self.skView presentScene:self.gamePageScene];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -132,6 +137,26 @@
 {
     NSLog(@"GamePageVC did disappear");
     self.skView.paused = YES;
+}
+
+- (IBAction)recognizeTap:(UITapGestureRecognizer *)sender {
+    [self.gamePageScene didTap:sender];
+}
+
+- (IBAction)recognizePinch:(UIPinchGestureRecognizer *)sender {
+    [self.gamePageScene didPinch:sender];
+}
+
+- (IBAction)recognizedRotation:(UIRotationGestureRecognizer *)sender {
+    [self.gamePageScene didRotation:sender];
+}
+
+- (IBAction)recognizedPan:(UIPanGestureRecognizer *)sender {
+    [self.gamePageScene didPan:sender];
+}
+
+- (IBAction)recognizedLongPress:(UILongPressGestureRecognizer *)sender {
+    [self.gamePageScene didLongPress:sender];
 }
 
 @end

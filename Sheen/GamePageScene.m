@@ -247,4 +247,26 @@
     self.focus.physicsBody.velocity = CGVectorMake(PLAYER_VELOCITY_FACTOR * (ploc.x - loc.x), PLAYER_VELOCITY_FACTOR * (ploc.y - loc.y));
 }
 
+- (void)didTap:(UITapGestureRecognizer *)sender {
+    [sender locationInView:self.view];
+    NSLog(@"recognized tap");
+}
+
+- (void)didPinch:(UIPinchGestureRecognizer *)sender {
+    [self scaleTo:sender.scale];
+    NSLog(@"recognized pinch");
+}
+
+- (void)didRotation:(UIRotationGestureRecognizer *)sender {
+    NSLog(@"recognized rotation");
+}
+
+- (void)didPan:(UIPanGestureRecognizer *)sender {
+    NSLog(@"recognized pan");
+}
+
+- (void)didLongPress:(UILongPressGestureRecognizer *)sender {
+    NSLog(@"recognized long press");
+}
+
 @end

@@ -248,7 +248,19 @@
                     <view key="view" contentMode="scaleToFill" id="pMb-UL-3eo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win. Don't lose." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="83" translatesAutoresizingMaskIntoConstraints="NO" id="0f5-Dx-lli">
+                                <rect key="frame" x="119" y="99" width="83" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0f5-Dx-lli" firstAttribute="top" secondItem="pMb-UL-3eo" secondAttribute="top" constant="99" id="URZ-Qs-Eik"/>
+                            <constraint firstItem="0f5-Dx-lli" firstAttribute="leading" secondItem="pMb-UL-3eo" secondAttribute="leading" constant="119" id="q3I-jQ-mXN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Help" id="QSv-Vk-L95"/>
                 </viewController>
@@ -267,6 +279,21 @@
                     <view key="view" contentMode="scaleToFill" id="vbO-oh-HAp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About game, yo!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iC0-Jn-Sf1">
+                                <rect key="frame" x="97" y="96" width="127" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Done got made by Matthew Ewer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImV-qJ-Qhl">
+                                <rect key="frame" x="32" y="168" width="257" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="isw-T5-wGj"/>
@@ -310,12 +337,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QC9-sY-Oww" secondAttribute="trailing" constant="20" symbolic="YES" id="H70-0D-Gr2"/>
                             <constraint firstItem="Mg5-Ac-MKC" firstAttribute="leading" secondItem="WZL-zk-93F" secondAttribute="leading" constant="20" symbolic="YES" id="q3y-Fy-hBb"/>
                             <constraint firstItem="QC9-sY-Oww" firstAttribute="baseline" secondItem="Mg5-Ac-MKC" secondAttribute="baseline" id="qmg-tI-uCf"/>
                             <constraint firstItem="Mg5-Ac-MKC" firstAttribute="top" secondItem="WZL-zk-93F" secondAttribute="top" constant="20" symbolic="YES" id="yYc-kh-fak"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="W1M-IY-uq0" appends="YES" id="xhk-H0-g8A"/>
+                            <outletCollection property="gestureRecognizers" destination="nJC-MT-Nyh" appends="YES" id="aOi-WW-OcI"/>
+                            <outletCollection property="gestureRecognizers" destination="le6-cp-A5k" appends="YES" id="sRC-ee-H4e"/>
+                            <outletCollection property="gestureRecognizers" destination="1m6-E7-dk7" appends="YES" id="e8l-La-5rO"/>
+                            <outletCollection property="gestureRecognizers" destination="hd6-3G-aHm" appends="YES" id="Fhe-5p-ovf"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="BDa-QU-Kvx">
                         <barButtonItem key="rightBarButtonItem" title="Inventory" id="CTk-zM-Vba">
@@ -326,6 +361,31 @@
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8I-rO-Bb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="W1M-IY-uq0">
+                    <connections>
+                        <action selector="recognizeTap:" destination="eZo-QM-Vqf" id="mMd-Bz-5XB"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="nJC-MT-Nyh">
+                    <connections>
+                        <action selector="recognizePinch:" destination="eZo-QM-Vqf" id="FWp-4U-81X"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <rotationGestureRecognizer id="le6-cp-A5k">
+                    <connections>
+                        <action selector="recognizedRotation:" destination="eZo-QM-Vqf" id="Mew-hE-kUk"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="1m6-E7-dk7">
+                    <connections>
+                        <action selector="recognizedPan:" destination="eZo-QM-Vqf" id="0Zt-01-Gyh"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="hd6-3G-aHm">
+                    <connections>
+                        <action selector="recognizedLongPress:" destination="eZo-QM-Vqf" id="QCb-Qz-lgt"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="884" y="-635"/>
         </scene>
