@@ -18,8 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.musicManager = [[MusicManager alloc] init];
     [OptionsManager initOptions];
+    self.musicManager = [[MusicManager alloc] init];
     
     return YES;
 }

@@ -8,10 +8,12 @@
 
 #import "MusicManager.h"
 #import <AVFoundation/AVFoundation.h>
+#import "OptionsManager.h"
 
 @interface MusicManager ()
 @property (strong, nonatomic) AVAudioPlayer *player;
 @property (strong, nonatomic) NSString *currentSongFilename;
+@property (nonatomic) float internalVolume;
 @end
 
 @implementation MusicManager
@@ -21,6 +23,8 @@
     self = [super init];
     
     if (self) {
+        self.internalVolume = 1.0;
+        [self updateMusicVolume];
         __weak MusicManager *weakself = self;
         [[NSNotificationCenter defaultCenter] addObserverForName:ChangeSongRequestNotification
                                                           object:nil
@@ -46,6 +50,12 @@
                                                       usingBlock:^(NSNotification *note) {
                                                           [weakself stopCurrentSong];
                                                       }];
+        [[NSNotificationCenter defaultCenter] addObserverForName:MusicVolumeChangedNotification
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *note) {
+                                                          [weakself updateMusicVolume];
+                                                      }];
     }
     
     return self;
@@ -60,6 +70,7 @@
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
     self.player.numberOfLoops = -1; //infinite loop
+    [self updateMusicVolume];
     [self.player play];
 }
 
@@ -84,6 +95,11 @@
     [self.player stop];
     self.player = nil;
     self.currentSongFilename = nil;
+}
+
+- (void)updateMusicVolume
+{
+    self.player.volume = self.internalVolume * [OptionsManager musicVolume];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "OptionsTVC.h"
 #import "OptionsManager.h"
+#import "MusicManager.h"
 
 @interface OptionsTVC ()
 @property (weak, nonatomic) IBOutlet UISlider *musicVolumeSlider;
@@ -40,6 +41,9 @@
 
 - (IBAction)changedMusicVolume:(UISlider *)sender {
     [OptionsManager setMusicVolume:sender.value];
+    [[NSNotificationCenter defaultCenter] postNotificationName:MusicVolumeChangedNotification
+                                                        object:self
+                                                      userInfo:nil];
 }
 
 - (IBAction)changedSoundVolume:(UISlider *)sender {

@@ -21,6 +21,8 @@
 
 #define StopCurrentSongRequestNotification @"StopCurrentSongRequestNotification"
 
+#define MusicVolumeChangedNotification @"MusicVolumeChangedNotification"
+
 - (instancetype)init;
 
 @end
