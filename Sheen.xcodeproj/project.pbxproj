@@ -32,6 +32,8 @@
 		C756E62D183884830015A240 /* GamePageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C756E62C183884830015A240 /* GamePageScene.m */; };
 		C759EC16183C7312009A0D60 /* MusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C759EC15183C7312009A0D60 /* MusicManager.m */; };
 		C75E139F1838789A0032048E /* BGImageNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75E139E1838789A0032048E /* BGImageNavigationController.m */; };
+		C76817E618454E840069F170 /* OptionsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C76817E518454E840069F170 /* OptionsTVC.m */; };
+		C76817E91845509A0069F170 /* OptionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C76817E81845509A0069F170 /* OptionsManager.m */; };
 		C794E897183B5E2E00019BF2 /* Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = C794E896183B5E2E00019BF2 /* Debugging.m */; };
 		C7DED2F0182F468200F953A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2EF182F468200F953A5 /* Foundation.framework */; };
 		C7DED2F2182F468200F953A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2F1182F468200F953A5 /* CoreGraphics.framework */; };
@@ -99,6 +101,10 @@
 		C75E139D1838789A0032048E /* BGImageNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGImageNavigationController.h; sourceTree = "<group>"; };
 		C75E139E1838789A0032048E /* BGImageNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGImageNavigationController.m; sourceTree = "<group>"; };
 		C75E13A0183879980032048E /* BGImageRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGImageRecipient.h; sourceTree = "<group>"; };
+		C76817E418454E840069F170 /* OptionsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTVC.h; sourceTree = "<group>"; };
+		C76817E518454E840069F170 /* OptionsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTVC.m; sourceTree = "<group>"; };
+		C76817E71845509A0069F170 /* OptionsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsManager.h; sourceTree = "<group>"; };
+		C76817E81845509A0069F170 /* OptionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsManager.m; sourceTree = "<group>"; };
 		C794E895183B5E2E00019BF2 /* Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugging.h; sourceTree = "<group>"; };
 		C794E896183B5E2E00019BF2 /* Debugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debugging.m; sourceTree = "<group>"; };
 		C7DED2EC182F468200F953A5 /* Sheen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sheen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -258,6 +264,8 @@
 				C75E139D1838789A0032048E /* BGImageNavigationController.h */,
 				C75E139E1838789A0032048E /* BGImageNavigationController.m */,
 				C75E13A0183879980032048E /* BGImageRecipient.h */,
+				C76817E418454E840069F170 /* OptionsTVC.h */,
+				C76817E518454E840069F170 /* OptionsTVC.m */,
 				C7DED301182F468200F953A5 /* Main_iPhone.storyboard */,
 				C7DED304182F468200F953A5 /* Main_iPad.storyboard */,
 				C7DED30A182F468200F953A5 /* Images.xcassets */,
@@ -271,6 +279,8 @@
 		C7DED2F6182F468200F953A5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C76817E71845509A0069F170 /* OptionsManager.h */,
+				C76817E81845509A0069F170 /* OptionsManager.m */,
 				C794E895183B5E2E00019BF2 /* Debugging.h */,
 				C794E896183B5E2E00019BF2 /* Debugging.m */,
 				C7DED2F7182F468200F953A5 /* Sheen-Info.plist */,
@@ -413,9 +423,11 @@
 				C794E897183B5E2E00019BF2 /* Debugging.m in Sources */,
 				C740696E18375E5700817BE2 /* Mote.m in Sources */,
 				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
+				C76817E91845509A0069F170 /* OptionsManager.m in Sources */,
 				C7406950183756D900817BE2 /* TitlePageVC.m in Sources */,
 				C759EC16183C7312009A0D60 /* MusicManager.m in Sources */,
 				C7DED300182F468200F953A5 /* SheenAppDelegate.m in Sources */,
+				C76817E618454E840069F170 /* OptionsTVC.m in Sources */,
 				C75E139F1838789A0032048E /* BGImageNavigationController.m in Sources */,
 				C710315618383EF900C7CB91 /* SaveLoadCDTVC.m in Sources */,
 				C71031501838366500C7CB91 /* CoreDataTableViewController.m in Sources */,

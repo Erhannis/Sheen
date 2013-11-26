@@ -17,6 +17,7 @@
 @property (strong, nonatomic) SKNode *focus;
 @property (nonatomic) CGFloat xScaleTrue;
 @property (nonatomic) CGFloat yScaleTrue;
+@property (nonatomic) CGFloat angleTrue;
 @property (nonatomic) CGFloat lastWidth;
 @end
 
@@ -205,6 +206,14 @@
     }
 }
 
+- (void)rotateTo:(CGFloat)angle
+{
+    __weak GamePageScene *weakself = self;
+    [self runAction:[SKAction rotateToAngle:angle duration:0] completion:^{
+        weakself.angleTrue = angle;
+    }];
+}
+
 - (void)update:(NSTimeInterval)currentTime
 {
 }
@@ -265,20 +274,23 @@
 }
 
 - (void)didRotation:(UIRotationGestureRecognizer *)sender {
-    NSLog(@"recognized rotation");
+//    self.zRotation = sender.rotation;
+    [self runAction:[SKAction rotateToAngle:sender.rotation
+                                   duration:0]];
+//    NSLog(@"recognized rotation");
 }
 
 - (void)didPan:(UIPanGestureRecognizer *)sender {
-    CGPoint loc = [sender translationInView:self.view];
-    loc = [self convertPointFromView:loc];
-    CGPoint ploc = [self convertPointFromView:CGPointZero];
-    CGVector velocity = CGVectorMake(PLAYER_VELOCITY_FACTOR * (ploc.x-loc.x), PLAYER_VELOCITY_FACTOR * (ploc.y - loc.y));
-    if (velocity.dx != 0 || velocity.dy != 0) {
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        CGPoint loc = [sender translationInView:self.view];
+        loc = [self convertPointFromView:loc];
+        CGPoint ploc = [self convertPointFromView:CGPointZero];
+        CGVector velocity = CGVectorMake(PLAYER_VELOCITY_FACTOR * (ploc.x-loc.x), PLAYER_VELOCITY_FACTOR * (ploc.y - loc.y));
         self.focus.physicsBody.velocity = velocity;
+        [sender setTranslation:CGPointZero inView:self.view];
+        //    NSLog(@"velocity %f,%f", self.focus.physicsBody.velocity.dx, self.focus.physicsBody.velocity.dy);
+        //    NSLog(@"recognized pan");
     }
-    [sender setTranslation:CGPointZero inView:self.view];
-//    NSLog(@"velocity %f,%f", self.focus.physicsBody.velocity.dx, self.focus.physicsBody.velocity.dy);
-//    NSLog(@"recognized pan");
 }
 
 - (void)didLongPress:(UILongPressGestureRecognizer *)sender {
