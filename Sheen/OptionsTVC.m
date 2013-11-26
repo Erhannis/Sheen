@@ -37,6 +37,7 @@
     self.soundVolumeSlider.value = [OptionsManager soundVolume];
     self.graphicsLevelSegmentedControl.selectedSegmentIndex = [OptionsManager graphicsLevel];
     self.sillyFeaturesModeSwitch.selected = [OptionsManager sillyFeaturesMode];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (IBAction)changedMusicVolume:(UISlider *)sender {

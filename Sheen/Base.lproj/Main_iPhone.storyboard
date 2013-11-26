@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P3k-3w-fke">
-                                <rect key="frame" x="143" y="530" width="35" height="30"/>
+                                <rect key="frame" x="143" y="442" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Load">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enc-5D-D74">
-                                <rect key="frame" x="122" y="492" width="76" height="30"/>
+                                <rect key="frame" x="122" y="404" width="76" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="New Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,15 +43,36 @@
                                     <segue destination="eZo-QM-Vqf" kind="push" identifier="Go New Game" id="LG7-fx-Pb1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIN-OV-MS8">
+                                <rect key="frame" x="133" y="480" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Options">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="UPS-jv-M9t" kind="push" identifier="Go Options" id="pIV-E4-Esx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub5-Jk-tvK">
+                                <rect key="frame" x="145" y="518" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0Cp-Vo-CBX" firstAttribute="top" secondItem="P3k-3w-fke" secondAttribute="bottom" constant="20" symbolic="YES" id="0r7-P5-Ef9"/>
-                            <constraint firstItem="P3k-3w-fke" firstAttribute="top" secondItem="enc-5D-D74" secondAttribute="bottom" constant="8" symbolic="YES" id="9HB-gf-d6b"/>
-                            <constraint firstItem="WKg-5l-VOr" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="D0v-gD-uVg"/>
-                            <constraint firstAttribute="centerX" secondItem="WKg-5l-VOr" secondAttribute="centerX" id="fjQ-PQ-aJz"/>
-                            <constraint firstAttribute="centerX" secondItem="enc-5D-D74" secondAttribute="centerX" id="kSW-eL-zo4"/>
-                            <constraint firstItem="P3k-3w-fke" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="nIz-Q5-rFl"/>
+                            <constraint firstItem="enc-5D-D74" firstAttribute="centerX" secondItem="P3k-3w-fke" secondAttribute="centerX" id="0tZ-t5-Tyt"/>
+                            <constraint firstItem="enc-5D-D74" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="6In-LJ-uVb"/>
+                            <constraint firstAttribute="centerX" secondItem="ub5-Jk-tvK" secondAttribute="centerX" id="7In-jO-GWJ"/>
+                            <constraint firstItem="mIN-OV-MS8" firstAttribute="top" secondItem="P3k-3w-fke" secondAttribute="bottom" constant="8" symbolic="YES" id="Hn3-LO-JYX"/>
+                            <constraint firstAttribute="bottom" secondItem="ub5-Jk-tvK" secondAttribute="bottom" constant="20" symbolic="YES" id="UsR-xf-hhX"/>
+                            <constraint firstItem="P3k-3w-fke" firstAttribute="centerX" secondItem="mIN-OV-MS8" secondAttribute="centerX" id="ewO-4H-LU4"/>
+                            <constraint firstItem="enc-5D-D74" firstAttribute="centerX" secondItem="WKg-5l-VOr" secondAttribute="centerX" id="fa1-uL-BnO"/>
+                            <constraint firstItem="P3k-3w-fke" firstAttribute="top" secondItem="enc-5D-D74" secondAttribute="bottom" constant="8" symbolic="YES" id="kv7-hh-EhJ"/>
+                            <constraint firstItem="WKg-5l-VOr" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="lLK-p5-KeC"/>
+                            <constraint firstItem="ub5-Jk-tvK" firstAttribute="top" secondItem="mIN-OV-MS8" secondAttribute="bottom" constant="8" symbolic="YES" id="vPi-bV-gT1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KeT-H1-0BT"/>
@@ -219,7 +240,7 @@
         <scene sceneID="dpg-I0-N9Q">
             <objects>
                 <tableViewController id="UPS-jv-M9t" userLabel="Options Screen" customClass="OptionsTVC" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Z9-jN-S6b">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Z9-jN-S6b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -568,5 +589,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="xEd-9H-HCR"/>
+        <segue reference="3c6-J4-KX5"/>
     </inferredMetricsTieBreakers>
 </document>
