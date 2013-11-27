@@ -36,7 +36,7 @@
     self.musicVolumeSlider.value = [OptionsManager musicVolume];
     self.soundVolumeSlider.value = [OptionsManager soundVolume];
     self.graphicsLevelSegmentedControl.selectedSegmentIndex = [OptionsManager graphicsLevel];
-    self.sillyFeaturesModeSwitch.selected = [OptionsManager sillyFeaturesMode];
+    self.sillyFeaturesModeSwitch.on = [OptionsManager sillyFeaturesMode];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
@@ -56,7 +56,7 @@
 }
 
 - (IBAction)changedSillyFeatures:(UISwitch *)sender {
-    [OptionsManager setSillyFeaturesMode:sender.selected];
+    [OptionsManager setSillyFeaturesMode:sender.on];
 }
 
 @end

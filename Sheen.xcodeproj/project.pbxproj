@@ -205,6 +205,52 @@
 			name = Beings;
 			sourceTree = "<group>";
 		};
+		C76817EA184571CD0069F170 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C759EC14183C7312009A0D60 /* MusicManager.h */,
+				C759EC15183C7312009A0D60 /* MusicManager.m */,
+				C76817E71845509A0069F170 /* OptionsManager.h */,
+				C76817E81845509A0069F170 /* OptionsManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		C76817EB184572100069F170 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C710314818382B3200C7CB91 /* PauseMenuVC.h */,
+				C710314918382B3200C7CB91 /* PauseMenuVC.m */,
+				C740694E183756D900817BE2 /* TitlePageVC.h */,
+				C740694F183756D900817BE2 /* TitlePageVC.m */,
+				C710314B18382B9400C7CB91 /* GamePageVC.h */,
+				C710314C18382B9400C7CB91 /* GamePageVC.m */,
+				C710314E1838366500C7CB91 /* CoreDataTableViewController.h */,
+				C710314F1838366500C7CB91 /* CoreDataTableViewController.m */,
+				C710315118383EBF00C7CB91 /* InventoryCDTVC.h */,
+				C710315218383EBF00C7CB91 /* InventoryCDTVC.m */,
+				C710315418383EF900C7CB91 /* SaveLoadCDTVC.h */,
+				C710315518383EF900C7CB91 /* SaveLoadCDTVC.m */,
+				C75E139D1838789A0032048E /* BGImageNavigationController.h */,
+				C75E139E1838789A0032048E /* BGImageNavigationController.m */,
+				C75E13A0183879980032048E /* BGImageRecipient.h */,
+				C76817E418454E840069F170 /* OptionsTVC.h */,
+				C76817E518454E840069F170 /* OptionsTVC.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C76817EC1845721A0069F170 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C740696818375A3F00817BE2 /* TitlePageScene.h */,
+				C740696918375A3F00817BE2 /* TitlePageScene.m */,
+				C756E62B183884830015A240 /* GamePageScene.h */,
+				C756E62C183884830015A240 /* GamePageScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
 		C7DED2E3182F468200F953A5 = {
 			isa = PBXGroup;
 			children = (
@@ -241,36 +287,16 @@
 		C7DED2F5182F468200F953A5 /* Sheen */ = {
 			isa = PBXGroup;
 			children = (
-				C759EC14183C7312009A0D60 /* MusicManager.h */,
-				C759EC15183C7312009A0D60 /* MusicManager.m */,
-				C710314818382B3200C7CB91 /* PauseMenuVC.h */,
-				C710314918382B3200C7CB91 /* PauseMenuVC.m */,
-				C740696818375A3F00817BE2 /* TitlePageScene.h */,
-				C740696918375A3F00817BE2 /* TitlePageScene.m */,
-				C756E62B183884830015A240 /* GamePageScene.h */,
-				C756E62C183884830015A240 /* GamePageScene.m */,
 				C7DED2FE182F468200F953A5 /* SheenAppDelegate.h */,
 				C7DED2FF182F468200F953A5 /* SheenAppDelegate.m */,
-				C740694E183756D900817BE2 /* TitlePageVC.h */,
-				C740694F183756D900817BE2 /* TitlePageVC.m */,
-				C710314B18382B9400C7CB91 /* GamePageVC.h */,
-				C710314C18382B9400C7CB91 /* GamePageVC.m */,
-				C710314E1838366500C7CB91 /* CoreDataTableViewController.h */,
-				C710314F1838366500C7CB91 /* CoreDataTableViewController.m */,
-				C710315118383EBF00C7CB91 /* InventoryCDTVC.h */,
-				C710315218383EBF00C7CB91 /* InventoryCDTVC.m */,
-				C710315418383EF900C7CB91 /* SaveLoadCDTVC.h */,
-				C710315518383EF900C7CB91 /* SaveLoadCDTVC.m */,
-				C75E139D1838789A0032048E /* BGImageNavigationController.h */,
-				C75E139E1838789A0032048E /* BGImageNavigationController.m */,
-				C75E13A0183879980032048E /* BGImageRecipient.h */,
-				C76817E418454E840069F170 /* OptionsTVC.h */,
-				C76817E518454E840069F170 /* OptionsTVC.m */,
 				C7DED301182F468200F953A5 /* Main_iPhone.storyboard */,
 				C7DED304182F468200F953A5 /* Main_iPad.storyboard */,
 				C7DED30A182F468200F953A5 /* Images.xcassets */,
+				C76817EC1845721A0069F170 /* Scenes */,
+				C76817EB184572100069F170 /* ViewControllers */,
 				C740696B18375DDA00817BE2 /* Beings */,
 				C74069541837589A00817BE2 /* Media */,
+				C76817EA184571CD0069F170 /* Managers */,
 				C7DED2F6182F468200F953A5 /* Supporting Files */,
 			);
 			path = Sheen;
@@ -279,8 +305,6 @@
 		C7DED2F6182F468200F953A5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C76817E71845509A0069F170 /* OptionsManager.h */,
-				C76817E81845509A0069F170 /* OptionsManager.m */,
 				C794E895183B5E2E00019BF2 /* Debugging.h */,
 				C794E896183B5E2E00019BF2 /* Debugging.m */,
 				C7DED2F7182F468200F953A5 /* Sheen-Info.plist */,

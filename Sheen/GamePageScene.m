@@ -11,6 +11,7 @@
 #import "Drop.h"
 #import "MathUtils.h"
 #import "Debugging.h"
+#import "OptionsManager.h"
 
 @interface GamePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
@@ -275,8 +276,11 @@
 
 - (void)didRotation:(UIRotationGestureRecognizer *)sender {
 //    self.zRotation = sender.rotation;
-    [self runAction:[SKAction rotateToAngle:sender.rotation
-                                   duration:0]];
+    if ([OptionsManager sillyFeaturesMode]) {
+        [self runAction:[SKAction rotateByAngle:sender.rotation
+                                       duration:0]];
+        sender.rotation = 0;
+    }
 //    NSLog(@"recognized rotation");
 }
 
