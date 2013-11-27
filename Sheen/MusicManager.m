@@ -74,11 +74,16 @@
     [self.player play];
 }
 
+/*
+ Changes songs.  If given song is already playing, does nothing.
+ */
 - (void)transitionToSongWithFilename:(NSString *)filename
 {
     //TODO Do this better.
-    [self stopCurrentSong];
-    [self startSongWithFilename:filename];
+    if (![self.currentSongFilename isEqualToString:filename]){
+        [self stopCurrentSong];
+        [self startSongWithFilename:filename];
+    }
 }
 
 - (void)stopParticularSongWithFilename:(NSString *)filename
