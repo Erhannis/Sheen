@@ -22,6 +22,7 @@
 {
     [OptionsManager initOptions];
     self.musicManager = [[MusicManager alloc] init];
+    //TODO Do checking and locking and all that jazz.
     self.databaseManager = [[DatabaseManager alloc] init];
     
     return YES;

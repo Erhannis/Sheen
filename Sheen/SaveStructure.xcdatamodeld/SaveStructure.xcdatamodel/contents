@@ -14,6 +14,7 @@
     </entity>
     <entity name="LevelTemplate" representedClassName="LevelTemplate" syncable="YES">
         <attribute name="bgColor" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="levelID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="song" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="beings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Being" inverseName="levelTemplate" inverseEntity="Being" syncable="YES"/>

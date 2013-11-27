@@ -7,6 +7,8 @@
 //
 
 #import "LevelTemplate.h"
+#import "Being.h"
+#import "LevelInstance.h"
 #import "Portal.h"
 #import "Wall.h"
 
@@ -16,6 +18,7 @@
 @dynamic song;
 @dynamic name;
 @dynamic bgColor;
+@dynamic levelID;
 @dynamic walls;
 @dynamic instances;
 @dynamic beings;

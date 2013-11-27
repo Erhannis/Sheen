@@ -7,13 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "BeingNode.h"
 
-@interface Drop : SKSpriteNode
+@interface Drop : BeingNode
 
 #define DEFAULT_DROP_RADIUS (50.0)
 
 @property (nonatomic) CGFloat radius;
-
-@property (nonatomic) CGPoint lastPosition;
 
 @end

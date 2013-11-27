@@ -7,8 +7,14 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "LevelInstance.h"
+#import "Player.h"
 
 @interface GamePageScene : SKScene
+
+- (id)initWithSize:(CGSize)size
+     levelInstance:(LevelInstance *)levelInstance
+         andPlayer:(Player *)player;
 
 - (void)didTap:(UITapGestureRecognizer *)sender;
 - (void)didPinch:(UIPinchGestureRecognizer *)sender;

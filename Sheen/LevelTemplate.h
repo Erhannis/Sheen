@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Portal, Wall;
+@class Being, LevelInstance, Portal, Wall;
 
 @interface LevelTemplate : NSManagedObject
 
 @property (nonatomic, retain) NSString * song;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * bgColor;
+@property (nonatomic, retain) NSString * levelID;
 @property (nonatomic, retain) NSSet *walls;
 @property (nonatomic, retain) NSSet *instances;
 @property (nonatomic, retain) NSSet *beings;
@@ -30,13 +31,13 @@
 - (void)addWalls:(NSSet *)values;
 - (void)removeWalls:(NSSet *)values;
 
-- (void)addInstancesObject:(NSManagedObject *)value;
-- (void)removeInstancesObject:(NSManagedObject *)value;
+- (void)addInstancesObject:(LevelInstance *)value;
+- (void)removeInstancesObject:(LevelInstance *)value;
 - (void)addInstances:(NSSet *)values;
 - (void)removeInstances:(NSSet *)values;
 
-- (void)addBeingsObject:(NSManagedObject *)value;
-- (void)removeBeingsObject:(NSManagedObject *)value;
+- (void)addBeingsObject:(Being *)value;
+- (void)removeBeingsObject:(Being *)value;
 - (void)addBeings:(NSSet *)values;
 - (void)removeBeings:(NSSet *)values;
 

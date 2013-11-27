@@ -12,14 +12,17 @@
 #import "MathUtils.h"
 #import "Debugging.h"
 #import "OptionsManager.h"
+#import "BeingNode.h"
 
 @interface GamePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
-@property (strong, nonatomic) SKNode *focus;
+@property (strong, nonatomic) BeingNode *focus;
 @property (nonatomic) CGFloat xScaleTrue;
 @property (nonatomic) CGFloat yScaleTrue;
 @property (nonatomic) CGFloat angleTrue;
 @property (nonatomic) CGFloat lastWidth;
+@property (strong, nonatomic) LevelInstance *levelInstance;
+@property (strong, nonatomic) Player *player;
 @end
 
 @implementation GamePageScene
@@ -51,10 +54,14 @@
 }
 
 - (id)initWithSize:(CGSize)size
+     levelInstance:(LevelInstance *)levelInstance
+         andPlayer:(Player *)player
 {
     self = [super initWithSize:size];
     
     if (self) {
+        self.levelInstance = levelInstance;
+        self.player = player;
         self.lastWidth = size.width;
         self.xScaleTrue = 1;
         self.yScaleTrue = 1;
@@ -92,84 +99,8 @@
             [self addChild:d];
         }
         
-        UIImage *image = [UIImage imageNamed:@"mote-purple"];
-        
-        CIImage *ciImage = image.CIImage ? image.CIImage : [CIImage imageWithCGImage:image.CGImage];
-        CGRect origExtent = ciImage.extent;
-        CIFilter *filter;
-        
-        filter = [CIFilter filterWithName:@"CIColorMatrix"];
-        [filter setValue:ciImage forKey:kCIInputImageKey];
-        [filter setValue:[CIVector vectorWithX:1 Y:0 Z:0 W:0] forKey:@"inputRVector"];
-        [filter setValue:[CIVector vectorWithX:1 Y:0 Z:0 W:0] forKey:@"inputGVector"];
-        [filter setValue:[CIVector vectorWithX:1 Y:0 Z:0 W:0] forKey:@"inputBVector"];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:1] forKey:@"inputAVector"];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey:@"inputBiasVector"];
-        ciImage = [filter valueForKey:kCIOutputImageKey];
-
-        ciImage = [ciImage imageByCroppingToRect:origExtent];
-        CIImage *ciWhite = ciImage;
-        CGImageRef cgir = [[CIContext contextWithOptions:@{}] createCGImage:ciImage fromRect:ciImage.extent];
-        SKTexture *white = [SKTexture textureWithCGImage:cgir];
-        
-        filter = [CIFilter filterWithName:@"CIColorMatrix"];
-        [filter setValue:ciWhite forKey:kCIInputImageKey];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey:@"inputRVector"];
-        [filter setValue:[CIVector vectorWithX:1 Y:0 Z:0 W:0] forKey:@"inputGVector"];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey:@"inputBVector"];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:1] forKey:@"inputAVector"];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey:@"inputBiasVector"];
-        ciImage = [filter valueForKey:kCIOutputImageKey];
-        
-        ciImage = [ciImage imageByCroppingToRect:origExtent];
-//        cgir = [[CIContext contextWithOptions:@{}] createCGImage:ciImage fromRect:ciImage.extent];
-//        SKTexture *green = [SKTexture textureWithCGImage:cgir];
-
-        filter = [CIFilter filterWithName:@"CIColorMatrix"];
-        [filter setValue:ciWhite forKey:kCIInputImageKey];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey:@"inputRVector"];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey:@"inputGVector"];
-        [filter setValue:[CIVector vectorWithX:1 Y:0 Z:0 W:0] forKey:@"inputBVector"];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:1] forKey:@"inputAVector"];
-        [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey:@"inputBiasVector"];
-        ciImage = [filter valueForKey:kCIOutputImageKey];
-        
-        ciImage = [ciImage imageByCroppingToRect:origExtent];
-//        cgir = [[CIContext contextWithOptions:@{}] createCGImage:ciImage fromRect:ciImage.extent];
-//        SKTexture *blue = [SKTexture textureWithCGImage:cgir];
-        
-//        NSArray *colors = @[red, green, blue];
-        
-        for (int i = 0; i < MOTE_COUNT; i++) {
-//            int col = arc4random() % colors.count;
-            Mote *mote = [[Mote alloc] initWithTexture:white
-                                                 color:[SKColor colorWithRed:drand48()
-                                                                       green:drand48()
-                                                                        blue:drand48()
-                                                                       alpha:1]
-                                                  size:ciWhite.extent.size];
-            mote.colorBlendFactor = 1.0;
-            mote.radius = (drand48() * (MOTE_MAX_RADIUS - MOTE_MIN_RADIUS)) + MOTE_MIN_RADIUS;
-            mote.radius = 15.0;
-            mote.zPosition = (drand48() * (MOTE_MAX_HEIGHT - MOTE_MIN_HEIGHT)) + MOTE_MIN_HEIGHT;
-            CGFloat dist = CAMERA_HEIGHT - mote.zPosition;
-            mote.scale = CAMERA_HEIGHT / dist;
-            mote.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:(mote.radius * mote.scale)];
-            mote.size = CGSizeMake(mote.radius * mote.scale, mote.radius * mote.scale);
-            mote.position = CGPointMake(((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.width, ((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.height);
-//            mote.realPosition = CGPointMake(mote.position.x / mote.scale, mote.position.y / mote.scale);
-            mote.lastPosition = mote.position;
-            mote.physicsBody.affectedByGravity = NO;
-            mote.physicsBody.friction = 0.0;
-            mote.physicsBody.linearDamping = 0.0;
-            mote.physicsBody.collisionBitMask = 0x0;
-            mote.physicsBody.categoryBitMask = 0x0;
-            mote.physicsBody.contactTestBitMask = 0x0;
-            mote.physicsBody.velocity = CGVectorMake(mote.scale * ((drand48() - 0.5) * MOTE_MAX_VELOCITY + MOTE_BASE_VELOCITY), -(mote.scale) * ((drand48() - 0.5) * MOTE_MAX_VELOCITY + MOTE_BASE_VELOCITY));
-            mote.blendMode = blendMode;
-            [self.motes addObject:mote];
-            [self addChild:mote];
-        }
+        [self addMotesWithViewSize:size
+                      andBlendMode:blendMode];
         
         SKShapeNode *wall = [[SKShapeNode alloc] init];
         wall.path = CGPathCreateWithEllipseInRect(CGRectMake(-800, -800, 1600, 1600), NULL);
@@ -182,6 +113,42 @@
     }
 
     return self;
+}
+
+- (void)addMotesWithViewSize:(CGSize)size
+                andBlendMode:(SKBlendMode)blendMode
+{
+    UIImage *image = [UIImage imageNamed:@"mote-white"];
+    SKTexture *white = [SKTexture textureWithCGImage:image.CGImage];
+    
+    for (int i = 0; i < MOTE_COUNT; i++) {
+        Mote *mote = [[Mote alloc] initWithTexture:white
+                                             color:[SKColor colorWithRed:drand48()
+                                                                   green:drand48()
+                                                                    blue:drand48()
+                                                                   alpha:1]
+                                              size:image.size];
+        mote.colorBlendFactor = 1.0;
+        mote.radius = (drand48() * (MOTE_MAX_RADIUS - MOTE_MIN_RADIUS)) + MOTE_MIN_RADIUS;
+        mote.radius = 15.0;
+        mote.zPosition = (drand48() * (MOTE_MAX_HEIGHT - MOTE_MIN_HEIGHT)) + MOTE_MIN_HEIGHT;
+        CGFloat dist = CAMERA_HEIGHT - mote.zPosition;
+        mote.scale = CAMERA_HEIGHT / dist;
+        mote.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:(mote.radius * mote.scale)];
+        mote.size = CGSizeMake(mote.radius * mote.scale, mote.radius * mote.scale);
+        mote.position = CGPointMake(((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.width, ((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.height);
+        mote.lastPosition = mote.position;
+        mote.physicsBody.affectedByGravity = NO;
+        mote.physicsBody.friction = 0.0;
+        mote.physicsBody.linearDamping = 0.0;
+        mote.physicsBody.collisionBitMask = 0x0;
+        mote.physicsBody.categoryBitMask = 0x0;
+        mote.physicsBody.contactTestBitMask = 0x0;
+        mote.physicsBody.velocity = CGVectorMake(mote.scale * ((drand48() - 0.5) * MOTE_MAX_VELOCITY + MOTE_BASE_VELOCITY), -(mote.scale) * ((drand48() - 0.5) * MOTE_MAX_VELOCITY + MOTE_BASE_VELOCITY));
+        mote.blendMode = blendMode;
+        [self.motes addObject:mote];
+        [self addChild:mote];
+    }
 }
 
 - (void)scaleBy:(CGFloat)factor
@@ -228,11 +195,9 @@
         self.lastWidth = self.view.frame.size.width;
     }
     self.anchorPoint = CGPointMake((0.5 / self.xScaleTrue) - (self.xScaleTrue * self.focus.position.x / self.frame.size.width), (0.5 / self.yScaleTrue) - (self.yScaleTrue * self.focus.position.y / self.frame.size.height));
-    //TODO Consider that user zooming in and out should not affect the wrapping of the motes,
-    //         because they might notice that.
     CGRect viewport = CGRectMake(self.focus.position.x - ((1 + (2 * SIDE_SPACE)) * self.size.width / 2), self.focus.position.y - ((1 + (2 * SIDE_SPACE)) * self.size.height / 2), (1 + (2 * SIDE_SPACE)) * self.size.width, (1 + (2 * SIDE_SPACE)) * self.size.height);
     for (Mote *mote in self.motes) {
-        mote.position = CGPointMake(mote.position.x + ((1 - mote.scale) * (self.focus.position.x - ((Drop *)self.focus).lastPosition.x)), mote.position.y + ((1 - mote.scale) * (self.focus.position.y - ((Drop *)self.focus).lastPosition.y)));
+        mote.position = CGPointMake(mote.position.x + ((1 - mote.scale) * (self.focus.position.x - self.focus.lastPosition.x)), mote.position.y + ((1 - mote.scale) * (self.focus.position.y - self.focus.lastPosition.y)));
         if (mote.position.x > (viewport.origin.x + viewport.size.width) ||
             mote.position.x < viewport.origin.x ||
             mote.position.y > (viewport.origin.y + viewport.size.height) ||
@@ -247,21 +212,12 @@
         }
         mote.lastPosition = mote.position;
     }
-    ((Drop *)self.focus).lastPosition = self.focus.position;
+    self.focus.lastPosition = self.focus.position;
 }
 
 - (void)didChangeSize:(CGSize)oldSize {
     NSLog(@"Changed size: %@", NSStringFromCGSize(self.size));
 }
-
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    [super touchesMoved:touches withEvent:event];
-//    UITouch *touch = [touches anyObject];
-//    CGPoint loc = [touch locationInNode:self];
-//    CGPoint ploc = [touch previousLocationInNode:self];
-//    self.focus.physicsBody.velocity = CGVectorMake(PLAYER_VELOCITY_FACTOR * (ploc.x - loc.x), PLAYER_VELOCITY_FACTOR * (ploc.y - loc.y));
-//}
 
 - (void)didTap:(UITapGestureRecognizer *)sender {
     [sender locationInView:self.view];
@@ -275,13 +231,11 @@
 }
 
 - (void)didRotation:(UIRotationGestureRecognizer *)sender {
-//    self.zRotation = sender.rotation;
     if ([OptionsManager sillyFeaturesMode]) {
         [self runAction:[SKAction rotateByAngle:sender.rotation
                                        duration:0]];
         sender.rotation = 0;
     }
-//    NSLog(@"recognized rotation");
 }
 
 - (void)didPan:(UIPanGestureRecognizer *)sender {
@@ -292,8 +246,6 @@
         CGVector velocity = CGVectorMake(PLAYER_VELOCITY_FACTOR * (ploc.x-loc.x), PLAYER_VELOCITY_FACTOR * (ploc.y - loc.y));
         self.focus.physicsBody.velocity = velocity;
         [sender setTranslation:CGPointZero inView:self.view];
-        //    NSLog(@"velocity %f,%f", self.focus.physicsBody.velocity.dx, self.focus.physicsBody.velocity.dy);
-        //    NSLog(@"recognized pan");
     }
 }
 

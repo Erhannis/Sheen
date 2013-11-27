@@ -27,7 +27,9 @@
 - (GamePageScene *)gamePageScene
 {
     //TODO Investigate the merits of other options.
-    if (!_gamePageScene) _gamePageScene = [GamePageScene sceneWithSize:self.skView.bounds.size];
+    if (!_gamePageScene) _gamePageScene = [[GamePageScene alloc] initWithSize:self.skView.bounds.size
+                                                                levelInstance:nil
+                                                                    andPlayer:nil];
     return _gamePageScene;
 }
 

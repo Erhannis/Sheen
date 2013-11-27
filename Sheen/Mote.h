@@ -7,15 +7,14 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "BeingNode.h"
 
-@interface Mote : SKSpriteNode
+@interface Mote : BeingNode
 
 @property (nonatomic) CGFloat radius;
 
 // Note that this is technically derived from zPosition and the height of the "camera".
 //   However, it's a frequently used and seldom changed property.
 @property (nonatomic) CGFloat scale;
-
-@property (nonatomic) CGPoint lastPosition;
 
 @end
