@@ -1,25 +1,25 @@
 //
-//  SavegameManager.m
+//  DatabaseManager.m
 //  Sheen
 //
 //  Created by Matthew Ewer on 11/27/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
-#import "SavegameManager.h"
+#import "DatabaseManager.h"
 
-@implementation SavegameManager
+@implementation DatabaseManager
 
 - (void)openManagedDocument
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory
                                                      inDomains:NSUserDomainMask] firstObject];
-    NSString *documentName = @"SheenSavegames";
+    NSString *documentName = @"SheenData";
     NSURL *url = [documentsDirectory URLByAppendingPathComponent:documentName];
     UIManagedDocument *document = [[UIManagedDocument alloc] initWithFileURL:url];
     
-    __weak SavegameManager *weakself = self;
+    __weak DatabaseManager *weakself = self;
     
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:url.path];
     if (fileExists) {
@@ -47,9 +47,9 @@
 {
     _document = document;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:SavegameDatabaseAvailabilityNotification
+    [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseAvailabilityNotification
                                                         object:self
-                                                      userInfo:@{SavegameDatabaseAvailabilityContext : self.document.managedObjectContext}];
+                                                      userInfo:@{DatabaseAvailabilityContext : self.document.managedObjectContext}];
 }
 
 - (instancetype)init

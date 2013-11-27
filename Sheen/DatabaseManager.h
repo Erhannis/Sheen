@@ -1,5 +1,5 @@
 //
-//  SavegameManager.h
+//  DatabaseManager.h
 //  Sheen
 //
 //  Created by Matthew Ewer on 11/27/13.
@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SavegameManager : NSObject
+@interface DatabaseManager : NSObject
 
-#define SavegameDatabaseAvailabilityNotification @"SavegameDatabaseAvailabilityNotification"
-#define SavegameDatabaseAvailabilityContext @"Context"
+#define DatabaseAvailabilityNotification @"DatabaseAvailabilityNotification"
+#define DatabaseAvailabilityContext @"Context"
 
 @property (nonatomic, strong) UIManagedDocument *document;
 

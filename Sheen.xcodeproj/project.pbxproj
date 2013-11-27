@@ -16,7 +16,7 @@
 		C70A75E418468C08005F3680 /* LevelInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75E318468C08005F3680 /* LevelInstance.m */; };
 		C70A75E718468C08005F3680 /* Being.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75E618468C08005F3680 /* Being.m */; };
 		C70A75EA18468C3C005F3680 /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75E918468C3C005F3680 /* SpatialEntity.m */; };
-		C70A75ED18468F18005F3680 /* SavegameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75EC18468F18005F3680 /* SavegameManager.m */; };
+		C70A75ED18468F18005F3680 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75EC18468F18005F3680 /* DatabaseManager.m */; };
 		C710314A18382B3200C7CB91 /* PauseMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C710314918382B3200C7CB91 /* PauseMenuVC.m */; };
 		C710314D18382B9400C7CB91 /* GamePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C710314C18382B9400C7CB91 /* GamePageVC.m */; };
 		C71031501838366500C7CB91 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C710314F1838366500C7CB91 /* CoreDataTableViewController.m */; };
@@ -89,8 +89,8 @@
 		C70A75E618468C08005F3680 /* Being.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Being.m; sourceTree = "<group>"; };
 		C70A75E818468C3C005F3680 /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpatialEntity.h; sourceTree = "<group>"; };
 		C70A75E918468C3C005F3680 /* SpatialEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpatialEntity.m; sourceTree = "<group>"; };
-		C70A75EB18468F18005F3680 /* SavegameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavegameManager.h; sourceTree = "<group>"; };
-		C70A75EC18468F18005F3680 /* SavegameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavegameManager.m; sourceTree = "<group>"; };
+		C70A75EB18468F18005F3680 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		C70A75EC18468F18005F3680 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		C710314818382B3200C7CB91 /* PauseMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenuVC.h; sourceTree = "<group>"; };
 		C710314918382B3200C7CB91 /* PauseMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenuVC.m; sourceTree = "<group>"; };
 		C710314B18382B9400C7CB91 /* GamePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePageVC.h; sourceTree = "<group>"; };
@@ -265,8 +265,8 @@
 				C759EC15183C7312009A0D60 /* MusicManager.m */,
 				C76817E71845509A0069F170 /* OptionsManager.h */,
 				C76817E81845509A0069F170 /* OptionsManager.m */,
-				C70A75EB18468F18005F3680 /* SavegameManager.h */,
-				C70A75EC18468F18005F3680 /* SavegameManager.m */,
+				C70A75EB18468F18005F3680 /* DatabaseManager.h */,
+				C70A75EC18468F18005F3680 /* DatabaseManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -507,7 +507,7 @@
 				C70A75CF18467FE4005F3680 /* SaveStructure.xcdatamodeld in Sources */,
 				C740696E18375E5700817BE2 /* Mote.m in Sources */,
 				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
-				C70A75ED18468F18005F3680 /* SavegameManager.m in Sources */,
+				C70A75ED18468F18005F3680 /* DatabaseManager.m in Sources */,
 				C70A75D218468C07005F3680 /* Wall.m in Sources */,
 				C76817E91845509A0069F170 /* OptionsManager.m in Sources */,
 				C70A75DB18468C07005F3680 /* LevelTemplate.m in Sources */,
