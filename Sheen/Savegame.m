@@ -7,6 +7,8 @@
 //
 
 #import "Savegame.h"
+#import "LevelInstance.h"
+#import "Player.h"
 
 
 @implementation Savegame

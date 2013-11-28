@@ -9,18 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class LevelTemplate, SpatialEntity;
 
 @interface Wall : NSManagedObject
 
 @property (nonatomic, retain) NSData * shape;
-@property (nonatomic, retain) NSManagedObject *location;
+@property (nonatomic, retain) SpatialEntity *location;
 @property (nonatomic, retain) NSSet *levels;
 @end
 
 @interface Wall (CoreDataGeneratedAccessors)
 
-- (void)addLevelsObject:(NSManagedObject *)value;
-- (void)removeLevelsObject:(NSManagedObject *)value;
+- (void)addLevelsObject:(LevelTemplate *)value;
+- (void)removeLevelsObject:(LevelTemplate *)value;
 - (void)addLevels:(NSSet *)values;
 - (void)removeLevels:(NSSet *)values;
 

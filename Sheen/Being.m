@@ -15,6 +15,7 @@
 @implementation Being
 
 @dynamic type;
+@dynamic imageFilename;
 @dynamic levelInstance;
 @dynamic levelTemplate;
 @dynamic spatial;

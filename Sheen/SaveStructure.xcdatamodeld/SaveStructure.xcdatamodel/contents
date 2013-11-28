@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Being" representedClassName="Being" syncable="YES">
+        <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="levelInstance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="beings" inverseEntity="LevelInstance" syncable="YES"/>
         <relationship name="levelTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="beings" inverseEntity="LevelTemplate" syncable="YES"/>
@@ -68,7 +69,7 @@
         <element name="Wall" positionX="-38" positionY="-0" width="128" height="88"/>
         <element name="SpatialEntity" positionX="135" positionY="18" width="128" height="178"/>
         <element name="LevelInstance" positionX="-29" positionY="230" width="128" height="103"/>
-        <element name="Being" positionX="-225" positionY="72" width="128" height="103"/>
+        <element name="Being" positionX="-225" positionY="72" width="128" height="118"/>
         <element name="Portal" positionX="324" positionY="23" width="128" height="118"/>
     </elements>
 </model>

@@ -9,19 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class LevelInstance, Player;
 
 @interface Savegame : NSManagedObject
 
 @property (nonatomic, retain) NSData * thumbnail;
-@property (nonatomic, retain) NSManagedObject *player;
-@property (nonatomic, retain) NSManagedObject *curLevel;
+@property (nonatomic, retain) Player *player;
+@property (nonatomic, retain) LevelInstance *curLevel;
 @property (nonatomic, retain) NSSet *levels;
 @end
 
 @interface Savegame (CoreDataGeneratedAccessors)
 
-- (void)addLevelsObject:(NSManagedObject *)value;
-- (void)removeLevelsObject:(NSManagedObject *)value;
+- (void)addLevelsObject:(LevelInstance *)value;
+- (void)removeLevelsObject:(LevelInstance *)value;
 - (void)addLevels:(NSSet *)values;
 - (void)removeLevels:(NSSet *)values;
 

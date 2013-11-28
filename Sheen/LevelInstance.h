@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class LevelTemplate, Savegame;
+@class Being, LevelTemplate, Savegame;
 
 @interface LevelInstance : NSManagedObject
 
@@ -21,8 +21,8 @@
 
 @interface LevelInstance (CoreDataGeneratedAccessors)
 
-- (void)addBeingsObject:(NSManagedObject *)value;
-- (void)removeBeingsObject:(NSManagedObject *)value;
+- (void)addBeingsObject:(Being *)value;
+- (void)removeBeingsObject:(Being *)value;
 - (void)addBeings:(NSSet *)values;
 - (void)removeBeings:(NSSet *)values;
 

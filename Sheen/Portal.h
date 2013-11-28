@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class LevelTemplate, SpatialEntity;
 
 @interface Portal : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * radius;
-@property (nonatomic, retain) NSManagedObject *fromPlace;
-@property (nonatomic, retain) NSManagedObject *fromLevel;
-@property (nonatomic, retain) NSManagedObject *toLevel;
-@property (nonatomic, retain) NSManagedObject *toPlace;
+@property (nonatomic, retain) SpatialEntity *fromPlace;
+@property (nonatomic, retain) LevelTemplate *fromLevel;
+@property (nonatomic, retain) LevelTemplate *toLevel;
+@property (nonatomic, retain) SpatialEntity *toPlace;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "LevelInstance.h"
+#import "Being.h"
 #import "LevelTemplate.h"
 #import "Savegame.h"
 

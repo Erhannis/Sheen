@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LevelInstance.h"
+#import "Player.h"
 
 @interface GamePageVC : UIViewController
-
+@property (strong, nonatomic) LevelInstance *levelInstance;
+@property (strong, nonatomic) Player *player;
 @end

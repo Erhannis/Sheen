@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Savegame;
+@class Savegame, SpatialEntity;
 
 @interface Player : NSManagedObject
 
@@ -19,6 +19,6 @@
 @property (nonatomic, retain) NSNumber * maxWill;
 @property (nonatomic, retain) NSNumber * exp;
 @property (nonatomic, retain) Savegame *savegame;
-@property (nonatomic, retain) NSManagedObject *spatial;
+@property (nonatomic, retain) SpatialEntity *spatial;
 
 @end

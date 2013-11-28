@@ -28,8 +28,8 @@
 {
     //TODO Investigate the merits of other options.
     if (!_gamePageScene) _gamePageScene = [[GamePageScene alloc] initWithSize:self.skView.bounds.size
-                                                                levelInstance:nil
-                                                                    andPlayer:nil];
+                                                                levelInstance:self.levelInstance
+                                                                    andPlayer:self.player];
     return _gamePageScene;
 }
 
@@ -72,6 +72,7 @@
 }
 
 - (IBAction)clickShow:(id)sender {
+    //TODO We probably don't actually want the bar, here.
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navHideTimer invalidate];
     self.navHideTimer = [NSTimer scheduledTimerWithTimeInterval:NAV_BAR_HIDE_DELAY
@@ -93,7 +94,7 @@
     [self.navHideTimer invalidate];
     self.navHideTimer = nil;
     if ([segue.identifier isEqualToString:@"Pause Game"]) {
-        //TODO Pause
+        //TODO Prepare for later rotation?
         self.skView.paused = YES;
         
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, self.view.window.screen.scale);
@@ -142,6 +143,7 @@
 }
 
 - (IBAction)recognizeTap:(UITapGestureRecognizer *)sender {
+    //TODO Abstract all these, somewhat?
     [self.gamePageScene didTap:sender];
 }
 

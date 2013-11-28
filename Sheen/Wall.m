@@ -7,6 +7,8 @@
 //
 
 #import "Wall.h"
+#import "LevelTemplate.h"
+#import "SpatialEntity.h"
 
 
 @implementation Wall

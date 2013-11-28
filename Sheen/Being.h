@@ -14,6 +14,7 @@
 @interface Being : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * type;
+@property (nonatomic, retain) NSString * imageFilename;
 @property (nonatomic, retain) LevelInstance *levelInstance;
 @property (nonatomic, retain) LevelTemplate *levelTemplate;
 @property (nonatomic, retain) SpatialEntity *spatial;

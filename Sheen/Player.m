@@ -8,6 +8,7 @@
 
 #import "Player.h"
 #import "Savegame.h"
+#import "SpatialEntity.h"
 
 
 @implementation Player

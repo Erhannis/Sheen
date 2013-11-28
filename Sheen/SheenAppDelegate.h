@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DatabaseManager.h"
 
 @interface SheenAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) DatabaseManager *databaseManager;
 @end

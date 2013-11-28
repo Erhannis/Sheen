@@ -11,9 +11,15 @@
 #import "TitlePageScene.h"
 #import "MusicManager.h"
 #import "SaveLoadCDTVC.h"
+#import "GamePageVC.h"
+#import "LevelInstance+Create.h"
+#import "LevelTemplate+Create.h"
+#import "Player+Create.h"
+#import "SheenAppDelegate.h"
 
 @interface TitlePageVC ()
 @property (strong, nonatomic) SKView *skView;
+@property (strong, nonatomic) NSManagedObjectContext *context;
 @end
 
 @implementation TitlePageVC
@@ -27,6 +33,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIManagedDocument *document = ((SheenAppDelegate *)([UIApplication sharedApplication].delegate)).databaseManager.document;
+    if (document) {
+        self.context = document.managedObjectContext;
+    } else {
+        __weak TitlePageVC *weakself = self;
+        [[NSNotificationCenter defaultCenter] addObserverForName:DatabaseAvailabilityNotification
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *note) {
+                                                          weakself.context = note.userInfo[DatabaseAvailabilityContext];
+                                                      }];
+    }
+    
     
     [self.navigationController setNavigationBarHidden:YES];
     
@@ -73,6 +93,10 @@
 {
     self.skView.paused = YES;
     if ([segue.identifier isEqualToString:@"Go New Game"]) {
+        ((GamePageVC *)segue.destinationViewController).levelInstance = [LevelInstance createLevelInstanceWithTemplate:[LevelTemplate levelTemplateWithID:DEFAULT_LEVEL_TEST
+                                                                                                                                   inManagedObjectContext:self.context]
+                                                                                                inManagedObjectContext:self.context];
+        ((GamePageVC *)segue.destinationViewController).player = [Player defaultPlayerInManagedObjectContext:self.context];
     } else if ([segue.identifier isEqualToString:@"Go Load"]) {
         SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
         loadCDTV.saveMode = NO;

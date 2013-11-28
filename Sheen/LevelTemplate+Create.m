@@ -7,6 +7,8 @@
 //
 
 #import "LevelTemplate+Create.h"
+#import "Being+Create.h"
+#import "SpatialEntity+Create.h"
 
 @implementation LevelTemplate (Create)
 
@@ -27,7 +29,9 @@
             NSLog(@"Error dbFetching levelTemplate - err: %@", error.localizedDescription);
         } else if (!matches.count) {
             if ([levelID isEqualToString:DEFAULT_LEVEL_TEST]) {
-                
+                levelTemplate = [self createDefaultLevelTestInContext:context];
+            } else {
+                NSLog(@"Error - unknown level template \"%@\"", levelID);
             }
         } else {
             levelTemplate = [matches firstObject];
@@ -43,6 +47,17 @@
     levelTemplate = [NSEntityDescription insertNewObjectForEntityForName:@"LevelTemplate"
                                                   inManagedObjectContext:context];
     levelTemplate.levelID = DEFAULT_LEVEL_TEST;
+    
+    for (NSString *img in @[@"drop-9-red", @"drop-9-green", @"drop-9-blue", @"drop-9-yellow", @"drop-9-cyan", @"drop-9-purple", @"drop-9-white", @"drop-9-black"]) {
+        Being *drop = [Being blankBeingInManagedObjectContext:context];
+        drop.type = [NSNumber numberWithInt:BEING_TYPE_NPC];
+        drop.imageFilename = img;
+        drop.spatial = [SpatialEntity createZeroInManagedObjectContext:context];
+        drop.spatial.xPos = [NSNumber numberWithDouble:20 * (drand48() - 0.5)];
+        drop.spatial.yPos = [NSNumber numberWithDouble:20 * (drand48() - 0.5)];
+        drop.levelTemplate = levelTemplate;
+    }
+    
     return levelTemplate;
 }
 

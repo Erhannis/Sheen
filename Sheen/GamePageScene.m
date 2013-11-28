@@ -13,6 +13,9 @@
 #import "Debugging.h"
 #import "OptionsManager.h"
 #import "BeingNode.h"
+#import "Player+Create.h"
+#import "SpatialEntity+Create.h"
+#import "Being+Create.h"
 
 @interface GamePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
@@ -75,8 +78,7 @@
         
         Drop *drop = [[Drop alloc] initWithImageNamed:@"drop-9-green"];
         drop.radius = drop.frame.size.width / 2;
-        drop.position = CGPointMake(CGRectGetMidX(self.frame),
-                                    CGRectGetMidY(self.frame));
+        drop.position = CGPointMake(player.spatial.xPos.doubleValue, player.spatial.yPos.doubleValue);
         drop.lastPosition = drop.position;
         drop.zPosition = 0.0;
         drop.blendMode = blendMode;
@@ -85,20 +87,21 @@
         drop.physicsBody.allowsRotation = NO;
         [self addChild:drop];
         
-        for (NSString *img in @[@"drop-9-red", @"drop-9-green", @"drop-9-blue", @"drop-9-yellow", @"drop-9-cyan", @"drop-9-purple", @"drop-9-white", @"drop-9-black"]) {
-            Drop *d = [[Drop alloc] initWithImageNamed:img];
+        for (Being *being in levelInstance.beings) {
+            Drop *d = [[Drop alloc] initWithImageNamed:being.imageFilename];
             d.radius = d.frame.size.width / 2;
-            d.position = CGPointMake(CGRectGetMidX(self.frame),
-                                     CGRectGetMidY(self.frame));
+            d.position = CGPointMake(being.spatial.xPos.doubleValue,
+                                     being.spatial.yPos.doubleValue);
             d.lastPosition = d.position;
             d.zPosition = 0.0;
             d.blendMode = blendMode;
             d.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:d.radius];
             d.physicsBody.affectedByGravity = NO;
             d.physicsBody.allowsRotation = NO;
+            d.physicsBody.velocity = CGVectorMake(being.spatial.xVelocity.doubleValue, being.spatial.yVelocity.doubleValue);
             [self addChild:d];
         }
-        
+                
         [self addMotesWithViewSize:size
                       andBlendMode:blendMode];
         

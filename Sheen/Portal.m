@@ -7,6 +7,8 @@
 //
 
 #import "Portal.h"
+#import "LevelTemplate.h"
+#import "SpatialEntity.h"
 
 
 @implementation Portal

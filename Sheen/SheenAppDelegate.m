@@ -9,11 +9,9 @@
 #import "SheenAppDelegate.h"
 #import "MusicManager.h"
 #import "OptionsManager.h"
-#import "DatabaseManager.h"
 
 @interface SheenAppDelegate ()
 @property (strong, nonatomic) MusicManager *musicManager;
-@property (strong, nonatomic) DatabaseManager *databaseManager;
 @end
 
 @implementation SheenAppDelegate
