@@ -11,5 +11,6 @@
 @interface BeingNode : SKSpriteNode
 
 @property (nonatomic) CGPoint lastPosition;
+@property (strong, nonatomic) NSString *imageFilename; //TODO Not really applicable for Mote?
 
 @end

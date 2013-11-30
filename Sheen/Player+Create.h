@@ -13,5 +13,6 @@
 + (Player *)blankPlayerInManagedObjectContext:(NSManagedObjectContext *)context;
 + (Player *)defaultPlayerInManagedObjectContext:(NSManagedObjectContext *)context;
 
++ (Player *)twinPlayer:(Player *)original;
 
 @end

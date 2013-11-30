@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"InventoryCDTVC nav %@", self.navigationController);
 	// Do any additional setup after loading the view.
 }
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// I probably don't need to use a protocol for this, really, but it demonstrates the concept.
 @protocol BGImageRecipient <NSObject>
 
 - (void)setBackgroundImage:(UIImage *)image;

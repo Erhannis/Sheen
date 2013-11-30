@@ -31,7 +31,6 @@ inManagedObjectContext:(NSManagedObjectContext *)context
         being.imageFilename = original.imageFilename;
         being.spatial = [SpatialEntity cloneCoreOf:original.spatial
                             inManagedObjectContext:context];
-        being.spatial.being = being;
     }
     
     return being;

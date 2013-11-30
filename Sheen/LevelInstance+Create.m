@@ -31,4 +31,19 @@
     return levelInstance;
 }
 
++ (LevelInstance *)twinLevelInstance:(LevelInstance *)original
+{
+    LevelInstance *levelInstance = [NSEntityDescription insertNewObjectForEntityForName:@"LevelInstance"
+                                                                 inManagedObjectContext:original.managedObjectContext];
+    levelInstance.template = original.template;
+    
+    for (Being *being in original.beings) {
+        Being *newBeing = [Being cloneCoreOf:being
+                      inManagedObjectContext:being.managedObjectContext];
+        newBeing.levelInstance = levelInstance;
+    }
+    
+    return levelInstance;
+}
+
 @end

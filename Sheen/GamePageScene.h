@@ -22,4 +22,6 @@
 - (void)didPan:(UIPanGestureRecognizer *)sender;
 - (void)didLongPress:(UILongPressGestureRecognizer *)sender;
 
+- (void)updateDatabase;
+
 @end

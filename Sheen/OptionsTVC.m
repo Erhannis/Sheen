@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"OptionsTVC nav %@", self.navigationController);
 
     self.musicVolumeSlider.value = [OptionsManager musicVolume];
     self.soundVolumeSlider.value = [OptionsManager soundVolume];

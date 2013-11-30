@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Savegame.h"
 
-@interface BGImageNavigationController : UINavigationController
+@interface PauseMenuNavigationController : UINavigationController
 
 @property (strong, nonatomic) UIImage *background;
+@property (strong, nonatomic) NSManagedObjectContext *context;
 
 @end

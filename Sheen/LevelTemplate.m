@@ -2,7 +2,7 @@
 //  LevelTemplate.m
 //  Sheen
 //
-//  Created by Matthew Ewer on 11/27/13.
+//  Created by Matthew Ewer on 11/30/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
@@ -15,14 +15,14 @@
 
 @implementation LevelTemplate
 
-@dynamic song;
-@dynamic name;
 @dynamic bgColor;
 @dynamic levelID;
-@dynamic walls;
-@dynamic instances;
+@dynamic name;
+@dynamic song;
 @dynamic beings;
-@dynamic portalsOutgoing;
+@dynamic instances;
 @dynamic portalsIncoming;
+@dynamic portalsOutgoing;
+@dynamic walls;
 
 @end

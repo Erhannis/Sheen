@@ -7,10 +7,13 @@
 //
 
 #import "SpatialEntity.h"
+#import <SpriteKit/SpriteKit.h>
 
 @interface SpatialEntity (Create)
 
 + (SpatialEntity *)createZeroInManagedObjectContext:(NSManagedObjectContext *)context;
++ (SpatialEntity *)createFromSKNode:(SKNode *)node
+             inManagedObjectContext:(NSManagedObjectContext *)context;
 + (SpatialEntity *)cloneCoreOf:(SpatialEntity *)original
         inManagedObjectContext:(NSManagedObjectContext *)context;
 

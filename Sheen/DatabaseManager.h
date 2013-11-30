@@ -13,6 +13,8 @@
 #define DatabaseAvailabilityNotification @"DatabaseAvailabilityNotification"
 #define DatabaseAvailabilityContext @"Context"
 
+#define DATABASE_THUMBNAIL_EDGE_LENGTH (50)
+
 @property (nonatomic, strong) UIManagedDocument *document;
 
 @end

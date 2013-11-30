@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
-#import "BGImageNavigationController.h"
+#import "PauseMenuNavigationController.h"
 #import "BGImageRecipient.h"
 
-@interface BGImageNavigationController ()
+@interface PauseMenuNavigationController ()
 
 @end
 
-@implementation BGImageNavigationController
+@implementation PauseMenuNavigationController
 
 - (void)setBackground:(UIImage *)background
 {

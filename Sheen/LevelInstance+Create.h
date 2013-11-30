@@ -14,4 +14,6 @@
 + (LevelInstance *)createLevelInstanceWithTemplate:(LevelTemplate *)levelTemplate
                             inManagedObjectContext:(NSManagedObjectContext *)context;
 
++ (LevelInstance *)twinLevelInstance:(LevelInstance *)original;
+
 @end

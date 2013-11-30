@@ -8,6 +8,7 @@
 
 #import "Player+Create.h"
 #import "SpatialEntity+Create.h"
+#import "Savegame+Create.h"
 
 @implementation Player (Create)
 
@@ -31,7 +32,23 @@
     player.curWill = player.maxWill;
     player.exp = [NSNumber numberWithDouble:0];
     player.spatial = [SpatialEntity createZeroInManagedObjectContext:context];
+    player.savegame = [Savegame getAutosaveInManagedObjectContext:context];
     
     return player;
 }
+
++ (Player *)twinPlayer:(Player *)original
+{
+    Player *player = [Player blankPlayerInManagedObjectContext:original.managedObjectContext];
+    player.maxHealth = original.maxHealth;
+    player.curHealth = original.curHealth;
+    player.maxWill = original.maxWill;
+    player.curWill = original.curWill;
+    player.exp = original.exp;
+    player.spatial = [SpatialEntity cloneCoreOf:original.spatial
+                         inManagedObjectContext:original.managedObjectContext];
+    
+    return player;
+}
+
 @end

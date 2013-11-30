@@ -8,6 +8,7 @@
 
 #import "PauseMenuVC.h"
 #import "SaveLoadCDTVC.h"
+#import "PauseMenuNavigationController.h"
 
 @interface PauseMenuVC ()
 @property (strong, nonatomic) UIImage *background;
@@ -38,7 +39,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"PauseMenu did load");
+    NSLog(@"PauseMenuVC nav %@", self.navigationController);
+//    if ([self.navigationController isKindOfClass:[BGImageNavigationController class]]) {
+//        self.background = ((BGImageNavigationController *)self.navigationController).background;
+//    }
     self.imageView.image = self.background;
 }
 
@@ -58,11 +62,17 @@
                  sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Go Save"]) {
-        SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
-        loadCDTV.saveMode = YES;
+        SaveLoadCDTVC *saveCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
+        saveCDTV.saveMode = YES;
+        if ([self.navigationController isKindOfClass:[PauseMenuNavigationController class]]) {
+            saveCDTV.managedObjectContext = ((PauseMenuNavigationController *)self.navigationController).context;
+        }
     } else if ([segue.identifier isEqualToString:@"Go Load"]) {
         SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
         loadCDTV.saveMode = NO;
+        if ([self.navigationController isKindOfClass:[PauseMenuNavigationController class]]) {
+            loadCDTV.managedObjectContext = ((PauseMenuNavigationController *)self.navigationController).context;
+        }
     }
 }
 

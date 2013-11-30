@@ -16,9 +16,13 @@
 #import "Player+Create.h"
 #import "SpatialEntity+Create.h"
 #import "Being+Create.h"
+#import "Wall+Create.h"
+#import "LevelInstance+Create.h"
+#import "LevelTemplate+Create.h"
 
 @interface GamePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
+@property (strong, nonatomic) NSMutableArray *beings; // of BeingNode
 @property (strong, nonatomic) BeingNode *focus;
 @property (nonatomic) CGFloat xScaleTrue;
 @property (nonatomic) CGFloat yScaleTrue;
@@ -56,6 +60,12 @@
     return _motes;
 }
 
+- (NSMutableArray *)beings
+{
+    if (!_beings) _beings = [[NSMutableArray alloc] init];
+    return _beings;
+}
+
 - (id)initWithSize:(CGSize)size
      levelInstance:(LevelInstance *)levelInstance
          andPlayer:(Player *)player
@@ -63,6 +73,8 @@
     self = [super initWithSize:size];
     
     if (self) {
+        //TODO Switch to new root node?
+        
         self.levelInstance = levelInstance;
         self.player = player;
         self.lastWidth = size.width;
@@ -77,6 +89,7 @@
         SKBlendMode blendMode = SKBlendModeAlpha;
         
         Drop *drop = [[Drop alloc] initWithImageNamed:@"drop-9-green"];
+        drop.imageFilename = @"drop-9-green";
         drop.radius = drop.frame.size.width / 2;
         drop.position = CGPointMake(player.spatial.xPos.doubleValue, player.spatial.yPos.doubleValue);
         drop.lastPosition = drop.position;
@@ -89,6 +102,7 @@
         
         for (Being *being in levelInstance.beings) {
             Drop *d = [[Drop alloc] initWithImageNamed:being.imageFilename];
+            d.imageFilename = being.imageFilename;
             d.radius = d.frame.size.width / 2;
             d.position = CGPointMake(being.spatial.xPos.doubleValue,
                                      being.spatial.yPos.doubleValue);
@@ -99,16 +113,21 @@
             d.physicsBody.affectedByGravity = NO;
             d.physicsBody.allowsRotation = NO;
             d.physicsBody.velocity = CGVectorMake(being.spatial.xVelocity.doubleValue, being.spatial.yVelocity.doubleValue);
+            [self.beings addObject:d];
             [self addChild:d];
         }
                 
         [self addMotesWithViewSize:size
                       andBlendMode:blendMode];
         
-        SKShapeNode *wall = [[SKShapeNode alloc] init];
-        wall.path = CGPathCreateWithEllipseInRect(CGRectMake(-800, -800, 1600, 1600), NULL);
-        wall.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wall.path];
-        [self addChild:wall];
+        for (Wall *wall in levelInstance.template.walls) {
+            SKShapeNode *wallNode = [[SKShapeNode alloc] init];
+            wallNode.path = [Wall pathFromData:wall.shape];
+            wallNode.position = CGPointMake(wall.location.xPos.doubleValue, wall.location.yPos.doubleValue);
+            wallNode.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallNode.path];
+            //TODO Consider allowing walls to have velocity.
+            [self addChild:wallNode];
+        }
         
         [self scaleTo:0.75];
         self.focus = drop;
@@ -254,6 +273,33 @@
 
 - (void)didLongPress:(UILongPressGestureRecognizer *)sender {
     NSLog(@"recognized long press");
+}
+
+- (void)updateDatabase
+{
+    //TODO Better to update rather than clear and re-add?
+    [self.levelInstance removeBeings:self.levelInstance.beings];
+    
+    // Update beings
+    for (BeingNode *being in self.beings) {
+        Being *newBeing = [Being blankBeingInManagedObjectContext:self.levelInstance.managedObjectContext];
+        newBeing.type = [NSNumber numberWithInt:BEING_TYPE_NPC]; //TODO Make better.
+        newBeing.imageFilename = being.imageFilename;
+        newBeing.levelInstance = self.levelInstance;
+        newBeing.spatial = [SpatialEntity createFromSKNode:being
+                                    inManagedObjectContext:self.levelInstance.managedObjectContext];
+    }
+    
+    // Update player
+    //TODO Fix.
+//    self.player.curHealth = ;
+//    self.player.maxHealth = ;
+//    self.player.curWill = ;
+//    self.player.maxWill = ;
+//    self.player.exp = ;
+//    self.player.savegame = ;
+    self.player.spatial = [SpatialEntity createFromSKNode:self.focus
+                                   inManagedObjectContext:self.player.managedObjectContext];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "LevelTemplate+Create.h"
 #import "Being+Create.h"
 #import "SpatialEntity+Create.h"
+#import "Wall+Create.h"
 
 @implementation LevelTemplate (Create)
 
@@ -57,6 +58,11 @@
         drop.spatial.yPos = [NSNumber numberWithDouble:20 * (drand48() - 0.5)];
         drop.levelTemplate = levelTemplate;
     }
+
+    Wall *wall = [Wall blankWallInManagedObjectContext:context];
+    wall.shape = [Wall dataFromPath:CGPathCreateWithEllipseInRect(CGRectMake(-800, -800, 1600, 1600), NULL)];
+    wall.location = [SpatialEntity createZeroInManagedObjectContext:context];
+    [wall addLevelsObject:levelTemplate];
     
     return levelTemplate;
 }

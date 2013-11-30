@@ -24,6 +24,21 @@
     return spatialEntity;
 }
 
++ (SpatialEntity *)createFromSKNode:(SKNode *)node
+             inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    SpatialEntity *spatialEntity = nil;
+    
+    spatialEntity = [NSEntityDescription insertNewObjectForEntityForName:@"SpatialEntity"
+                                                  inManagedObjectContext:context];
+    spatialEntity.xPos = [NSNumber numberWithDouble:node.position.x];
+    spatialEntity.yPos = [NSNumber numberWithDouble:node.position.y];
+    spatialEntity.xVelocity = [NSNumber numberWithDouble:node.physicsBody.velocity.dx];
+    spatialEntity.yVelocity = [NSNumber numberWithDouble:node.physicsBody.velocity.dy];
+    
+    return spatialEntity;
+}
+
 + (SpatialEntity *)cloneCoreOf:(SpatialEntity *)original
         inManagedObjectContext:(NSManagedObjectContext *)context
 {

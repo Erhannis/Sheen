@@ -16,6 +16,7 @@
 #import "LevelTemplate+Create.h"
 #import "Player+Create.h"
 #import "SheenAppDelegate.h"
+#import "Savegame+Create.h"
 
 @interface TitlePageVC ()
 @property (strong, nonatomic) SKView *skView;
@@ -33,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"TitlePageVC nav %@", self.navigationController);
     
     UIManagedDocument *document = ((SheenAppDelegate *)([UIApplication sharedApplication].delegate)).databaseManager.document;
     if (document) {
@@ -96,10 +98,13 @@
         ((GamePageVC *)segue.destinationViewController).levelInstance = [LevelInstance createLevelInstanceWithTemplate:[LevelTemplate levelTemplateWithID:DEFAULT_LEVEL_TEST
                                                                                                                                    inManagedObjectContext:self.context]
                                                                                                 inManagedObjectContext:self.context];
+        ((GamePageVC *)segue.destinationViewController).levelInstance.savegame = [Savegame getAutosaveInManagedObjectContext:self.context];
         ((GamePageVC *)segue.destinationViewController).player = [Player defaultPlayerInManagedObjectContext:self.context];
+        ((GamePageVC *)segue.destinationViewController).player.savegame = ((GamePageVC *)segue.destinationViewController).levelInstance.savegame;
     } else if ([segue.identifier isEqualToString:@"Go Load"]) {
         SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
         loadCDTV.saveMode = NO;
+        loadCDTV.managedObjectContext = self.context;
     }
 }
 

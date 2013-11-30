@@ -189,7 +189,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="HAF-cW-xS4">
-                                <rect key="frame" x="0.0" y="86" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HAF-cW-xS4" id="5xE-K2-4nj">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -218,7 +218,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="FEW-lH-urD">
-                                <rect key="frame" x="0.0" y="86" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FEW-lH-urD" id="45t-2g-B77">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -339,7 +339,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Dv4-bt-SXf">
-                                <rect key="frame" x="0.0" y="86" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dv4-bt-SXf" id="6h6-Np-oLB">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -383,10 +383,10 @@
             </objects>
             <point key="canvasLocation" x="1674" y="-635"/>
         </scene>
-        <!--Image Navigation Controller-->
+        <!--Pause Menu Navigation Controller-->
         <scene sceneID="hUz-sy-yxs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C7e-xS-7ZG" customClass="BGImageNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C7e-xS-7ZG" customClass="PauseMenuNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="uae-lk-p8t"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y39-Vo-f8N">

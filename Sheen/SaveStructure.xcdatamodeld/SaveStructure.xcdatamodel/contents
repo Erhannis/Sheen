@@ -9,8 +9,8 @@
     </entity>
     <entity name="LevelInstance" representedClassName="LevelInstance" syncable="YES">
         <relationship name="beings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Being" inverseName="levelInstance" inverseEntity="Being" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="curLevel" inverseEntity="Player" syncable="YES"/>
         <relationship name="savegame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Savegame" inverseName="levels" inverseEntity="Savegame" syncable="YES"/>
-        <relationship name="savegameOnThisLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Savegame" inverseName="curLevel" inverseEntity="Savegame" syncable="YES"/>
         <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="instances" inverseEntity="LevelTemplate" syncable="YES"/>
     </entity>
     <entity name="LevelTemplate" representedClassName="LevelTemplate" syncable="YES">
@@ -30,6 +30,7 @@
         <attribute name="exp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxHealth" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxWill" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="curLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="player" inverseEntity="LevelInstance" syncable="YES"/>
         <relationship name="savegame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Savegame" inverseName="player" inverseEntity="Savegame" syncable="YES"/>
         <relationship name="spatial" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="player" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
@@ -41,8 +42,8 @@
         <relationship name="toPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="newRelationship" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
     <entity name="Savegame" representedClassName="Savegame" syncable="YES">
+        <attribute name="savegameID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="curLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="savegameOnThisLevel" inverseEntity="LevelInstance" syncable="YES"/>
         <relationship name="levels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="savegame" inverseEntity="LevelInstance" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="savegame" inverseEntity="Player" syncable="YES"/>
     </entity>
@@ -63,13 +64,13 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="wall" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LevelTemplate" positionX="144" positionY="221" width="128" height="163"/>
-        <element name="Player" positionX="313" positionY="279" width="128" height="148"/>
-        <element name="Savegame" positionX="-236" positionY="252" width="128" height="103"/>
-        <element name="Wall" positionX="-38" positionY="-0" width="128" height="88"/>
-        <element name="SpatialEntity" positionX="135" positionY="18" width="128" height="178"/>
-        <element name="LevelInstance" positionX="-29" positionY="230" width="128" height="103"/>
         <element name="Being" positionX="-225" positionY="72" width="128" height="118"/>
+        <element name="LevelInstance" positionX="-36" positionY="234" width="128" height="103"/>
+        <element name="LevelTemplate" positionX="124" positionY="234" width="128" height="163"/>
+        <element name="Player" positionX="313" positionY="297" width="128" height="163"/>
         <element name="Portal" positionX="324" positionY="23" width="128" height="118"/>
+        <element name="Savegame" positionX="-236" positionY="252" width="128" height="103"/>
+        <element name="SpatialEntity" positionX="135" positionY="18" width="128" height="178"/>
+        <element name="Wall" positionX="-63" positionY="18" width="128" height="88"/>
     </elements>
 </model>

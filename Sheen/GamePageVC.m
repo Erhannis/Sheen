@@ -5,14 +5,18 @@
 //  Created by Matthew Ewer on 11/16/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
+//  Thanks to WALL of picopikopon.blogspot.com, from whose code I extrapolated the CIImage->NSData code.
+//
 
 #import "GamePageVC.h"
 #import <CoreImage/CoreImage.h>
 #import <SpriteKit/SpriteKit.h>
-#import "BGImageNavigationController.h"
+#import "PauseMenuNavigationController.h"
 #import "debugging.h"
 #import "GamePageScene.h"
 #import "MusicManager.h"
+#import "DatabaseManager.h"
+#import "Savegame+Create.h"
 
 @interface GamePageVC ()
 @property (strong, nonatomic) NSTimer *navHideTimer;
@@ -106,6 +110,11 @@
         CGRect origExtent = ciImage.extent;
         CIFilter *filter;
         
+        CGFloat shortEdge = MIN(ciImage.extent.size.width, ciImage.extent.size.height);
+        
+        CIImage *thumbnail = [ciImage imageByCroppingToRect:CGRectMake((ciImage.extent.size.width / 2) - (shortEdge / 2), (ciImage.extent.size.height / 2) - (shortEdge / 2), shortEdge, shortEdge)];
+        thumbnail = [ciImage imageByApplyingTransform:CGAffineTransformMakeScale(DATABASE_THUMBNAIL_EDGE_LENGTH / shortEdge, DATABASE_THUMBNAIL_EDGE_LENGTH / shortEdge)];
+        
         filter = [CIFilter filterWithName:@"CIAffineClamp"];
         [filter setValue:ciImage forKey:kCIInputImageKey];
         CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 1.0);
@@ -130,7 +139,16 @@
         ciImage = [ciImage imageByCroppingToRect:origExtent];
         image = [UIImage imageWithCIImage:ciImage];
 
-        ((BGImageNavigationController *)(segue.destinationViewController)).background = image;
+        UIGraphicsBeginImageContext(thumbnail.extent.size);
+        [[UIImage imageWithCIImage:thumbnail] drawInRect:thumbnail.extent];
+        //TODO Oh.  Hmm.  That whole 'queue' thing.  Hmm.  Do that.
+        self.player.savegame.thumbnail = UIImageJPEGRepresentation(UIGraphicsGetImageFromCurrentImageContext(), 0.9);
+        UIGraphicsEndImageContext();
+
+        [self.gamePageScene updateDatabase];
+        
+        ((PauseMenuNavigationController *)(segue.destinationViewController)).background = image;
+        ((PauseMenuNavigationController *)(segue.destinationViewController)).context = self.player.managedObjectContext;
     } else {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
