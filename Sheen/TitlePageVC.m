@@ -104,8 +104,19 @@
     } else if ([segue.identifier isEqualToString:@"Go Load"]) {
         SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
         loadCDTV.saveMode = NO;
+        loadCDTV.fromTitlePage = YES;
         loadCDTV.managedObjectContext = self.context;
     }
+}
+
+- (IBAction)returningWithNoRequests:(UIStoryboardSegue *)segue
+{
+    
+}
+
+- (IBAction)returningWithGameLoad:(UIStoryboardSegue *)segue
+{
+    
 }
 
 @end

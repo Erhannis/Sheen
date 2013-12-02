@@ -35,11 +35,19 @@
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    //TODO Deal with duality.
     _managedObjectContext = managedObjectContext;
     
+    // Init the NewSavegame option, if it doesn't exist yet.
+    [Savegame getNewSavegameChoiceInManagedObjectContext:managedObjectContext];
+    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Savegame"];
-//    request.predicate = [NSPredicate predicateWithFormat:@"lastViewed != nil"];
+
+    if (self.saveMode) {
+        request.predicate = [NSPredicate predicateWithFormat:@"savegameID != %@", SAVEGAME_ID_AUTOSAVE];
+    } else {
+        request.predicate = [NSPredicate predicateWithFormat:@"savegameID != %@", SAVEGAME_ID_NEW_SAVEGAME];
+    }
+    
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"savegameID"
                                                               ascending:YES]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
@@ -64,8 +72,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"SaveLoadCDTV didSelectRow");
     //TODO Do this.
     //TODO Also, think hard about the iPad view.
+    Savegame *savegame = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if (self.saveMode) {
+        //TODO Expand this.
+        if ([savegame.savegameID isEqualToString:SAVEGAME_ID_NEW_SAVEGAME]) {
+            [Savegame twinSavegame:[Savegame getAutosaveInManagedObjectContext:self.managedObjectContext]];
+        }
+        [self performSegueWithIdentifier:@"Unwind to game page" sender:self];
+    } else {
+        if (self.fromTitlePage) {
+            [self performSegueWithIdentifier:@"Unwind to title page with game load" sender:self];
+        } else {
+            [self performSegueWithIdentifier:@"Unwind to game page with game load" sender:self];
+        }
+    }
+    NSLog(@"SaveLoadCDTV after segue");
 //    id detail = self.splitViewController.viewControllers[1];
 //    if ([detail isKindOfClass:[UINavigationController class]]) {
 //        detail = [((UINavigationController *)detail).viewControllers firstObject];
@@ -73,6 +97,12 @@
 //    if ([detail isKindOfClass:[ImageViewController class]]) {
 //        [self prepareImageViewController:detail toDisplayPhoto:[self.fetchedResultsController objectAtIndexPath:indexPath]];
 //    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    NSLog(@"SaveLoadCDTV prepareForSegue");
 }
 
 @end

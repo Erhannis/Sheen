@@ -10,8 +10,13 @@
 
 @interface Savegame (Create)
 
+#define SAVEGAME_ID_AUTOSAVE @"autosave"
+#define SAVEGAME_ID_NEW_SAVEGAME @"New Savegame"
+
 + (Savegame *)getAutosaveInManagedObjectContext:(NSManagedObjectContext *)context;
 + (Savegame *)createBlankAutosaveInManagedObjectContext:(NSManagedObjectContext *)context;
+
++ (Savegame *)getNewSavegameChoiceInManagedObjectContext:(NSManagedObjectContext *)context;
 
 + (Savegame *)twinSavegame:(Savegame *)original;
 

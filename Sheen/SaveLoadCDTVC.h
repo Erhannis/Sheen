@@ -11,6 +11,7 @@
 @interface SaveLoadCDTVC : CoreDataTableViewController
 
 @property (nonatomic) BOOL saveMode;
+@property (nonatomic) BOOL fromTitlePage;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

@@ -302,4 +302,9 @@
                                    inManagedObjectContext:self.player.managedObjectContext];
 }
 
+- (void)loadFromDatabase
+{
+    //TODO Do this.
+}
+
 @end

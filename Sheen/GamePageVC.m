@@ -111,9 +111,10 @@
         CIFilter *filter;
         
         CGFloat shortEdge = MIN(ciImage.extent.size.width, ciImage.extent.size.height);
-        
+
         CIImage *thumbnail = [ciImage imageByCroppingToRect:CGRectMake((ciImage.extent.size.width / 2) - (shortEdge / 2), (ciImage.extent.size.height / 2) - (shortEdge / 2), shortEdge, shortEdge)];
-        thumbnail = [ciImage imageByApplyingTransform:CGAffineTransformMakeScale(DATABASE_THUMBNAIL_EDGE_LENGTH / shortEdge, DATABASE_THUMBNAIL_EDGE_LENGTH / shortEdge)];
+        thumbnail = [thumbnail imageByApplyingTransform:CGAffineTransformMakeScale(DATABASE_THUMBNAIL_EDGE_LENGTH / shortEdge, DATABASE_THUMBNAIL_EDGE_LENGTH / shortEdge)];
+        thumbnail = [thumbnail imageByApplyingTransform:CGAffineTransformMakeTranslation(-thumbnail.extent.origin.x, -thumbnail.extent.origin.y)];
         
         filter = [CIFilter filterWithName:@"CIAffineClamp"];
         [filter setValue:ciImage forKey:kCIInputImageKey];
@@ -152,6 +153,16 @@
     } else {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
+}
+
+- (IBAction)returningFromPause:(UIStoryboardSegue *)segue
+{
+    
+}
+
+- (IBAction)returningFromPauseWithGameLoad:(UIStoryboardSegue *)segue
+{
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated

@@ -12,8 +12,6 @@
 
 @implementation Savegame (Create)
 
-#define SAVEGAME_ID_AUTOSAVE @"autosave"
-
 + (Savegame *)getAutosaveInManagedObjectContext:(NSManagedObjectContext *)context
 {
     Savegame *savegame = nil;
@@ -42,6 +40,30 @@
     savegame = [NSEntityDescription insertNewObjectForEntityForName:@"Savegame"
                                              inManagedObjectContext:context];
     savegame.savegameID = SAVEGAME_ID_AUTOSAVE;
+    
+    return savegame;
+}
+
++ (Savegame *)getNewSavegameChoiceInManagedObjectContext:(NSManagedObjectContext *)context
+{
+    Savegame *savegame = nil;
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Savegame"];
+    request.predicate = [NSPredicate predicateWithFormat:@"savegameID = %@", SAVEGAME_ID_NEW_SAVEGAME];
+    
+    NSError *error;
+    NSArray *matches = [context executeFetchRequest:request
+                                              error:&error];
+    
+    if (!matches || error) {
+        NSLog(@"Error dbFetching savegame - err: %@", error.localizedDescription);
+    } else if (!matches.count) {
+        savegame = [NSEntityDescription insertNewObjectForEntityForName:@"Savegame"
+                                                 inManagedObjectContext:context];
+        savegame.savegameID = SAVEGAME_ID_NEW_SAVEGAME;
+    } else {
+        savegame = [matches firstObject];
+    }
     
     return savegame;
 }

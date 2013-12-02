@@ -60,4 +60,14 @@
     [OptionsManager setSillyFeaturesMode:sender.on];
 }
 
+- (BOOL)canPerformUnwindSegueAction:(SEL)action
+                 fromViewController:(UIViewController *)fromViewController
+                         withSender:(id)sender
+{
+    //TODO Ask if sure.
+    return [super canPerformUnwindSegueAction:action
+                           fromViewController:fromViewController
+                                   withSender:sender];
+}
+
 @end

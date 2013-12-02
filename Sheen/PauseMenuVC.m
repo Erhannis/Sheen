@@ -52,24 +52,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)clickUnpause:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"Pause menu dismissed");
-    }];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Go Save"]) {
         SaveLoadCDTVC *saveCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
         saveCDTV.saveMode = YES;
+        saveCDTV.fromTitlePage = NO;
         if ([self.navigationController isKindOfClass:[PauseMenuNavigationController class]]) {
             saveCDTV.managedObjectContext = ((PauseMenuNavigationController *)self.navigationController).context;
         }
     } else if ([segue.identifier isEqualToString:@"Go Load"]) {
         SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
         loadCDTV.saveMode = NO;
+        loadCDTV.fromTitlePage = NO;
         if ([self.navigationController isKindOfClass:[PauseMenuNavigationController class]]) {
             loadCDTV.managedObjectContext = ((PauseMenuNavigationController *)self.navigationController).context;
         }
