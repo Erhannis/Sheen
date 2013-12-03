@@ -83,6 +83,7 @@
         }
         [self performSegueWithIdentifier:@"Unwind to game page" sender:self];
     } else {
+        [Savegame setAsAutosave:savegame];
         if (self.fromTitlePage) {
             [self performSegueWithIdentifier:@"Unwind to title page with game load" sender:self];
         } else {

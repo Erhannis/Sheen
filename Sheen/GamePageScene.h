@@ -23,5 +23,6 @@
 - (void)didLongPress:(UILongPressGestureRecognizer *)sender;
 
 - (void)updateDatabase;
+- (void)loadFromDatabase;
 
 @end

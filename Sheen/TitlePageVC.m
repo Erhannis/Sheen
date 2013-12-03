@@ -101,6 +101,7 @@
         ((GamePageVC *)segue.destinationViewController).levelInstance.savegame = [Savegame getAutosaveInManagedObjectContext:self.context];
         ((GamePageVC *)segue.destinationViewController).player = [Player defaultPlayerInManagedObjectContext:self.context];
         ((GamePageVC *)segue.destinationViewController).player.savegame = ((GamePageVC *)segue.destinationViewController).levelInstance.savegame;
+        ((GamePageVC *)segue.destinationViewController).player.curLevel = ((GamePageVC *)segue.destinationViewController).levelInstance;
     } else if ([segue.identifier isEqualToString:@"Go Load"]) {
         SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
         loadCDTV.saveMode = NO;

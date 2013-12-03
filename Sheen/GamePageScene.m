@@ -19,6 +19,7 @@
 #import "Wall+Create.h"
 #import "LevelInstance+Create.h"
 #import "LevelTemplate+Create.h"
+#import "Savegame+Create.h"
 
 @interface GamePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
@@ -75,63 +76,7 @@
     if (self) {
         //TODO Switch to new root node?
         
-        self.levelInstance = levelInstance;
-        self.player = player;
-        self.lastWidth = size.width;
-        self.xScaleTrue = 1;
-        self.yScaleTrue = 1;
-        self.scaleMode = SKSceneScaleModeAspectFill;
-        self.backgroundColor = [SKColor colorWithRed:BG_COLOR_RED green:BG_COLOR_GREEN blue:BG_COLOR_BLUE alpha:BG_COLOR_ALPHA];
-        
-        //  Whoa!  SKBlendModeAdd is pretty!
-        //  Screen similar
-        //  SKBlendModeSubtract is kinda like negative world
-        SKBlendMode blendMode = SKBlendModeAlpha;
-        
-        Drop *drop = [[Drop alloc] initWithImageNamed:@"drop-9-green"];
-        drop.imageFilename = @"drop-9-green";
-        drop.radius = drop.frame.size.width / 2;
-        drop.position = CGPointMake(player.spatial.xPos.doubleValue, player.spatial.yPos.doubleValue);
-        drop.lastPosition = drop.position;
-        drop.zPosition = 0.0;
-        drop.blendMode = blendMode;
-        drop.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:drop.radius];
-        drop.physicsBody.affectedByGravity = NO;
-        drop.physicsBody.allowsRotation = NO;
-        [self addChild:drop];
-        
-        for (Being *being in levelInstance.beings) {
-            Drop *d = [[Drop alloc] initWithImageNamed:being.imageFilename];
-            d.imageFilename = being.imageFilename;
-            d.radius = d.frame.size.width / 2;
-            d.position = CGPointMake(being.spatial.xPos.doubleValue,
-                                     being.spatial.yPos.doubleValue);
-            d.lastPosition = d.position;
-            d.zPosition = 0.0;
-            d.blendMode = blendMode;
-            d.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:d.radius];
-            d.physicsBody.affectedByGravity = NO;
-            d.physicsBody.allowsRotation = NO;
-            d.physicsBody.velocity = CGVectorMake(being.spatial.xVelocity.doubleValue, being.spatial.yVelocity.doubleValue);
-            [self.beings addObject:d];
-            [self addChild:d];
-        }
-                
-        [self addMotesWithViewSize:size
-                      andBlendMode:blendMode];
-        
-        for (Wall *wall in levelInstance.template.walls) {
-            SKShapeNode *wallNode = [[SKShapeNode alloc] init];
-            wallNode.path = [Wall pathFromData:wall.shape];
-            wallNode.position = CGPointMake(wall.location.xPos.doubleValue, wall.location.yPos.doubleValue);
-            wallNode.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallNode.path];
-            //TODO Consider allowing walls to have velocity.
-            [self addChild:wallNode];
-        }
-        
-        [self scaleTo:0.75];
-        self.focus = drop;
-        self.anchorPoint = CGPointMake((0.5 / self.xScaleTrue) - (self.xScaleTrue * self.focus.position.x / self.frame.size.width), (0.5 / self.yScaleTrue) - (self.yScaleTrue * self.focus.position.y / self.frame.size.height));
+        [self loadLevelInstance:levelInstance andPlayer:player withViewSize:size];
     }
 
     return self;
@@ -304,7 +249,79 @@
 
 - (void)loadFromDatabase
 {
-    //TODO Do this.
+    Savegame *savegame = [Savegame getAutosaveInManagedObjectContext:self.player.managedObjectContext];
+    Player *player = savegame.player;
+    LevelInstance *levelInstance = player.curLevel;
+    [self loadLevelInstance:levelInstance andPlayer:player withViewSize:self.view.frame.size];
+}
+
+- (void)loadLevelInstance:(LevelInstance *)levelInstance
+                andPlayer:(Player *)player
+             withViewSize:(CGSize)size
+{
+    [self removeAllChildren];
+    [self.beings removeAllObjects];
+    [self.motes removeAllObjects];
+    
+    self.levelInstance = levelInstance;
+    self.player = player;
+    NSLog(@"gamepagescene.player %@", self.player);
+    self.lastWidth = size.width;
+    self.xScaleTrue = 1;
+    self.yScaleTrue = 1;
+    self.scaleMode = SKSceneScaleModeAspectFill;
+    self.backgroundColor = [SKColor colorWithRed:BG_COLOR_RED green:BG_COLOR_GREEN blue:BG_COLOR_BLUE alpha:BG_COLOR_ALPHA];
+    
+    //  Whoa!  SKBlendModeAdd is pretty!
+    //  Screen similar
+    //  SKBlendModeSubtract is kinda like negative world
+    SKBlendMode blendMode = SKBlendModeAlpha;
+    
+    Drop *drop = [[Drop alloc] initWithImageNamed:@"drop-9-green"];
+    drop.imageFilename = @"drop-9-green";
+    drop.radius = drop.frame.size.width / 2;
+    drop.position = CGPointMake(player.spatial.xPos.doubleValue, player.spatial.yPos.doubleValue);
+    drop.lastPosition = drop.position;
+    drop.zPosition = 0.0;
+    drop.blendMode = blendMode;
+    drop.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:drop.radius];
+    drop.physicsBody.affectedByGravity = NO;
+    drop.physicsBody.allowsRotation = NO;
+    drop.physicsBody.velocity = CGVectorMake(player.spatial.xVelocity.doubleValue, player.spatial.yVelocity.doubleValue);
+    [self addChild:drop];
+    
+    for (Being *being in levelInstance.beings) {
+        Drop *d = [[Drop alloc] initWithImageNamed:being.imageFilename];
+        d.imageFilename = being.imageFilename;
+        d.radius = d.frame.size.width / 2;
+        d.position = CGPointMake(being.spatial.xPos.doubleValue,
+                                 being.spatial.yPos.doubleValue);
+        d.lastPosition = d.position;
+        d.zPosition = 0.0;
+        d.blendMode = blendMode;
+        d.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:d.radius];
+        d.physicsBody.affectedByGravity = NO;
+        d.physicsBody.allowsRotation = NO;
+        d.physicsBody.velocity = CGVectorMake(being.spatial.xVelocity.doubleValue, being.spatial.yVelocity.doubleValue);
+        [self.beings addObject:d];
+        [self addChild:d];
+    }
+    
+    [self addMotesWithViewSize:size
+                  andBlendMode:blendMode];
+    
+    for (Wall *wall in levelInstance.template.walls) {
+        SKShapeNode *wallNode = [[SKShapeNode alloc] init];
+        wallNode.path = [Wall pathFromData:wall.shape];
+        wallNode.position = CGPointMake(wall.location.xPos.doubleValue, wall.location.yPos.doubleValue);
+        wallNode.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallNode.path];
+        //TODO Consider allowing walls to have velocity.
+        [self addChild:wallNode];
+    }
+    
+    [self scaleTo:0.75];
+    self.focus = drop;
+    self.anchorPoint = CGPointMake((0.5 / self.xScaleTrue) - (self.xScaleTrue * self.focus.position.x / self.frame.size.width), (0.5 / self.yScaleTrue) - (self.yScaleTrue * self.focus.position.y / self.frame.size.height));
 }
 
 @end

@@ -73,13 +73,16 @@
     Savegame *savegame = nil;
     savegame = [NSEntityDescription insertNewObjectForEntityForName:@"Savegame"
                                              inManagedObjectContext:original.managedObjectContext];
-    savegame.savegameID = [NSString stringWithFormat:@"%i",arc4random()];
+    savegame.savegameID = [NSString stringWithFormat:@"%@",[[NSDate alloc] init]];
     savegame.thumbnail = original.thumbnail;
     savegame.player = [Player twinPlayer:original.player];
     
+    NSLog(@"twinSavegame curLevel %@", original.player.curLevel);
+    //TODO This is showing a bunch of extras.  Why?
     for (LevelInstance *levelInstance in original.levels) {
         LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance];
         newLevelInstance.savegame = savegame;
+        NSLog(@"twinSavegame levelInstance %@", levelInstance);
         if (levelInstance == original.player.curLevel) {
             NSLog(@"curLevel found");
             savegame.player.curLevel = newLevelInstance;
@@ -87,6 +90,26 @@
     }
     
     return savegame;
+}
+
+// The autosave also doubles as the current game.
++ (void)setAsAutosave:(Savegame *)savegameToUse
+{
+    //TODO It's possible that I don't need to twin all properties.
+    Savegame *autosave = [Savegame getAutosaveInManagedObjectContext:savegameToUse.managedObjectContext];
+    autosave.thumbnail = [savegameToUse.thumbnail copy];
+    autosave.player = [Player twinPlayer:savegameToUse.player];
+    NSLog(@"savegame %@", autosave);
+    [autosave removeLevels:autosave.levels];
+    NSLog(@"savegame %@", autosave);
+    for (LevelInstance *levelInstance in savegameToUse.levels) {
+        LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance];
+        newLevelInstance.savegame = autosave;
+        if (levelInstance == savegameToUse.player.curLevel) {
+            autosave.player.curLevel = newLevelInstance;
+        }
+    }
+    NSLog(@"savegame %@", autosave);
 }
 
 @end

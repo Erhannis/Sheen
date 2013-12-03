@@ -144,6 +144,7 @@
         [[UIImage imageWithCIImage:thumbnail] drawInRect:thumbnail.extent];
         //TODO Oh.  Hmm.  That whole 'queue' thing.  Hmm.  Do that.
         self.player.savegame.thumbnail = UIImageJPEGRepresentation(UIGraphicsGetImageFromCurrentImageContext(), 0.9);
+        NSLog(@"gamepage.player %@", self.player);
         UIGraphicsEndImageContext();
 
         [self.gamePageScene updateDatabase];
@@ -162,7 +163,13 @@
 
 - (IBAction)returningFromPauseWithGameLoad:(UIStoryboardSegue *)segue
 {
-    
+    //TODO Should these properties, perhaps, be owned by just one view?
+    Savegame *savegame = [Savegame getAutosaveInManagedObjectContext:self.player.managedObjectContext];
+    Player *player = savegame.player;
+    LevelInstance *levelInstance = player.curLevel;
+    self.player = player;
+    self.levelInstance = levelInstance;
+    [self.gamePageScene loadFromDatabase];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

@@ -20,4 +20,6 @@
 
 + (Savegame *)twinSavegame:(Savegame *)original;
 
++ (void)setAsAutosave:(Savegame *)savegameToUse;
+
 @end
