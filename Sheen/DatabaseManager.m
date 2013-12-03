@@ -63,4 +63,9 @@
     return self;
 }
 
++ (void)cleanUpUnusedObjectsInContext:(NSManagedObjectContext *)context
+{
+    
+}
+
 @end

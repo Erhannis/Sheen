@@ -37,9 +37,9 @@
     <entity name="Portal" representedClassName="Portal" syncable="YES">
         <attribute name="radius" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="fromLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="portalsOutgoing" inverseEntity="LevelTemplate" syncable="YES"/>
-        <relationship name="fromPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="portal" inverseEntity="SpatialEntity" syncable="YES"/>
+        <relationship name="fromPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="portalFrom" inverseEntity="SpatialEntity" syncable="YES"/>
         <relationship name="toLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="portalsIncoming" inverseEntity="LevelTemplate" syncable="YES"/>
-        <relationship name="toPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="newRelationship" inverseEntity="SpatialEntity" syncable="YES"/>
+        <relationship name="toPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="portalTo" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
     <entity name="Savegame" representedClassName="Savegame" syncable="YES">
         <attribute name="savegameID" optional="YES" attributeType="String" syncable="YES"/>
@@ -53,9 +53,9 @@
         <attribute name="yPos" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="yVelocity" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="being" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Being" inverseName="spatial" inverseEntity="Being" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="toPlace" inverseEntity="Portal" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="spatial" inverseEntity="Player" syncable="YES"/>
-        <relationship name="portal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="fromPlace" inverseEntity="Portal" syncable="YES"/>
+        <relationship name="portalFrom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="fromPlace" inverseEntity="Portal" syncable="YES"/>
+        <relationship name="portalTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="toPlace" inverseEntity="Portal" syncable="YES"/>
         <relationship name="wall" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wall" inverseName="location" inverseEntity="Wall" syncable="YES"/>
     </entity>
     <entity name="Wall" representedClassName="Wall" syncable="YES">
@@ -66,9 +66,9 @@
     <elements>
         <element name="Being" positionX="-225" positionY="72" width="128" height="118"/>
         <element name="LevelInstance" positionX="-36" positionY="234" width="128" height="103"/>
-        <element name="LevelTemplate" positionX="124" positionY="234" width="128" height="163"/>
-        <element name="Player" positionX="313" positionY="297" width="128" height="163"/>
-        <element name="Portal" positionX="324" positionY="23" width="128" height="118"/>
+        <element name="LevelTemplate" positionX="133" positionY="242" width="128" height="178"/>
+        <element name="Player" positionX="349" positionY="297" width="128" height="163"/>
+        <element name="Portal" positionX="331" positionY="35" width="128" height="118"/>
         <element name="Savegame" positionX="-236" positionY="252" width="128" height="103"/>
         <element name="SpatialEntity" positionX="135" positionY="18" width="128" height="178"/>
         <element name="Wall" positionX="-63" positionY="18" width="128" height="88"/>
