@@ -265,7 +265,6 @@
     
     self.levelInstance = levelInstance;
     self.player = player;
-    NSLog(@"gamepagescene.player %@", self.player);
     self.lastWidth = size.width;
     self.xScaleTrue = 1;
     self.yScaleTrue = 1;

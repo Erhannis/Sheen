@@ -14,7 +14,7 @@
 #define SAVEGAME_ID_NEW_SAVEGAME @"New Savegame"
 
 + (Savegame *)getAutosaveInManagedObjectContext:(NSManagedObjectContext *)context;
-+ (Savegame *)createBlankAutosaveInManagedObjectContext:(NSManagedObjectContext *)context;
++ (Savegame *)overwriteWithBlankAutosaveInManagedObjectContext:(NSManagedObjectContext *)context;
 
 + (Savegame *)getNewSavegameChoiceInManagedObjectContext:(NSManagedObjectContext *)context;
 

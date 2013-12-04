@@ -18,7 +18,7 @@
 #import "SheenAppDelegate.h"
 #import "Savegame+Create.h"
 
-@interface TitlePageVC ()
+@interface TitlePageVC () <UINavigationControllerDelegate>
 @property (strong, nonatomic) SKView *skView;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @end
@@ -35,6 +35,7 @@
 {
     [super viewDidLoad];
     NSLog(@"TitlePageVC nav %@", self.navigationController);
+    self.navigationController.delegate = self;
     
     UIManagedDocument *document = ((SheenAppDelegate *)([UIApplication sharedApplication].delegate)).databaseManager.document;
     if (document) {
@@ -62,6 +63,20 @@
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     [self.skView presentScene:scene];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    [viewController viewWillAppear:animated];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    [viewController viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,18 +110,28 @@
 {
     self.skView.paused = YES;
     if ([segue.identifier isEqualToString:@"Go New Game"]) {
-        ((GamePageVC *)segue.destinationViewController).levelInstance = [LevelInstance createLevelInstanceWithTemplate:[LevelTemplate levelTemplateWithID:DEFAULT_LEVEL_TEST
+        ((GamePageVC *)segue.destinationViewController).levelInstance = [LevelInstance createLevelInstanceWithTemplate:[LevelTemplate levelTemplateWithID:DEFAULT_LEVEL_TEST_1
                                                                                                                                    inManagedObjectContext:self.context]
                                                                                                 inManagedObjectContext:self.context];
-        ((GamePageVC *)segue.destinationViewController).levelInstance.savegame = [Savegame getAutosaveInManagedObjectContext:self.context];
+        ((GamePageVC *)segue.destinationViewController).levelInstance.savegame = [Savegame overwriteWithBlankAutosaveInManagedObjectContext:self.context];
         ((GamePageVC *)segue.destinationViewController).player = [Player defaultPlayerInManagedObjectContext:self.context];
         ((GamePageVC *)segue.destinationViewController).player.savegame = ((GamePageVC *)segue.destinationViewController).levelInstance.savegame;
         ((GamePageVC *)segue.destinationViewController).player.curLevel = ((GamePageVC *)segue.destinationViewController).levelInstance;
+        NSLog(@"levelInstance %@", ((GamePageVC *)segue.destinationViewController).levelInstance);
+        NSLog(@"levelInstance.savegame %@", ((GamePageVC *)segue.destinationViewController).levelInstance.savegame);
+        NSLog(@"player %@", ((GamePageVC *)segue.destinationViewController).player);
+        NSLog(@"player.savegame %@", ((GamePageVC *)segue.destinationViewController).player.savegame);
+        NSLog(@"player.curLevel %@", ((GamePageVC *)segue.destinationViewController).player.curLevel);
     } else if ([segue.identifier isEqualToString:@"Go Load"]) {
         SaveLoadCDTVC *loadCDTV = ((SaveLoadCDTVC *)segue.destinationViewController);
         loadCDTV.saveMode = NO;
         loadCDTV.fromTitlePage = YES;
         loadCDTV.managedObjectContext = self.context;
+    } else if ([segue.identifier isEqualToString:@"Go Loaded Game"]) {
+        NSLog(@"go loaded game");
+        Savegame *savegame = [Savegame getAutosaveInManagedObjectContext:self.context];
+        ((GamePageVC *)segue.destinationViewController).player = savegame.player;
+        ((GamePageVC *)segue.destinationViewController).levelInstance = savegame.player.curLevel;
     }
 }
 
@@ -115,9 +140,15 @@
     
 }
 
+- (void)doGoLoadedGame
+{
+    [self performSegueWithIdentifier:@"Go Loaded Game" sender:self];
+}
+
 - (IBAction)returningWithGameLoad:(UIStoryboardSegue *)segue
 {
-    
+    //TODO Currently has potential leaks - click buttons, etc.
+    [self performSelector:@selector(doGoLoadedGame) withObject:nil afterDelay:0.5];
 }
 
 @end

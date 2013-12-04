@@ -22,6 +22,11 @@
 @property (strong, nonatomic) NSTimer *navHideTimer;
 @property (strong, nonatomic) GamePageScene *gamePageScene;
 @property (strong, nonatomic) SKView *skView;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+@property (strong, nonatomic) UIPinchGestureRecognizer *pinchGestureRecognizer;
+@property (strong, nonatomic) UIRotationGestureRecognizer *rotationGestureRecognizer;
+@property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @end
 
 @implementation GamePageVC
@@ -47,6 +52,8 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"GamePageVC did load");
+    NSLog(@"GamePageVC dl %@", self);
     [self.navigationController setNavigationBarHidden:YES];
     
     // Start music
@@ -58,6 +65,28 @@
     self.skView.showsFPS = DEBUGGING;
     self.skView.showsNodeCount = DEBUGGING;
     self.skView.showsDrawCount = DEBUGGING;
+    
+    // Set up gesture recognizers
+//    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didTap:)];
+//    [self.view addGestureRecognizer:self.tapGestureRecognizer];
+//    self.pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didPinch:)];
+//    [self.view addGestureRecognizer:self.pinchGestureRecognizer];
+//    self.rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didRotation:)];
+//    [self.view addGestureRecognizer:self.rotationGestureRecognizer];
+//    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didPan:)];
+//    [self.view addGestureRecognizer:self.panGestureRecognizer];
+//    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didLongPress:)];
+//    [self.view addGestureRecognizer:self.longPressGestureRecognizer];
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedTap:)];
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
+    self.pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPinch:)];
+    [self.view addGestureRecognizer:self.pinchGestureRecognizer];
+    self.rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedRotation:)];
+    [self.view addGestureRecognizer:self.rotationGestureRecognizer];
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPan:)];
+    [self.view addGestureRecognizer:self.panGestureRecognizer];
+    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedLongPress:)];
+    [self.view addGestureRecognizer:self.longPressGestureRecognizer];
     
     [self.skView presentScene:self.gamePageScene];
 }
@@ -144,7 +173,6 @@
         [[UIImage imageWithCIImage:thumbnail] drawInRect:thumbnail.extent];
         //TODO Oh.  Hmm.  That whole 'queue' thing.  Hmm.  Do that.
         self.player.savegame.thumbnail = UIImageJPEGRepresentation(UIGraphicsGetImageFromCurrentImageContext(), 0.9);
-        NSLog(@"gamepage.player %@", self.player);
         UIGraphicsEndImageContext();
 
         [self.gamePageScene updateDatabase];
@@ -178,24 +206,24 @@
     self.skView.paused = YES;
 }
 
-- (IBAction)recognizeTap:(UITapGestureRecognizer *)sender {
+- (void)recognizedTap:(UITapGestureRecognizer *)sender {
     //TODO Abstract all these, somewhat?
     [self.gamePageScene didTap:sender];
 }
 
-- (IBAction)recognizePinch:(UIPinchGestureRecognizer *)sender {
+- (void)recognizedPinch:(UIPinchGestureRecognizer *)sender {
     [self.gamePageScene didPinch:sender];
 }
 
-- (IBAction)recognizedRotation:(UIRotationGestureRecognizer *)sender {
+- (void)recognizedRotation:(UIRotationGestureRecognizer *)sender {
     [self.gamePageScene didRotation:sender];
 }
 
-- (IBAction)recognizedPan:(UIPanGestureRecognizer *)sender {
+- (void)recognizedPan:(UIPanGestureRecognizer *)sender {
     [self.gamePageScene didPan:sender];
 }
 
-- (IBAction)recognizedLongPress:(UILongPressGestureRecognizer *)sender {
+- (void)recognizedLongPress:(UILongPressGestureRecognizer *)sender {
     [self.gamePageScene didLongPress:sender];
 }
 

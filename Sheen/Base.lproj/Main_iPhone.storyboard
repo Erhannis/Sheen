@@ -76,6 +76,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KeT-H1-0BT"/>
+                    <connections>
+                        <segue destination="eZo-QM-Vqf" kind="push" identifier="Go Loaded Game" id="UwO-D7-Q6D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -489,13 +492,6 @@
                             <constraint firstItem="QC9-sY-Oww" firstAttribute="baseline" secondItem="Mg5-Ac-MKC" secondAttribute="baseline" id="qmg-tI-uCf"/>
                             <constraint firstItem="Mg5-Ac-MKC" firstAttribute="top" secondItem="WZL-zk-93F" secondAttribute="top" constant="20" symbolic="YES" id="yYc-kh-fak"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="W1M-IY-uq0" appends="YES" id="xhk-H0-g8A"/>
-                            <outletCollection property="gestureRecognizers" destination="nJC-MT-Nyh" appends="YES" id="aOi-WW-OcI"/>
-                            <outletCollection property="gestureRecognizers" destination="le6-cp-A5k" appends="YES" id="sRC-ee-H4e"/>
-                            <outletCollection property="gestureRecognizers" destination="1m6-E7-dk7" appends="YES" id="e8l-La-5rO"/>
-                            <outletCollection property="gestureRecognizers" destination="hd6-3G-aHm" appends="YES" id="Fhe-5p-ovf"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="BDa-QU-Kvx">
                         <barButtonItem key="rightBarButtonItem" title="Inventory" id="CTk-zM-Vba">
@@ -506,31 +502,6 @@
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8I-rO-Bb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="W1M-IY-uq0">
-                    <connections>
-                        <action selector="recognizeTap:" destination="eZo-QM-Vqf" id="mMd-Bz-5XB"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <pinchGestureRecognizer id="nJC-MT-Nyh">
-                    <connections>
-                        <action selector="recognizePinch:" destination="eZo-QM-Vqf" id="FWp-4U-81X"/>
-                    </connections>
-                </pinchGestureRecognizer>
-                <rotationGestureRecognizer id="le6-cp-A5k">
-                    <connections>
-                        <action selector="recognizedRotation:" destination="eZo-QM-Vqf" id="Mew-hE-kUk"/>
-                    </connections>
-                </rotationGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="1m6-E7-dk7">
-                    <connections>
-                        <action selector="recognizedPan:" destination="eZo-QM-Vqf" id="0Zt-01-Gyh"/>
-                    </connections>
-                </panGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="hd6-3G-aHm">
-                    <connections>
-                        <action selector="recognizedLongPress:" destination="eZo-QM-Vqf" id="QCb-Qz-lgt"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="884" y="-635"/>
         </scene>
@@ -614,7 +585,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pIV-E4-Esx"/>
+        <segue reference="UwO-D7-Q6D"/>
         <segue reference="Rzb-4S-Cjq"/>
+        <segue reference="pIV-E4-Esx"/>
     </inferredMetricsTieBreakers>
 </document>

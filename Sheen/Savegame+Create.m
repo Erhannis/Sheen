@@ -44,6 +44,16 @@
     return savegame;
 }
 
++ (Savegame *)overwriteWithBlankAutosaveInManagedObjectContext:(NSManagedObjectContext *)context
+{
+    [context deleteObject:[Savegame getAutosaveInManagedObjectContext:context]];
+    Savegame *savegame = [NSEntityDescription insertNewObjectForEntityForName:@"Savegame"
+                                                       inManagedObjectContext:context];
+    savegame.savegameID = SAVEGAME_ID_AUTOSAVE;
+    
+    return savegame;
+}
+
 + (Savegame *)getNewSavegameChoiceInManagedObjectContext:(NSManagedObjectContext *)context
 {
     Savegame *savegame = nil;
@@ -77,14 +87,11 @@
     savegame.thumbnail = original.thumbnail;
     savegame.player = [Player twinPlayer:original.player];
     
-    NSLog(@"twinSavegame curLevel %@", original.player.curLevel);
-    //TODO This is showing a bunch of extras.  Why?
+    //TODO This was/is showing a bunch of extras.  Why?
     for (LevelInstance *levelInstance in original.levels) {
         LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance];
         newLevelInstance.savegame = savegame;
-        NSLog(@"twinSavegame levelInstance %@", levelInstance);
         if (levelInstance == original.player.curLevel) {
-            NSLog(@"curLevel found");
             savegame.player.curLevel = newLevelInstance;
         }
     }
@@ -95,13 +102,13 @@
 // The autosave also doubles as the current game.
 + (void)setAsAutosave:(Savegame *)savegameToUse
 {
-    //TODO It's possible that I don't need to twin all properties.
     Savegame *autosave = [Savegame getAutosaveInManagedObjectContext:savegameToUse.managedObjectContext];
+    if (autosave == savegameToUse) {
+        return;
+    }
     autosave.thumbnail = [savegameToUse.thumbnail copy];
     autosave.player = [Player twinPlayer:savegameToUse.player];
-    NSLog(@"savegame %@", autosave);
     [autosave removeLevels:autosave.levels];
-    NSLog(@"savegame %@", autosave);
     for (LevelInstance *levelInstance in savegameToUse.levels) {
         LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance];
         newLevelInstance.savegame = autosave;
@@ -109,7 +116,6 @@
             autosave.player.curLevel = newLevelInstance;
         }
     }
-    NSLog(@"savegame %@", autosave);
 }
 
 @end

@@ -10,7 +10,8 @@
 
 @interface LevelTemplate (Create)
 
-#define DEFAULT_LEVEL_TEST @"default level test"
+#define DEFAULT_LEVEL_TEST_0 @"default level test 0"
+#define DEFAULT_LEVEL_TEST_1 @"default level test 1"
 
 + (LevelTemplate *)levelTemplateWithID:(NSString *)levelID
                 inManagedObjectContext:(NSManagedObjectContext *)context;
