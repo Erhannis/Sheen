@@ -2,7 +2,7 @@
 //  Player.h
 //  Sheen
 //
-//  Created by Matthew Ewer on 12/2/13.
+//  Created by Matthew Ewer on 12/4/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
@@ -18,8 +18,17 @@
 @property (nonatomic, retain) NSNumber * exp;
 @property (nonatomic, retain) NSNumber * maxHealth;
 @property (nonatomic, retain) NSNumber * maxWill;
+@property (nonatomic, retain) LevelInstance *curLevel;
 @property (nonatomic, retain) Savegame *savegame;
 @property (nonatomic, retain) SpatialEntity *spatial;
-@property (nonatomic, retain) LevelInstance *curLevel;
+@property (nonatomic, retain) NSSet *items;
+@end
+
+@interface Player (CoreDataGeneratedAccessors)
+
+- (void)addItemsObject:(NSManagedObject *)value;
+- (void)removeItemsObject:(NSManagedObject *)value;
+- (void)addItems:(NSSet *)values;
+- (void)removeItems:(NSSet *)values;
 
 @end

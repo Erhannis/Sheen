@@ -2,7 +2,7 @@
 //  LevelInstance.h
 //  Sheen
 //
-//  Created by Matthew Ewer on 12/2/13.
+//  Created by Matthew Ewer on 12/4/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
@@ -14,9 +14,9 @@
 @interface LevelInstance : NSManagedObject
 
 @property (nonatomic, retain) NSSet *beings;
+@property (nonatomic, retain) Player *player;
 @property (nonatomic, retain) Savegame *savegame;
 @property (nonatomic, retain) LevelTemplate *template;
-@property (nonatomic, retain) Player *player;
 @end
 
 @interface LevelInstance (CoreDataGeneratedAccessors)

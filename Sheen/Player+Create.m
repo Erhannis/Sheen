@@ -9,6 +9,7 @@
 #import "Player+Create.h"
 #import "SpatialEntity+Create.h"
 #import "Savegame+Create.h"
+#import "Item+Create.h"
 
 @implementation Player (Create)
 
@@ -47,6 +48,11 @@
     player.exp = original.exp;
     player.spatial = [SpatialEntity cloneCoreOf:original.spatial
                          inManagedObjectContext:original.managedObjectContext];
+    
+    for (Item *item in original.items) {
+        Item *newItem = [Item twinItem:item];
+        newItem.player = player;
+    }
     
     return player;
 }

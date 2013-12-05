@@ -43,6 +43,16 @@
 		C76817E618454E840069F170 /* OptionsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C76817E518454E840069F170 /* OptionsTVC.m */; };
 		C76817E91845509A0069F170 /* OptionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C76817E81845509A0069F170 /* OptionsManager.m */; };
 		C794E897183B5E2E00019BF2 /* Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = C794E896183B5E2E00019BF2 /* Debugging.m */; };
+		C7B26B71184FF85A00ECB600 /* Savegame.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B70184FF85A00ECB600 /* Savegame.m */; };
+		C7B26B74184FF85B00ECB600 /* Portal.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B73184FF85B00ECB600 /* Portal.m */; };
+		C7B26B77184FF85B00ECB600 /* LevelInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B76184FF85B00ECB600 /* LevelInstance.m */; };
+		C7B26B7A184FF85B00ECB600 /* LevelTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B79184FF85B00ECB600 /* LevelTemplate.m */; };
+		C7B26B7D184FF85B00ECB600 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B7C184FF85B00ECB600 /* Wall.m */; };
+		C7B26B80184FF85B00ECB600 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B7F184FF85B00ECB600 /* Player.m */; };
+		C7B26B83184FF85B00ECB600 /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B82184FF85B00ECB600 /* SpatialEntity.m */; };
+		C7B26B86184FF85B00ECB600 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B85184FF85B00ECB600 /* Item.m */; };
+		C7B26B89184FF85B00ECB600 /* Being.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B88184FF85B00ECB600 /* Being.m */; };
+		C7B26B8C184FF88500ECB600 /* Item+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B8B184FF88500ECB600 /* Item+Create.m */; };
 		C7C98DDE1847D13C008C2B0D /* Wall+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C98DDD1847D13C008C2B0D /* Wall+Create.m */; };
 		C7DED2F0182F468200F953A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2EF182F468200F953A5 /* Foundation.framework */; };
 		C7DED2F2182F468200F953A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2F1182F468200F953A5 /* CoreGraphics.framework */; };
@@ -59,14 +69,6 @@
 		C7DED31C182F468300F953A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7DED31A182F468300F953A5 /* InfoPlist.strings */; };
 		C7DED31E182F468300F953A5 /* SheenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DED31D182F468300F953A5 /* SheenTests.m */; };
 		C7FD898C184A7B15008CFA0F /* Savegame+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD898B184A7B15008CFA0F /* Savegame+Create.m */; };
-		C7FD89C2184D8F33008CFA0F /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD89C1184D8F33008CFA0F /* Wall.m */; };
-		C7FD89C5184D8F34008CFA0F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD89C4184D8F34008CFA0F /* Player.m */; };
-		C7FD89C8184D8F34008CFA0F /* LevelInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD89C7184D8F34008CFA0F /* LevelInstance.m */; };
-		C7FD89CB184D8F34008CFA0F /* Savegame.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD89CA184D8F34008CFA0F /* Savegame.m */; };
-		C7FD89CE184D8F34008CFA0F /* Portal.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD89CD184D8F34008CFA0F /* Portal.m */; };
-		C7FD89D1184D8F34008CFA0F /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD89D0184D8F34008CFA0F /* SpatialEntity.m */; };
-		C7FD89D4184D8F34008CFA0F /* Being.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD89D3184D8F34008CFA0F /* Being.m */; };
-		C7FD89D7184D8F34008CFA0F /* LevelTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FD89D6184D8F34008CFA0F /* LevelTemplate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,26 @@
 		C76817E81845509A0069F170 /* OptionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsManager.m; sourceTree = "<group>"; };
 		C794E895183B5E2E00019BF2 /* Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugging.h; sourceTree = "<group>"; };
 		C794E896183B5E2E00019BF2 /* Debugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debugging.m; sourceTree = "<group>"; };
+		C7B26B6F184FF85A00ECB600 /* Savegame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Savegame.h; sourceTree = "<group>"; };
+		C7B26B70184FF85A00ECB600 /* Savegame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Savegame.m; sourceTree = "<group>"; };
+		C7B26B72184FF85B00ECB600 /* Portal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Portal.h; sourceTree = "<group>"; };
+		C7B26B73184FF85B00ECB600 /* Portal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Portal.m; sourceTree = "<group>"; };
+		C7B26B75184FF85B00ECB600 /* LevelInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelInstance.h; sourceTree = "<group>"; };
+		C7B26B76184FF85B00ECB600 /* LevelInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelInstance.m; sourceTree = "<group>"; };
+		C7B26B78184FF85B00ECB600 /* LevelTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTemplate.h; sourceTree = "<group>"; };
+		C7B26B79184FF85B00ECB600 /* LevelTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTemplate.m; sourceTree = "<group>"; };
+		C7B26B7B184FF85B00ECB600 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		C7B26B7C184FF85B00ECB600 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
+		C7B26B7E184FF85B00ECB600 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		C7B26B7F184FF85B00ECB600 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		C7B26B81184FF85B00ECB600 /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpatialEntity.h; sourceTree = "<group>"; };
+		C7B26B82184FF85B00ECB600 /* SpatialEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpatialEntity.m; sourceTree = "<group>"; };
+		C7B26B84184FF85B00ECB600 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		C7B26B85184FF85B00ECB600 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		C7B26B87184FF85B00ECB600 /* Being.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Being.h; sourceTree = "<group>"; };
+		C7B26B88184FF85B00ECB600 /* Being.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Being.m; sourceTree = "<group>"; };
+		C7B26B8A184FF88500ECB600 /* Item+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+Create.h"; sourceTree = "<group>"; };
+		C7B26B8B184FF88500ECB600 /* Item+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+Create.m"; sourceTree = "<group>"; };
 		C7C98DDC1847D13C008C2B0D /* Wall+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Wall+Create.h"; sourceTree = "<group>"; };
 		C7C98DDD1847D13C008C2B0D /* Wall+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Wall+Create.m"; sourceTree = "<group>"; };
 		C7DED2EC182F468200F953A5 /* Sheen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sheen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,22 +184,6 @@
 		C7DED31D182F468300F953A5 /* SheenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SheenTests.m; sourceTree = "<group>"; };
 		C7FD898A184A7B15008CFA0F /* Savegame+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Savegame+Create.h"; sourceTree = "<group>"; };
 		C7FD898B184A7B15008CFA0F /* Savegame+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Savegame+Create.m"; sourceTree = "<group>"; };
-		C7FD89C0184D8F33008CFA0F /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
-		C7FD89C1184D8F33008CFA0F /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
-		C7FD89C3184D8F34008CFA0F /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		C7FD89C4184D8F34008CFA0F /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		C7FD89C6184D8F34008CFA0F /* LevelInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelInstance.h; sourceTree = "<group>"; };
-		C7FD89C7184D8F34008CFA0F /* LevelInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelInstance.m; sourceTree = "<group>"; };
-		C7FD89C9184D8F34008CFA0F /* Savegame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Savegame.h; sourceTree = "<group>"; };
-		C7FD89CA184D8F34008CFA0F /* Savegame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Savegame.m; sourceTree = "<group>"; };
-		C7FD89CC184D8F34008CFA0F /* Portal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Portal.h; sourceTree = "<group>"; };
-		C7FD89CD184D8F34008CFA0F /* Portal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Portal.m; sourceTree = "<group>"; };
-		C7FD89CF184D8F34008CFA0F /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpatialEntity.h; sourceTree = "<group>"; };
-		C7FD89D0184D8F34008CFA0F /* SpatialEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpatialEntity.m; sourceTree = "<group>"; };
-		C7FD89D2184D8F34008CFA0F /* Being.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Being.h; sourceTree = "<group>"; };
-		C7FD89D3184D8F34008CFA0F /* Being.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Being.m; sourceTree = "<group>"; };
-		C7FD89D5184D8F34008CFA0F /* LevelTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTemplate.h; sourceTree = "<group>"; };
-		C7FD89D6184D8F34008CFA0F /* LevelTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTemplate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,22 +217,26 @@
 			isa = PBXGroup;
 			children = (
 				C70A75CD18467FE4005F3680 /* SaveStructure.xcdatamodeld */,
-				C7FD89C0184D8F33008CFA0F /* Wall.h */,
-				C7FD89C1184D8F33008CFA0F /* Wall.m */,
-				C7FD89C3184D8F34008CFA0F /* Player.h */,
-				C7FD89C4184D8F34008CFA0F /* Player.m */,
-				C7FD89C6184D8F34008CFA0F /* LevelInstance.h */,
-				C7FD89C7184D8F34008CFA0F /* LevelInstance.m */,
-				C7FD89C9184D8F34008CFA0F /* Savegame.h */,
-				C7FD89CA184D8F34008CFA0F /* Savegame.m */,
-				C7FD89CC184D8F34008CFA0F /* Portal.h */,
-				C7FD89CD184D8F34008CFA0F /* Portal.m */,
-				C7FD89CF184D8F34008CFA0F /* SpatialEntity.h */,
-				C7FD89D0184D8F34008CFA0F /* SpatialEntity.m */,
-				C7FD89D2184D8F34008CFA0F /* Being.h */,
-				C7FD89D3184D8F34008CFA0F /* Being.m */,
-				C7FD89D5184D8F34008CFA0F /* LevelTemplate.h */,
-				C7FD89D6184D8F34008CFA0F /* LevelTemplate.m */,
+				C7B26B87184FF85B00ECB600 /* Being.h */,
+				C7B26B88184FF85B00ECB600 /* Being.m */,
+				C7B26B84184FF85B00ECB600 /* Item.h */,
+				C7B26B85184FF85B00ECB600 /* Item.m */,
+				C7B26B8A184FF88500ECB600 /* Item+Create.h */,
+				C7B26B8B184FF88500ECB600 /* Item+Create.m */,
+				C7B26B81184FF85B00ECB600 /* SpatialEntity.h */,
+				C7B26B82184FF85B00ECB600 /* SpatialEntity.m */,
+				C7B26B7E184FF85B00ECB600 /* Player.h */,
+				C7B26B7F184FF85B00ECB600 /* Player.m */,
+				C7B26B7B184FF85B00ECB600 /* Wall.h */,
+				C7B26B7C184FF85B00ECB600 /* Wall.m */,
+				C7B26B78184FF85B00ECB600 /* LevelTemplate.h */,
+				C7B26B79184FF85B00ECB600 /* LevelTemplate.m */,
+				C7B26B75184FF85B00ECB600 /* LevelInstance.h */,
+				C7B26B76184FF85B00ECB600 /* LevelInstance.m */,
+				C7B26B72184FF85B00ECB600 /* Portal.h */,
+				C7B26B73184FF85B00ECB600 /* Portal.m */,
+				C7B26B6F184FF85A00ECB600 /* Savegame.h */,
+				C7B26B70184FF85A00ECB600 /* Savegame.m */,
 				C7FD898A184A7B15008CFA0F /* Savegame+Create.h */,
 				C7FD898B184A7B15008CFA0F /* Savegame+Create.m */,
 				C7C98DDC1847D13C008C2B0D /* Wall+Create.h */,
@@ -550,29 +560,31 @@
 				C70A75ED18468F18005F3680 /* DatabaseManager.m in Sources */,
 				C76817E91845509A0069F170 /* OptionsManager.m in Sources */,
 				C70A76021846B399005F3680 /* Being+Create.m in Sources */,
+				C7B26B89184FF85B00ECB600 /* Being.m in Sources */,
 				C7406950183756D900817BE2 /* TitlePageVC.m in Sources */,
 				C70A75FC1846B016005F3680 /* LevelInstance+Create.m in Sources */,
 				C759EC16183C7312009A0D60 /* MusicManager.m in Sources */,
-				C7FD89CB184D8F34008CFA0F /* Savegame.m in Sources */,
+				C7B26B71184FF85A00ECB600 /* Savegame.m in Sources */,
 				C7DED300182F468200F953A5 /* SheenAppDelegate.m in Sources */,
-				C7FD89C5184D8F34008CFA0F /* Player.m in Sources */,
+				C7B26B80184FF85B00ECB600 /* Player.m in Sources */,
 				C76817E618454E840069F170 /* OptionsTVC.m in Sources */,
 				C75E139F1838789A0032048E /* PauseMenuNavigationController.m in Sources */,
 				C710315618383EF900C7CB91 /* SaveLoadCDTVC.m in Sources */,
 				C71031501838366500C7CB91 /* CoreDataTableViewController.m in Sources */,
-				C7FD89D1184D8F34008CFA0F /* SpatialEntity.m in Sources */,
-				C7FD89D7184D8F34008CFA0F /* LevelTemplate.m in Sources */,
-				C7FD89C8184D8F34008CFA0F /* LevelInstance.m in Sources */,
+				C7B26B86184FF85B00ECB600 /* Item.m in Sources */,
+				C7B26B83184FF85B00ECB600 /* SpatialEntity.m in Sources */,
+				C7B26B8C184FF88500ECB600 /* Item+Create.m in Sources */,
+				C7B26B7A184FF85B00ECB600 /* LevelTemplate.m in Sources */,
+				C7B26B77184FF85B00ECB600 /* LevelInstance.m in Sources */,
 				C710314A18382B3200C7CB91 /* PauseMenuVC.m in Sources */,
 				C7DED2FC182F468200F953A5 /* main.m in Sources */,
 				C74069711837665100817BE2 /* MathUtils.m in Sources */,
-				C7FD89D4184D8F34008CFA0F /* Being.m in Sources */,
 				C70A76051846B5F5005F3680 /* Player+Create.m in Sources */,
-				C7FD89C2184D8F33008CFA0F /* Wall.m in Sources */,
+				C7B26B7D184FF85B00ECB600 /* Wall.m in Sources */,
 				C710314D18382B9400C7CB91 /* GamePageVC.m in Sources */,
 				C70A75FF1846B2D7005F3680 /* SpatialEntity+Create.m in Sources */,
 				C70A75F91846A731005F3680 /* BeingNode.m in Sources */,
-				C7FD89CE184D8F34008CFA0F /* Portal.m in Sources */,
+				C7B26B74184FF85B00ECB600 /* Portal.m in Sources */,
 				C740697418376B2100817BE2 /* Drop.m in Sources */,
 				C756E62D183884830015A240 /* GamePageScene.m in Sources */,
 			);

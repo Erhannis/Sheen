@@ -148,7 +148,7 @@
 - (IBAction)returningWithGameLoad:(UIStoryboardSegue *)segue
 {
     //TODO Currently has potential leaks - click buttons, etc.
-    [self performSelector:@selector(doGoLoadedGame) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(doGoLoadedGame) withObject:nil afterDelay:1];
 }
 
 @end
