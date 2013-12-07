@@ -7,8 +7,39 @@
 //
 
 #import "Item+Create.h"
+#import "Player+Create.h"
 
 @implementation Item (Create)
+
++ (Item *)itemWithID:(NSString *)itemID
+           forPlayer:(Player *)player
+{
+    Item *item = nil;
+    
+    if (itemID.length) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
+        request.predicate = [NSPredicate predicateWithFormat:@"itemID = %@ && player = %@", itemID, player];
+        
+        NSError *error;
+        NSArray *matches = [player.managedObjectContext executeFetchRequest:request
+                                                                      error:&error];
+        
+        if (!matches || error) {
+            NSLog(@"Error dbFetching item - err: %@", error.localizedDescription);
+        } else if (!matches.count) {
+            if ([itemID isEqualToString:DEFAULT_ITEM_REFRESH_PURPLE]) {
+                item = [self createDefaultItemRefreshPurpleInContext:player.managedObjectContext];
+                item.player = player;
+            } else {
+                NSLog(@"Error - unknown item \"%@\"", itemID);
+            }
+        } else {
+            item = [matches firstObject];
+        }
+    }
+    
+    return item;
+}
 
 + (Item *)blankItemInManagedObjectContext:(NSManagedObjectContext *)context
 {
@@ -21,9 +52,24 @@
 + (Item *)twinItem:(Item *)original
 {
     Item *item = [Item blankItemInManagedObjectContext:original.managedObjectContext];
+    item.itemID = original.itemID;
     item.name = original.name;
+    item.descriptionText = original.descriptionText;
     item.count = original.count;
     
+    return item;
+}
+
++ (Item *)createDefaultItemRefreshPurpleInContext:(NSManagedObjectContext *)context
+{
+    Item *item = nil;
+    item = [NSEntityDescription insertNewObjectForEntityForName:@"Item"
+                                         inManagedObjectContext:context];
+    item.itemID = DEFAULT_ITEM_REFRESH_PURPLE;
+    item.name = @"Refresh token";
+    item.descriptionText = @"A token received for refreshing the inventory.  Keep collecting!  Maybe someday they'll do something!";
+    item.count = 0;
+    item.imageFilename = @"mote-purple";
     return item;
 }
 

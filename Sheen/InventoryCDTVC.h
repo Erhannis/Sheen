@@ -7,7 +7,10 @@
 //
 
 #import "CoreDataTableViewController.h"
+#import "Player+Create.h"
 
 @interface InventoryCDTVC : CoreDataTableViewController
+
+@property (strong, nonatomic) Player *player;
 
 @end

@@ -10,6 +10,10 @@
 
 @interface Item (Create)
 
+#define DEFAULT_ITEM_REFRESH_PURPLE @"refresh purple"
+
++ (Item *)itemWithID:(NSString *)itemID
+           forPlayer:(Player *)player;
 + (Item *)blankItemInManagedObjectContext:(NSManagedObjectContext *)context;
 
 + (Item *)twinItem:(Item *)original;

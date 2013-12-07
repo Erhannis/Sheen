@@ -9,7 +9,9 @@
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES">
         <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="items" inverseEntity="Player" syncable="YES"/>
     </entity>
@@ -71,14 +73,14 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="wall" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Being" positionX="-225" positionY="72" width="128" height="118"/>
-        <element name="LevelInstance" positionX="-36" positionY="234" width="128" height="103"/>
-        <element name="LevelTemplate" positionX="133" positionY="242" width="128" height="178"/>
-        <element name="Player" positionX="360" positionY="305" width="128" height="178"/>
-        <element name="Portal" positionX="331" positionY="35" width="128" height="118"/>
-        <element name="Savegame" positionX="-236" positionY="252" width="128" height="103"/>
-        <element name="SpatialEntity" positionX="135" positionY="18" width="128" height="178"/>
-        <element name="Wall" positionX="-63" positionY="18" width="128" height="88"/>
-        <element name="Item" positionX="549" positionY="320" width="128" height="103"/>
+        <element name="Being" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Item" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="LevelInstance" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="LevelTemplate" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Player" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Portal" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Savegame" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SpatialEntity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Wall" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

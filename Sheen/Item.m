@@ -2,7 +2,7 @@
 //  Item.m
 //  Sheen
 //
-//  Created by Matthew Ewer on 12/4/13.
+//  Created by Matthew Ewer on 12/6/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
@@ -12,9 +12,11 @@
 
 @implementation Item
 
-@dynamic name;
 @dynamic count;
 @dynamic imageFilename;
+@dynamic name;
+@dynamic descriptionText;
+@dynamic itemID;
 @dynamic player;
 
 @end

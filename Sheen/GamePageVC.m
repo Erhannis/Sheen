@@ -17,6 +17,7 @@
 #import "MusicManager.h"
 #import "DatabaseManager.h"
 #import "Savegame+Create.h"
+#import "InventoryCDTVC.h"
 
 @interface GamePageVC ()
 @property (strong, nonatomic) NSTimer *navHideTimer;
@@ -179,6 +180,8 @@
         
         ((PauseMenuNavigationController *)(segue.destinationViewController)).background = image;
         ((PauseMenuNavigationController *)(segue.destinationViewController)).context = self.player.managedObjectContext;
+    } else if ([segue.identifier isEqualToString:@"Go To Inventory"]) {
+        ((InventoryCDTVC *)(segue.destinationViewController)).player = self.player;
     } else {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
