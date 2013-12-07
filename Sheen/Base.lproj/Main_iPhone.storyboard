@@ -169,7 +169,7 @@
                                     <segue destination="jd7-BF-BmA" kind="push" identifier="Go About" id="IcF-Wu-aJQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ4-jE-PjU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ4-jE-PjU">
                                 <rect key="frame" x="120" y="518" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Quit to Title">
@@ -179,15 +179,27 @@
                                     <segue destination="Ia6-cf-qXj" kind="unwind" unwindAction="returningWithNoRequests:" id="zrF-p3-79Z"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-rn-a9r">
+                                <rect key="frame" x="270" y="518" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="???">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickSillyButton:" destination="uBC-AI-CdT" eventType="touchUpInside" id="fef-JF-sJQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.64881306890000001" green="0.65173763039999999" blue="0.50592076779999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DYN-m0-mmb" secondAttribute="trailing" id="0tc-S9-NrK"/>
                             <constraint firstItem="jKg-i2-FVB" firstAttribute="leading" secondItem="kT5-RQ-NUD" secondAttribute="leading" id="4gW-zI-4bE"/>
                             <constraint firstItem="fbf-Of-XeZ" firstAttribute="centerX" secondItem="DYN-m0-mmb" secondAttribute="centerX" id="A2n-5s-bGx"/>
+                            <constraint firstItem="bvX-rn-a9r" firstAttribute="leading" secondItem="TQ4-jE-PjU" secondAttribute="trailing" constant="70" id="FhV-I9-rgq"/>
                             <constraint firstItem="DYN-m0-mmb" firstAttribute="top" secondItem="et2-mo-e6Y" secondAttribute="top" id="HCT-RJ-Qer"/>
                             <constraint firstItem="KR7-pX-Y9g" firstAttribute="top" secondItem="kT5-RQ-NUD" secondAttribute="bottom" constant="8" symbolic="YES" id="HCh-M9-Bgy"/>
                             <constraint firstItem="kT5-RQ-NUD" firstAttribute="top" secondItem="jKg-i2-FVB" secondAttribute="bottom" constant="8" symbolic="YES" id="Jv3-T8-wno"/>
+                            <constraint firstAttribute="trailing" secondItem="bvX-rn-a9r" secondAttribute="trailing" constant="20" symbolic="YES" id="TZk-to-8Wz"/>
                             <constraint firstItem="KR7-pX-Y9g" firstAttribute="centerX" secondItem="kT5-RQ-NUD" secondAttribute="centerX" id="X8m-ZE-Rmc"/>
                             <constraint firstItem="fbf-Of-XeZ" firstAttribute="centerX" secondItem="VEM-oA-oqf" secondAttribute="centerX" id="YrW-5L-S5L"/>
                             <constraint firstItem="DYN-m0-mmb" firstAttribute="leading" secondItem="et2-mo-e6Y" secondAttribute="leading" id="hAG-Fz-m9C"/>
@@ -196,6 +208,8 @@
                             <constraint firstItem="VEM-oA-oqf" firstAttribute="top" secondItem="KR7-pX-Y9g" secondAttribute="bottom" constant="8" symbolic="YES" id="mHt-Ob-1PK"/>
                             <constraint firstAttribute="bottom" secondItem="DYN-m0-mmb" secondAttribute="bottom" id="n8m-EX-RTG"/>
                             <constraint firstItem="KR7-pX-Y9g" firstAttribute="centerY" secondItem="DYN-m0-mmb" secondAttribute="centerY" id="oyb-XB-7Sy"/>
+                            <constraint firstAttribute="bottom" secondItem="bvX-rn-a9r" secondAttribute="bottom" constant="20" symbolic="YES" id="qMG-2H-xK5"/>
+                            <constraint firstItem="bvX-rn-a9r" firstAttribute="baseline" secondItem="TQ4-jE-PjU" secondAttribute="baseline" id="rkH-K3-pHo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hKG-NZ-srP">
@@ -206,6 +220,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonAbout" destination="fbf-Of-XeZ" id="GU7-YH-eFU"/>
+                        <outlet property="buttonHelp" destination="VEM-oA-oqf" id="KPM-eS-Eyg"/>
+                        <outlet property="buttonLoad" destination="kT5-RQ-NUD" id="crb-uL-0Jq"/>
+                        <outlet property="buttonOptions" destination="KR7-pX-Y9g" id="2PT-ul-Syq"/>
+                        <outlet property="buttonQuitToTitle" destination="TQ4-jE-PjU" id="qWG-S7-Tzs"/>
+                        <outlet property="buttonSave" destination="jKg-i2-FVB" id="BJP-eC-ER4"/>
+                        <outlet property="buttonSilly" destination="bvX-rn-a9r" id="BGf-XZ-nVr"/>
                         <outlet property="imageView" destination="DYN-m0-mmb" id="u6W-nv-2O7"/>
                     </connections>
                 </viewController>

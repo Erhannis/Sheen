@@ -8,6 +8,7 @@
 
 #import "InventoryCDTVC.h"
 #import "Item+Create.h"
+#import "OptionsManager.h"
 
 @interface InventoryCDTVC ()
 @property (strong, nonatomic) NSTimer *refreshTokenTimer;
@@ -63,8 +64,12 @@
 // Not actually a refresh, since that means nothing here.
 //   Instead, it gives you an item.
 - (IBAction)refresh:(id)sender {
+    //TODO What's up with timers?
+    //TODO Also, don't forget to turn off zombies.
     //self.refreshTokenTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(addRefreshToken:) userInfo:nil repeats:NO];
-    [self addRefreshToken:nil];
+    if ([OptionsManager sillyFeaturesMode]) {
+        [self addRefreshToken:nil];
+    }
 }
 
 - (void)addRefreshToken:(NSTimer *)timer
