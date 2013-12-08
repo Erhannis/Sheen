@@ -14,9 +14,12 @@
 #import "OptionsManager.h"
 #import <CoreMotion/CoreMotion.h>
 #import "SmileyView.h"
+#import <SafariServices/SafariServices.h>
 
 @interface PauseMenuVC ()
 @property (strong, nonatomic) UIImage *background;
+@property (weak, nonatomic) IBOutlet UIButton *buttonExchangeData;
+@property (weak, nonatomic) IBOutlet UIButton *buttonReadingList;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSilly;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLoad;
@@ -261,7 +264,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     self.buttonSilly.hidden = ![OptionsManager sillyFeaturesMode];
+    self.buttonExchangeData.hidden = ![OptionsManager sillyFeaturesMode];
+    self.buttonReadingList.hidden = ![OptionsManager sillyFeaturesMode];
+    
     if ([OptionsManager sillyFeaturesMode]) {
         CGFloat origX = 0;
         CGFloat origY = 0;
@@ -340,6 +347,59 @@
         [self startSilliness];
     }
     [self addSmiley];
+}
+
+- (IBAction)clickReadingList:(id)sender {
+    switch (arc4random() % 4) {
+        case 0:
+        {
+            NSURL *url = [NSURL URLWithString:@"http://www.gunnerkrigg.com"];
+            if ([SSReadingList supportsURL:url]) {
+                SSReadingList *list = [SSReadingList defaultReadingList];
+                [list addReadingListItemWithURL:url
+                                          title:@"(Testing) Gunnerkrigg Court"
+                                    previewText:@"(It's a webcomic Matthew likes.)"
+                                          error:NULL];
+            }
+            break;
+        }
+        case 1:
+        {
+            NSURL *url = [NSURL URLWithString:@"http://www.girlgeniusonline.com"];
+            if ([SSReadingList supportsURL:url]) {
+                SSReadingList *list = [SSReadingList defaultReadingList];
+                [list addReadingListItemWithURL:url
+                                          title:@"(Testing) Girl Genius"
+                                    previewText:@"(It's a webcomic Matthew likes.)"
+                                          error:NULL];
+            }
+            break;
+        }
+        case 2:
+        {
+            NSURL *url = [NSURL URLWithString:@"http://www.dresdencodak.com"];
+            if ([SSReadingList supportsURL:url]) {
+                SSReadingList *list = [SSReadingList defaultReadingList];
+                [list addReadingListItemWithURL:url
+                                          title:@"(Testing) Dresden Codak"
+                                    previewText:@"(It's a webcomic Matthew likes.)"
+                                          error:NULL];
+            }
+            break;
+        }
+        case 3:
+        {
+            NSURL *url = [NSURL URLWithString:@"http://www.drmcninja.com"];
+            if ([SSReadingList supportsURL:url]) {
+                SSReadingList *list = [SSReadingList defaultReadingList];
+                [list addReadingListItemWithURL:url
+                                          title:@"(Testing) Dr. McNinja"
+                                    previewText:@"(It's a webcomic Matthew likes.)"
+                                          error:NULL];
+            }
+            break;
+        }
+    }
 }
 
 @end

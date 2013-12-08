@@ -9,6 +9,7 @@
 #import "InventoryCDTVC.h"
 #import "Item+Create.h"
 #import "OptionsManager.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface InventoryCDTVC ()
 @property (strong, nonatomic) NSTimer *refreshTokenTimer;
