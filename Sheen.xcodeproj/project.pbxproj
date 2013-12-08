@@ -32,7 +32,6 @@
 		C71183801852B30300DCAF62 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = C711837F1852B30300DCAF62 /* Item.m */; };
 		C71183831854025E00DCAF62 /* SmileyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C71183821854025E00DCAF62 /* SmileyView.m */; };
 		C711838A1854175200DCAF62 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71183891854175200DCAF62 /* CoreBluetooth.framework */; };
-		C711838D1854238500DCAF62 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C711838C1854238500DCAF62 /* BluetoothManager.m */; };
 		C71183901854321400DCAF62 /* BluetoothPageTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C711838F1854321400DCAF62 /* BluetoothPageTVC.m */; };
 		C71183921854332700DCAF62 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71183911854332700DCAF62 /* SafariServices.framework */; };
 		C740694D183755EA00817BE2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C740694C183755EA00817BE2 /* SpriteKit.framework */; };
@@ -135,8 +134,6 @@
 		C71183811854025E00DCAF62 /* SmileyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileyView.h; sourceTree = "<group>"; };
 		C71183821854025E00DCAF62 /* SmileyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileyView.m; sourceTree = "<group>"; };
 		C71183891854175200DCAF62 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		C711838B1854238500DCAF62 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothManager.h; sourceTree = "<group>"; };
-		C711838C1854238500DCAF62 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothManager.m; sourceTree = "<group>"; };
 		C711838E1854321400DCAF62 /* BluetoothPageTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothPageTVC.h; sourceTree = "<group>"; };
 		C711838F1854321400DCAF62 /* BluetoothPageTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothPageTVC.m; sourceTree = "<group>"; };
 		C71183911854332700DCAF62 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
@@ -344,8 +341,6 @@
 				C76817E81845509A0069F170 /* OptionsManager.m */,
 				C70A75EB18468F18005F3680 /* DatabaseManager.h */,
 				C70A75EC18468F18005F3680 /* DatabaseManager.m */,
-				C711838B1854238500DCAF62 /* BluetoothManager.h */,
-				C711838C1854238500DCAF62 /* BluetoothManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -601,7 +596,6 @@
 				C76817E91845509A0069F170 /* OptionsManager.m in Sources */,
 				C71183801852B30300DCAF62 /* Item.m in Sources */,
 				C71183651852B06C00DCAF62 /* LevelTemplate.m in Sources */,
-				C711838D1854238500DCAF62 /* BluetoothManager.m in Sources */,
 				C71183681852B06D00DCAF62 /* Wall.m in Sources */,
 				C71183711852B06D00DCAF62 /* Savegame.m in Sources */,
 				C70A76021846B399005F3680 /* Being+Create.m in Sources */,
