@@ -56,6 +56,7 @@
     item.name = original.name;
     item.descriptionText = original.descriptionText;
     item.count = original.count;
+    item.imageFilename = original.imageFilename;
     
     return item;
 }

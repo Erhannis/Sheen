@@ -119,7 +119,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KR7-pX-Y9g">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KR7-pX-Y9g">
                                 <rect key="frame" x="133" y="269" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Options">
@@ -129,7 +129,7 @@
                                     <segue destination="UPS-jv-M9t" kind="push" identifier="Go Options" id="3c6-J4-KX5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kT5-RQ-NUD">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kT5-RQ-NUD">
                                 <rect key="frame" x="143" y="231" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Load">
@@ -139,7 +139,7 @@
                                     <segue destination="9xi-JR-nsr" kind="push" identifier="Go Load" id="xEd-9H-HCR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKg-i2-FVB">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKg-i2-FVB">
                                 <rect key="frame" x="143" y="193" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save">
@@ -149,7 +149,7 @@
                                     <segue destination="9xi-JR-nsr" kind="push" identifier="Go Save" id="8Yf-hw-nna"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEM-oA-oqf">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEM-oA-oqf">
                                 <rect key="frame" x="144" y="307" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Help">
@@ -159,7 +159,7 @@
                                     <segue destination="L9g-IL-mCb" kind="push" identifier="Go Help" id="xVk-vr-kRG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbf-Of-XeZ">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbf-Of-XeZ">
                                 <rect key="frame" x="139" y="345" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="About">
@@ -169,14 +169,14 @@
                                     <segue destination="jd7-BF-BmA" kind="push" identifier="Go About" id="IcF-Wu-aJQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ4-jE-PjU">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ4-jE-PjU">
                                 <rect key="frame" x="120" y="518" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Quit to Title">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ia6-cf-qXj" kind="unwind" unwindAction="returningWithNoRequests:" id="zrF-p3-79Z"/>
+                                    <segue destination="Ia6-cf-qXj" kind="unwind" identifier="Unwind To Title" unwindAction="returningWithNoRequests:" id="zrF-p3-79Z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-rn-a9r">
@@ -193,29 +193,17 @@
                         <color key="backgroundColor" red="0.64881306890000001" green="0.65173763039999999" blue="0.50592076779999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DYN-m0-mmb" secondAttribute="trailing" id="0tc-S9-NrK"/>
-                            <constraint firstItem="jKg-i2-FVB" firstAttribute="leading" secondItem="kT5-RQ-NUD" secondAttribute="leading" id="4gW-zI-4bE"/>
-                            <constraint firstItem="fbf-Of-XeZ" firstAttribute="centerX" secondItem="DYN-m0-mmb" secondAttribute="centerX" id="A2n-5s-bGx"/>
-                            <constraint firstItem="bvX-rn-a9r" firstAttribute="leading" secondItem="TQ4-jE-PjU" secondAttribute="trailing" constant="70" id="FhV-I9-rgq"/>
                             <constraint firstItem="DYN-m0-mmb" firstAttribute="top" secondItem="et2-mo-e6Y" secondAttribute="top" id="HCT-RJ-Qer"/>
-                            <constraint firstItem="KR7-pX-Y9g" firstAttribute="top" secondItem="kT5-RQ-NUD" secondAttribute="bottom" constant="8" symbolic="YES" id="HCh-M9-Bgy"/>
-                            <constraint firstItem="kT5-RQ-NUD" firstAttribute="top" secondItem="jKg-i2-FVB" secondAttribute="bottom" constant="8" symbolic="YES" id="Jv3-T8-wno"/>
                             <constraint firstAttribute="trailing" secondItem="bvX-rn-a9r" secondAttribute="trailing" constant="20" symbolic="YES" id="TZk-to-8Wz"/>
-                            <constraint firstItem="KR7-pX-Y9g" firstAttribute="centerX" secondItem="kT5-RQ-NUD" secondAttribute="centerX" id="X8m-ZE-Rmc"/>
-                            <constraint firstItem="fbf-Of-XeZ" firstAttribute="centerX" secondItem="VEM-oA-oqf" secondAttribute="centerX" id="YrW-5L-S5L"/>
                             <constraint firstItem="DYN-m0-mmb" firstAttribute="leading" secondItem="et2-mo-e6Y" secondAttribute="leading" id="hAG-Fz-m9C"/>
-                            <constraint firstItem="fbf-Of-XeZ" firstAttribute="top" secondItem="VEM-oA-oqf" secondAttribute="bottom" constant="8" symbolic="YES" id="jgd-CN-lvw"/>
-                            <constraint firstItem="KR7-pX-Y9g" firstAttribute="centerX" secondItem="VEM-oA-oqf" secondAttribute="centerX" id="lud-dv-eWx"/>
-                            <constraint firstItem="VEM-oA-oqf" firstAttribute="top" secondItem="KR7-pX-Y9g" secondAttribute="bottom" constant="8" symbolic="YES" id="mHt-Ob-1PK"/>
                             <constraint firstAttribute="bottom" secondItem="DYN-m0-mmb" secondAttribute="bottom" id="n8m-EX-RTG"/>
-                            <constraint firstItem="KR7-pX-Y9g" firstAttribute="centerY" secondItem="DYN-m0-mmb" secondAttribute="centerY" id="oyb-XB-7Sy"/>
                             <constraint firstAttribute="bottom" secondItem="bvX-rn-a9r" secondAttribute="bottom" constant="20" symbolic="YES" id="qMG-2H-xK5"/>
-                            <constraint firstItem="bvX-rn-a9r" firstAttribute="baseline" secondItem="TQ4-jE-PjU" secondAttribute="baseline" id="rkH-K3-pHo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hKG-NZ-srP">
                         <barButtonItem key="leftBarButtonItem" title="Unpause" id="Fy6-zR-6O2">
                             <connections>
-                                <segue destination="Ia6-cf-qXj" kind="unwind" unwindAction="returningFromPause:" id="rHV-1d-gHL"/>
+                                <segue destination="Ia6-cf-qXj" kind="unwind" identifier="Unwind To Game Page" unwindAction="returningFromPause:" id="rHV-1d-gHL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -279,6 +267,7 @@
                         <segue destination="f2u-TI-Utl" kind="unwind" identifier="Unwind to title page with game load" unwindAction="returningWithGameLoad:" id="HI3-fe-7rn"/>
                         <segue destination="f2u-TI-Utl" kind="unwind" identifier="Unwind to game page" unwindAction="returningFromPause:" id="Be8-Dv-g5T"/>
                         <segue destination="f2u-TI-Utl" kind="unwind" identifier="Unwind to game page with game load" unwindAction="returningFromPauseWithGameLoad:" id="OJk-S8-Vqb"/>
+                        <segue destination="eZo-QM-Vqf" kind="push" identifier="Load To Game Page" id="rCt-10-hQ8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N2w-Gf-hWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -628,8 +617,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UwO-D7-Q6D"/>
-        <segue reference="Rzb-4S-Cjq"/>
-        <segue reference="pIV-E4-Esx"/>
+        <segue reference="rCt-10-hQ8"/>
+        <segue reference="xEd-9H-HCR"/>
+        <segue reference="3c6-J4-KX5"/>
     </inferredMetricsTieBreakers>
 </document>

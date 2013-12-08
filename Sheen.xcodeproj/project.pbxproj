@@ -30,6 +30,7 @@
 		C711837A1852B06D00DCAF62 /* LevelInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C71183791852B06D00DCAF62 /* LevelInstance.m */; };
 		C711837D1852B06D00DCAF62 /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C711837C1852B06D00DCAF62 /* SpatialEntity.m */; };
 		C71183801852B30300DCAF62 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = C711837F1852B30300DCAF62 /* Item.m */; };
+		C71183831854025E00DCAF62 /* SmileyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C71183821854025E00DCAF62 /* SmileyView.m */; };
 		C740694D183755EA00817BE2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C740694C183755EA00817BE2 /* SpriteKit.framework */; };
 		C7406950183756D900817BE2 /* TitlePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C740694F183756D900817BE2 /* TitlePageVC.m */; };
 		C7406957183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C7406956183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 */; };
@@ -126,6 +127,8 @@
 		C711837C1852B06D00DCAF62 /* SpatialEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpatialEntity.m; sourceTree = "<group>"; };
 		C711837E1852B30300DCAF62 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		C711837F1852B30300DCAF62 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		C71183811854025E00DCAF62 /* SmileyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileyView.h; sourceTree = "<group>"; };
+		C71183821854025E00DCAF62 /* SmileyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileyView.m; sourceTree = "<group>"; };
 		C740694C183755EA00817BE2 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		C740694E183756D900817BE2 /* TitlePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlePageVC.h; sourceTree = "<group>"; };
 		C740694F183756D900817BE2 /* TitlePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlePageVC.m; sourceTree = "<group>"; };
@@ -253,6 +256,15 @@
 				C70A76041846B5F5005F3680 /* Player+Create.m */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		C71183841854027600DCAF62 /* Silly Things */ = {
+			isa = PBXGroup;
+			children = (
+				C71183811854025E00DCAF62 /* SmileyView.h */,
+				C71183821854025E00DCAF62 /* SmileyView.m */,
+			);
+			name = "Silly Things";
 			sourceTree = "<group>";
 		};
 		C74069521837588600817BE2 /* Audio */ = {
@@ -403,6 +415,7 @@
 				C74069541837589A00817BE2 /* Media */,
 				C76817EA184571CD0069F170 /* Managers */,
 				C70A75CC18467FB0005F3680 /* Database */,
+				C71183841854027600DCAF62 /* Silly Things */,
 				C7DED2F6182F468200F953A5 /* Supporting Files */,
 			);
 			path = Sheen;
@@ -568,6 +581,7 @@
 				C70A76021846B399005F3680 /* Being+Create.m in Sources */,
 				C7406950183756D900817BE2 /* TitlePageVC.m in Sources */,
 				C70A75FC1846B016005F3680 /* LevelInstance+Create.m in Sources */,
+				C71183831854025E00DCAF62 /* SmileyView.m in Sources */,
 				C759EC16183C7312009A0D60 /* MusicManager.m in Sources */,
 				C7DED300182F468200F953A5 /* SheenAppDelegate.m in Sources */,
 				C76817E618454E840069F170 /* OptionsTVC.m in Sources */,

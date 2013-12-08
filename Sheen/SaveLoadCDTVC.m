@@ -8,6 +8,7 @@
 
 #import "SaveLoadCDTVC.h"
 #import "Savegame+Create.h"
+#import "GamePageVC.h"
 
 @interface SaveLoadCDTVC ()
 @property (strong, nonatomic) UIImage *cleanImage;
@@ -85,7 +86,7 @@
     } else {
         [Savegame setAsAutosave:savegame];
         if (self.fromTitlePage) {
-            [self performSegueWithIdentifier:@"Unwind to title page with game load" sender:self];
+            [self performSegueWithIdentifier:@"Load To Game Page" sender:self];
         } else {
             [self performSegueWithIdentifier:@"Unwind to game page with game load" sender:self];
         }
@@ -104,6 +105,11 @@
                  sender:(id)sender
 {
     NSLog(@"SaveLoadCDTV prepareForSegue");
+    if ([segue.identifier isEqualToString:@"Load To Game Page"]) {
+        Savegame *savegame = [Savegame getAutosaveInManagedObjectContext:self.managedObjectContext];
+        ((GamePageVC *)segue.destinationViewController).player = savegame.player;
+        ((GamePageVC *)segue.destinationViewController).levelInstance = savegame.player.curLevel;
+    }
 }
 
 @end

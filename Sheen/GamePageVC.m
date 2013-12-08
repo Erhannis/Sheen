@@ -68,16 +68,6 @@
     self.skView.showsDrawCount = DEBUGGING;
     
     // Set up gesture recognizers
-//    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didTap:)];
-//    [self.view addGestureRecognizer:self.tapGestureRecognizer];
-//    self.pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didPinch:)];
-//    [self.view addGestureRecognizer:self.pinchGestureRecognizer];
-//    self.rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didRotation:)];
-//    [self.view addGestureRecognizer:self.rotationGestureRecognizer];
-//    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didPan:)];
-//    [self.view addGestureRecognizer:self.panGestureRecognizer];
-//    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self.gamePageScene action:@selector(didLongPress:)];
-//    [self.view addGestureRecognizer:self.longPressGestureRecognizer];
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedTap:)];
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
     self.pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPinch:)];

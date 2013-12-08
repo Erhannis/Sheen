@@ -31,6 +31,7 @@
        [Being]
          SpatialEntity
      SpatialEntity
+     [Item]
  
  Or, in a more compact form:
  
@@ -43,6 +44,7 @@
  Player
    LevelInstance
    SpatialEntity
+   Item
  LevelTemplate
    Being
    Portal
