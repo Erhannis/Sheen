@@ -113,7 +113,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Bluetooth Cell" id="NHO-W7-gvN">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NHO-W7-gvN" id="Cft-AV-Fiq">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -228,16 +228,6 @@
                                     <segue destination="WBz-ew-9QO" kind="push" id="YCx-Dh-caB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rN-5c-1CE">
-                                <rect key="frame" x="214" y="110" width="86" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Reading List">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickReadingList:" destination="uBC-AI-CdT" eventType="touchUpInside" id="Qfl-3l-QRd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.64881306890000001" green="0.65173763039999999" blue="0.50592076779999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -245,9 +235,7 @@
                             <constraint firstAttribute="trailing" secondItem="euU-GA-cKU" secondAttribute="trailing" constant="20" symbolic="YES" id="8bm-B3-Isf"/>
                             <constraint firstItem="euU-GA-cKU" firstAttribute="top" secondItem="FJh-RO-ThS" secondAttribute="bottom" constant="20" symbolic="YES" id="CSh-gM-Tl0"/>
                             <constraint firstItem="DYN-m0-mmb" firstAttribute="top" secondItem="et2-mo-e6Y" secondAttribute="top" id="HCT-RJ-Qer"/>
-                            <constraint firstItem="8rN-5c-1CE" firstAttribute="top" secondItem="euU-GA-cKU" secondAttribute="bottom" constant="8" symbolic="YES" id="J7Z-5v-jrz"/>
                             <constraint firstAttribute="trailing" secondItem="bvX-rn-a9r" secondAttribute="trailing" constant="20" symbolic="YES" id="TZk-to-8Wz"/>
-                            <constraint firstAttribute="trailing" secondItem="8rN-5c-1CE" secondAttribute="trailing" constant="20" symbolic="YES" id="Y79-n6-wJX"/>
                             <constraint firstItem="DYN-m0-mmb" firstAttribute="leading" secondItem="et2-mo-e6Y" secondAttribute="leading" id="hAG-Fz-m9C"/>
                             <constraint firstAttribute="bottom" secondItem="DYN-m0-mmb" secondAttribute="bottom" id="n8m-EX-RTG"/>
                             <constraint firstAttribute="bottom" secondItem="bvX-rn-a9r" secondAttribute="bottom" constant="20" symbolic="YES" id="qMG-2H-xK5"/>
@@ -267,7 +255,6 @@
                         <outlet property="buttonLoad" destination="kT5-RQ-NUD" id="crb-uL-0Jq"/>
                         <outlet property="buttonOptions" destination="KR7-pX-Y9g" id="2PT-ul-Syq"/>
                         <outlet property="buttonQuitToTitle" destination="TQ4-jE-PjU" id="qWG-S7-Tzs"/>
-                        <outlet property="buttonReadingList" destination="8rN-5c-1CE" id="ZHe-oK-RTA"/>
                         <outlet property="buttonSave" destination="jKg-i2-FVB" id="BJP-eC-ER4"/>
                         <outlet property="buttonSilly" destination="bvX-rn-a9r" id="BGf-XZ-nVr"/>
                         <outlet property="imageView" destination="DYN-m0-mmb" id="u6W-nv-2O7"/>
@@ -497,7 +484,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Win, rather than lose. Blah?" translatesAutoresizingMaskIntoConstraints="NO" id="Hsg-Vt-0rt">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Win, rather than lose." translatesAutoresizingMaskIntoConstraints="NO" id="Hsg-Vt-0rt">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -516,7 +503,7 @@
         <!--About Screen-->
         <scene sceneID="T56-II-wbK">
             <objects>
-                <viewController id="jd7-BF-BmA" userLabel="About Screen" sceneMemberID="viewController">
+                <viewController id="jd7-BF-BmA" userLabel="About Screen" customClass="AboutVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yLX-cq-szI"/>
                         <viewControllerLayoutGuide type="bottom" id="fDl-SA-6rp"/>
@@ -525,17 +512,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="About game, yo!  Done got made by Matthew Ewer." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G1e-ZA-CM0">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G1e-ZA-CM0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">About game, yo!  Done got made by Matthew Ewer.
+
+Art by Matthew Ewer
+
+Music obtained from ccMixter.org,
+under the Creative Commons Attribution license,
+with artists as follows:
+
+J. Lang
+Pitx
+Gurdonark
+onlymeith
+John Pazdan
+_ghost</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R9-OT-sUG">
+                                <rect key="frame" x="20" y="530" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add one of 4 webcomics-that-Matthew-likes to your Safari reading list">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedAddAWebcomic:" destination="jd7-BF-BmA" eventType="touchUpInside" id="Odt-UJ-dOI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G1e-ZA-CM0" firstAttribute="top" secondItem="vbO-oh-HAp" secondAttribute="top" id="1oz-ex-eTU"/>
+                            <constraint firstAttribute="trailing" secondItem="2R9-OT-sUG" secondAttribute="trailing" constant="20" symbolic="YES" id="3qW-i6-gL3"/>
+                            <constraint firstAttribute="bottom" secondItem="G1e-ZA-CM0" secondAttribute="bottom" id="FGg-HO-kdt"/>
+                            <constraint firstItem="2R9-OT-sUG" firstAttribute="leading" secondItem="vbO-oh-HAp" secondAttribute="leading" constant="20" symbolic="YES" id="IM9-qo-wTE"/>
+                            <constraint firstItem="fDl-SA-6rp" firstAttribute="top" secondItem="2R9-OT-sUG" secondAttribute="bottom" constant="20" symbolic="YES" id="PPq-AS-3RL"/>
+                            <constraint firstItem="G1e-ZA-CM0" firstAttribute="leading" secondItem="vbO-oh-HAp" secondAttribute="leading" id="QUe-Sr-YBL"/>
+                            <constraint firstAttribute="trailing" secondItem="G1e-ZA-CM0" secondAttribute="trailing" id="il7-3r-vqe"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="isw-T5-wGj"/>
+                    <connections>
+                        <outlet property="buttonAddAWebcomic" destination="2R9-OT-sUG" id="z3Z-WI-rO4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g52-b9-Def" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -700,6 +723,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="rCt-10-hQ8"/>
         <segue reference="xEd-9H-HCR"/>
-        <segue reference="3c6-J4-KX5"/>
+        <segue reference="pIV-E4-Esx"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -68,7 +68,7 @@
                                          inManagedObjectContext:context];
     item.itemID = DEFAULT_ITEM_REFRESH_PURPLE;
     item.name = @"Refresh token";
-    item.descriptionText = @"A token received for refreshing the inventory.  Keep collecting!  Maybe someday they'll do something!";
+    item.descriptionText = @"Received for refreshing the inventory.";
     item.count = 0;
     item.imageFilename = @"mote-purple";
     return item;

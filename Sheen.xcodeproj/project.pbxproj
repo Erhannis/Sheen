@@ -56,6 +56,7 @@
 		C75E139F1838789A0032048E /* PauseMenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75E139E1838789A0032048E /* PauseMenuNavigationController.m */; };
 		C76817E618454E840069F170 /* OptionsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C76817E518454E840069F170 /* OptionsTVC.m */; };
 		C76817E91845509A0069F170 /* OptionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C76817E81845509A0069F170 /* OptionsManager.m */; };
+		C786FADA185443200084F21C /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C786FAD9185443200084F21C /* AboutVC.m */; };
 		C794E897183B5E2E00019BF2 /* Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = C794E896183B5E2E00019BF2 /* Debugging.m */; };
 		C7B26B8C184FF88500ECB600 /* Item+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B8B184FF88500ECB600 /* Item+Create.m */; };
 		C7C98DDE1847D13C008C2B0D /* Wall+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C98DDD1847D13C008C2B0D /* Wall+Create.m */; };
@@ -171,6 +172,8 @@
 		C76817E518454E840069F170 /* OptionsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTVC.m; sourceTree = "<group>"; };
 		C76817E71845509A0069F170 /* OptionsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsManager.h; sourceTree = "<group>"; };
 		C76817E81845509A0069F170 /* OptionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsManager.m; sourceTree = "<group>"; };
+		C786FAD8185443200084F21C /* AboutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutVC.h; sourceTree = "<group>"; };
+		C786FAD9185443200084F21C /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
 		C794E895183B5E2E00019BF2 /* Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugging.h; sourceTree = "<group>"; };
 		C794E896183B5E2E00019BF2 /* Debugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debugging.m; sourceTree = "<group>"; };
 		C7B26B8A184FF88500ECB600 /* Item+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+Create.h"; sourceTree = "<group>"; };
@@ -369,6 +372,8 @@
 				C76817E518454E840069F170 /* OptionsTVC.m */,
 				C711838E1854321400DCAF62 /* BluetoothPageTVC.h */,
 				C711838F1854321400DCAF62 /* BluetoothPageTVC.m */,
+				C786FAD8185443200084F21C /* AboutVC.h */,
+				C786FAD9185443200084F21C /* AboutVC.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -592,6 +597,7 @@
 				C740696E18375E5700817BE2 /* Mote.m in Sources */,
 				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
 				C70A75ED18468F18005F3680 /* DatabaseManager.m in Sources */,
+				C786FADA185443200084F21C /* AboutVC.m in Sources */,
 				C76817E91845509A0069F170 /* OptionsManager.m in Sources */,
 				C71183801852B30300DCAF62 /* Item.m in Sources */,
 				C71183651852B06C00DCAF62 /* LevelTemplate.m in Sources */,

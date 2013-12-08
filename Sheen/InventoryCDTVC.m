@@ -70,6 +70,8 @@
     //self.refreshTokenTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(addRefreshToken:) userInfo:nil repeats:NO];
     if ([OptionsManager sillyFeaturesMode]) {
         [self addRefreshToken:nil];
+    } else {
+        [self.refreshControl endRefreshing];
     }
 }
 
