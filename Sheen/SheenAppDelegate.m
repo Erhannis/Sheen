@@ -11,7 +11,6 @@
 #import "OptionsManager.h"
 #import <SpriteKit/SpriteKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "BluetoothManager.h"
 
 @interface SheenAppDelegate ()
 @property (strong, nonatomic) MusicManager *musicManager;
