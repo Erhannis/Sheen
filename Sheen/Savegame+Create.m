@@ -91,8 +91,9 @@
     
     //TODO This was/is showing a bunch of extras.  Why?
     for (LevelInstance *levelInstance in original.levels) {
-        LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance];
-        newLevelInstance.savegame = savegame;
+        LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance
+                                                              withSavegame:savegame];
+        //TODO Move this into the twin function?
         if (levelInstance == original.player.curLevel) {
             savegame.player.curLevel = newLevelInstance;
         }
@@ -112,8 +113,9 @@
     autosave.player = [Player twinPlayer:savegameToUse.player];
     [autosave removeLevels:autosave.levels];
     for (LevelInstance *levelInstance in savegameToUse.levels) {
-        LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance];
-        newLevelInstance.savegame = autosave;
+        LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance
+                                                              withSavegame:autosave];
+        //TODO Move this into the twin function?
         if (levelInstance == savegameToUse.player.curLevel) {
             autosave.player.curLevel = newLevelInstance;
         }

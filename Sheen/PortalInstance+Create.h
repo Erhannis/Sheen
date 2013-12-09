@@ -10,4 +10,8 @@
 
 @interface PortalInstance (Create)
 
++ (PortalInstance *)createPortalInstanceWithTemplate:(PortalTemplate *)portalTemplate
+                                   fromLevelInstance:(LevelInstance *)fromLevelInstance
+                                     toLevelInstance:(LevelInstance *)toLevelInstance;
+
 @end
