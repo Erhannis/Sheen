@@ -3,9 +3,21 @@
     <entity name="Being" representedClassName="Being" syncable="YES">
         <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="color" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Color" inverseName="being" inverseEntity="Color" syncable="YES"/>
         <relationship name="levelInstance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="beings" inverseEntity="LevelInstance" syncable="YES"/>
         <relationship name="levelTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="beings" inverseEntity="LevelTemplate" syncable="YES"/>
         <relationship name="spatial" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="being" inverseEntity="SpatialEntity" syncable="YES"/>
+    </entity>
+    <entity name="Color" representedClassName="Color" syncable="YES">
+        <attribute name="alpha" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="blue" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="green" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="red" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="being" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Being" inverseName="color" inverseEntity="Being" syncable="YES"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="color" inverseEntity="Item" syncable="YES"/>
+        <relationship name="levelTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="bgColor" inverseEntity="LevelTemplate" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="color" inverseEntity="Player" syncable="YES"/>
+        <relationship name="wall" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wall" inverseName="color" inverseEntity="Wall" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES">
         <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -13,23 +25,26 @@
         <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="itemID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="color" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Color" inverseName="item" inverseEntity="Color" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="items" inverseEntity="Player" syncable="YES"/>
     </entity>
     <entity name="LevelInstance" representedClassName="LevelInstance" syncable="YES">
         <relationship name="beings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Being" inverseName="levelInstance" inverseEntity="Being" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortalInstance" inverseName="fromLevelInstance" inverseEntity="PortalInstance" syncable="YES"/>
+        <relationship name="newRelationship1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortalInstance" inverseName="toLevelInstance" inverseEntity="PortalInstance" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="curLevel" inverseEntity="Player" syncable="YES"/>
         <relationship name="savegame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Savegame" inverseName="levels" inverseEntity="Savegame" syncable="YES"/>
         <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="instances" inverseEntity="LevelTemplate" syncable="YES"/>
     </entity>
     <entity name="LevelTemplate" representedClassName="LevelTemplate" syncable="YES">
-        <attribute name="bgColor" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="levelID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="song" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="beings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Being" inverseName="levelTemplate" inverseEntity="Being" syncable="YES"/>
+        <relationship name="bgColor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Color" inverseName="levelTemplate" inverseEntity="Color" syncable="YES"/>
         <relationship name="instances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="template" inverseEntity="LevelInstance" syncable="YES"/>
-        <relationship name="portalsIncoming" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Portal" inverseName="toLevel" inverseEntity="Portal" syncable="YES"/>
-        <relationship name="portalsOutgoing" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Portal" inverseName="fromLevel" inverseEntity="Portal" syncable="YES"/>
+        <relationship name="portalsIncoming" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortalTemplate" inverseName="toLevel" inverseEntity="PortalTemplate" syncable="YES"/>
+        <relationship name="portalsOutgoing" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortalTemplate" inverseName="fromLevel" inverseEntity="PortalTemplate" syncable="YES"/>
         <relationship name="walls" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wall" inverseName="levels" inverseEntity="Wall" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES">
@@ -38,15 +53,22 @@
         <attribute name="exp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxHealth" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxWill" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="color" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Color" inverseName="player" inverseEntity="Color" syncable="YES"/>
         <relationship name="curLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="player" inverseEntity="LevelInstance" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="player" inverseEntity="Item" syncable="YES"/>
         <relationship name="savegame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Savegame" inverseName="player" inverseEntity="Savegame" syncable="YES"/>
         <relationship name="spatial" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="player" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
-    <entity name="Portal" representedClassName="Portal" syncable="YES">
+    <entity name="PortalInstance" representedClassName="PortalInstance" syncable="YES">
+        <relationship name="fromLevelInstance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="newRelationship" inverseEntity="LevelInstance" syncable="YES"/>
+        <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortalTemplate" inverseName="instances" inverseEntity="PortalTemplate" syncable="YES"/>
+        <relationship name="toLevelInstance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="newRelationship1" inverseEntity="LevelInstance" syncable="YES"/>
+    </entity>
+    <entity name="PortalTemplate" representedClassName="PortalTemplate" syncable="YES">
         <attribute name="radius" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="fromLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="portalsOutgoing" inverseEntity="LevelTemplate" syncable="YES"/>
         <relationship name="fromPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="portalFrom" inverseEntity="SpatialEntity" syncable="YES"/>
+        <relationship name="instances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortalInstance" inverseName="template" inverseEntity="PortalInstance" syncable="YES"/>
         <relationship name="toLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="portalsIncoming" inverseEntity="LevelTemplate" syncable="YES"/>
         <relationship name="toPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="portalTo" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
@@ -63,24 +85,27 @@
         <attribute name="yVelocity" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="being" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Being" inverseName="spatial" inverseEntity="Being" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="spatial" inverseEntity="Player" syncable="YES"/>
-        <relationship name="portalFrom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="fromPlace" inverseEntity="Portal" syncable="YES"/>
-        <relationship name="portalTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="toPlace" inverseEntity="Portal" syncable="YES"/>
+        <relationship name="portalFrom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortalTemplate" inverseName="fromPlace" inverseEntity="PortalTemplate" syncable="YES"/>
+        <relationship name="portalTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortalTemplate" inverseName="toPlace" inverseEntity="PortalTemplate" syncable="YES"/>
         <relationship name="wall" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wall" inverseName="location" inverseEntity="Wall" syncable="YES"/>
     </entity>
     <entity name="Wall" representedClassName="Wall" syncable="YES">
         <attribute name="shape" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="color" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Color" inverseName="wall" inverseEntity="Color" syncable="YES"/>
         <relationship name="levels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="walls" inverseEntity="LevelTemplate" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="wall" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Being" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Item" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="LevelInstance" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="LevelTemplate" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Player" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Portal" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Savegame" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="SpatialEntity" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Wall" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Being" positionX="106" positionY="24" width="128" height="133"/>
+        <element name="Item" positionX="531" positionY="81" width="128" height="148"/>
+        <element name="LevelInstance" positionX="-299" positionY="21" width="128" height="133"/>
+        <element name="LevelTemplate" positionX="-99" positionY="27" width="128" height="178"/>
+        <element name="Player" positionX="261" positionY="54" width="128" height="193"/>
+        <element name="PortalTemplate" positionX="331" positionY="-216" width="128" height="133"/>
+        <element name="Savegame" positionX="-90" positionY="-135" width="128" height="105"/>
+        <element name="SpatialEntity" positionX="99" positionY="-261" width="128" height="180"/>
+        <element name="Wall" positionX="369" positionY="-54" width="128" height="103"/>
+        <element name="Color" positionX="97" positionY="227" width="128" height="178"/>
+        <element name="PortalInstance" positionX="511" positionY="-214" width="128" height="88"/>
     </elements>
 </model>

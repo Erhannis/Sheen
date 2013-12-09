@@ -56,12 +56,7 @@
     NSLog(@"GamePageVC did load");
     NSLog(@"GamePageVC dl %@", self);
     [self.navigationController setNavigationBarHidden:YES];
-    
-    // Start music
-    [[NSNotificationCenter defaultCenter] postNotificationName:ChangeSongRequestNotification
-                                                        object:self
-                                                      userInfo:@{ChangeSongRequestFilename : @"gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve"}];
-    
+        
     // Set up scene
     self.skView.showsFPS = DEBUGGING;
     self.skView.showsNodeCount = DEBUGGING;

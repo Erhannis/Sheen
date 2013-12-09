@@ -8,6 +8,7 @@
 
 #import "Being+Create.h"
 #import "SpatialEntity+Create.h"
+#import "Color+Create.h"
 
 @implementation Being (Create)
 
@@ -19,20 +20,17 @@
     return being;
 }
 
-+ (Being *)cloneCoreOf:(Being *)original
-inManagedObjectContext:(NSManagedObjectContext *)context
++ (Being *)twinBeing:(Being *)original
 {
-    Being *being = nil;
+    if (!original) return nil;
     
-    if (original) {
-        being = [NSEntityDescription insertNewObjectForEntityForName:@"Being"
-                                              inManagedObjectContext:context];
-        being.type = original.type;
-        being.imageFilename = original.imageFilename;
-        being.spatial = [SpatialEntity cloneCoreOf:original.spatial
-                            inManagedObjectContext:context];
-    }
-    
+    Being *being = [NSEntityDescription insertNewObjectForEntityForName:@"Being"
+                                                 inManagedObjectContext:original.managedObjectContext];
+    being.type = original.type;
+    being.imageFilename = original.imageFilename;
+    being.spatial = [SpatialEntity twinSpatialEntity:original.spatial];
+    being.color = [Color twinColor:original.color];
+
     return being;
 }
 

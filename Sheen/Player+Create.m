@@ -10,6 +10,7 @@
 #import "SpatialEntity+Create.h"
 #import "Savegame+Create.h"
 #import "Item+Create.h"
+#import "Color+Create.h"
 
 @implementation Player (Create)
 
@@ -40,14 +41,16 @@
 
 + (Player *)twinPlayer:(Player *)original
 {
+    if (!original) return nil;
+    
     Player *player = [Player blankPlayerInManagedObjectContext:original.managedObjectContext];
     player.maxHealth = original.maxHealth;
     player.curHealth = original.curHealth;
     player.maxWill = original.maxWill;
     player.curWill = original.curWill;
     player.exp = original.exp;
-    player.spatial = [SpatialEntity cloneCoreOf:original.spatial
-                         inManagedObjectContext:original.managedObjectContext];
+    player.spatial = [SpatialEntity twinSpatialEntity:original.spatial];
+    player.color = [Color twinColor:original.color];
     
     for (Item *item in original.items) {
         Item *newItem = [Item twinItem:item];

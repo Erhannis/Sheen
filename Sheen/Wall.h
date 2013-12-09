@@ -2,20 +2,21 @@
 //  Wall.h
 //  Sheen
 //
-//  Created by Matthew Ewer on 12/6/13.
+//  Created by Matthew Ewer on 12/9/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class LevelTemplate, SpatialEntity;
+@class Color, LevelTemplate, SpatialEntity;
 
 @interface Wall : NSManagedObject
 
 @property (nonatomic, retain) NSData * shape;
 @property (nonatomic, retain) NSSet *levels;
 @property (nonatomic, retain) SpatialEntity *location;
+@property (nonatomic, retain) Color *color;
 @end
 
 @interface Wall (CoreDataGeneratedAccessors)

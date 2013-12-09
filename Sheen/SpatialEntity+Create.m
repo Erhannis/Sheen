@@ -39,19 +39,16 @@
     return spatialEntity;
 }
 
-+ (SpatialEntity *)cloneCoreOf:(SpatialEntity *)original
-        inManagedObjectContext:(NSManagedObjectContext *)context
++ (SpatialEntity *)twinSpatialEntity:(SpatialEntity *)original
 {
-    SpatialEntity *spatialEntity = nil;
+    if (!original) return nil;
     
-    if (original) {
-        spatialEntity = [NSEntityDescription insertNewObjectForEntityForName:@"SpatialEntity"
-                                                      inManagedObjectContext:context];
-        spatialEntity.xPos = original.xPos;
-        spatialEntity.yPos = original.yPos;
-        spatialEntity.xVelocity = original.xVelocity;
-        spatialEntity.yVelocity = original.yVelocity;
-    }
+    SpatialEntity *spatialEntity = [NSEntityDescription insertNewObjectForEntityForName:@"SpatialEntity"
+                                                                 inManagedObjectContext:original.managedObjectContext];
+    spatialEntity.xPos = original.xPos;
+    spatialEntity.yPos = original.yPos;
+    spatialEntity.xVelocity = original.xVelocity;
+    spatialEntity.yVelocity = original.yVelocity;
     
     return spatialEntity;
 }

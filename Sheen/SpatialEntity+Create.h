@@ -14,7 +14,7 @@
 + (SpatialEntity *)createZeroInManagedObjectContext:(NSManagedObjectContext *)context;
 + (SpatialEntity *)createFromSKNode:(SKNode *)node
              inManagedObjectContext:(NSManagedObjectContext *)context;
-+ (SpatialEntity *)cloneCoreOf:(SpatialEntity *)original
-        inManagedObjectContext:(NSManagedObjectContext *)context;
+
++ (SpatialEntity *)twinSpatialEntity:(SpatialEntity *)original;
 
 @end

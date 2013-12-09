@@ -8,12 +8,14 @@
 
 #import "LevelInstance.h"
 #import "LevelTemplate.h"
+#import "Savegame+Create.h"
 
 @interface LevelInstance (Create)
 
 + (LevelInstance *)createLevelInstanceWithTemplate:(LevelTemplate *)levelTemplate
                             inManagedObjectContext:(NSManagedObjectContext *)context;
 
-+ (LevelInstance *)twinLevelInstance:(LevelInstance *)original;
++ (LevelInstance *)twinLevelInstance:(LevelInstance *)original
+                        withSavegame:(Savegame *)savegame;
 
 @end

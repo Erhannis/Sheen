@@ -1,5 +1,5 @@
 //
-//  Portal.h
+//  PortalTemplate.h
 //  Sheen
 //
 //  Created by Matthew Ewer on 12/9/13.
@@ -9,14 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class LevelTemplate, SpatialEntity;
+@class LevelTemplate, PortalInstance, SpatialEntity;
 
-@interface Portal : NSManagedObject
+@interface PortalTemplate : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * radius;
 @property (nonatomic, retain) LevelTemplate *fromLevel;
 @property (nonatomic, retain) SpatialEntity *fromPlace;
 @property (nonatomic, retain) LevelTemplate *toLevel;
 @property (nonatomic, retain) SpatialEntity *toPlace;
+@property (nonatomic, retain) NSSet *instances;
+@end
+
+@interface PortalTemplate (CoreDataGeneratedAccessors)
+
+- (void)addInstancesObject:(PortalInstance *)value;
+- (void)removeInstancesObject:(PortalInstance *)value;
+- (void)addInstances:(NSSet *)values;
+- (void)removeInstances:(NSSet *)values;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "Item+Create.h"
 #import "Player+Create.h"
+#import "Color+Create.h"
 
 @implementation Item (Create)
 
@@ -51,12 +52,15 @@
 
 + (Item *)twinItem:(Item *)original
 {
+    if (!original) return nil;
+    
     Item *item = [Item blankItemInManagedObjectContext:original.managedObjectContext];
     item.itemID = original.itemID;
     item.name = original.name;
     item.descriptionText = original.descriptionText;
     item.count = original.count;
     item.imageFilename = original.imageFilename;
+    item.color = [Color twinColor:original.color];
     
     return item;
 }
@@ -71,6 +75,7 @@
     item.descriptionText = @"Received for refreshing the inventory.";
     item.count = 0;
     item.imageFilename = @"mote-purple";
+    item.color = nil;
     return item;
 }
 

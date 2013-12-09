@@ -2,14 +2,14 @@
 //  SpatialEntity.h
 //  Sheen
 //
-//  Created by Matthew Ewer on 12/6/13.
+//  Created by Matthew Ewer on 12/9/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Being, Player, Portal, Wall;
+@class Being, Player, PortalTemplate, Wall;
 
 @interface SpatialEntity : NSManagedObject
 
@@ -19,8 +19,8 @@
 @property (nonatomic, retain) NSNumber * yVelocity;
 @property (nonatomic, retain) Being *being;
 @property (nonatomic, retain) Player *player;
-@property (nonatomic, retain) Portal *portalFrom;
-@property (nonatomic, retain) Portal *portalTo;
+@property (nonatomic, retain) PortalTemplate *portalFrom;
+@property (nonatomic, retain) PortalTemplate *portalTo;
 @property (nonatomic, retain) Wall *wall;
 
 @end

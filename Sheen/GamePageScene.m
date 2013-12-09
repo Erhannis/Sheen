@@ -20,6 +20,7 @@
 #import "LevelInstance+Create.h"
 #import "LevelTemplate+Create.h"
 #import "Savegame+Create.h"
+#import "MusicManager.h"
 
 @interface GamePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
@@ -34,11 +35,6 @@
 @end
 
 @implementation GamePageScene
-
-#define BG_COLOR_RED     (0x00 / 255.0)
-#define BG_COLOR_GREEN   (0x20 / 255.0)
-#define BG_COLOR_BLUE    (0x60 / 255.0)
-#define BG_COLOR_ALPHA   (0xFF / 255.0)
 
 #define CAMERA_HEIGHT (40.0)
 
@@ -270,6 +266,10 @@
     self.yScaleTrue = 1;
     self.scaleMode = SKSceneScaleModeAspectFill;
     self.backgroundColor = [SKColor colorWithRed:BG_COLOR_RED green:BG_COLOR_GREEN blue:BG_COLOR_BLUE alpha:BG_COLOR_ALPHA];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ChangeSongRequestNotification
+                                                        object:self
+                                                      userInfo:@{ChangeSongRequestFilename : }];
     
     //  Whoa!  SKBlendModeAdd is pretty!
     //  Screen similar

@@ -2,18 +2,17 @@
 //  LevelTemplate.h
 //  Sheen
 //
-//  Created by Matthew Ewer on 12/6/13.
+//  Created by Matthew Ewer on 12/9/13.
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Being, LevelInstance, Portal, Wall;
+@class Being, Color, LevelInstance, PortalTemplate, Wall;
 
 @interface LevelTemplate : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * bgColor;
 @property (nonatomic, retain) NSString * levelID;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * song;
@@ -22,6 +21,7 @@
 @property (nonatomic, retain) NSSet *portalsIncoming;
 @property (nonatomic, retain) NSSet *portalsOutgoing;
 @property (nonatomic, retain) NSSet *walls;
+@property (nonatomic, retain) Color *bgColor;
 @end
 
 @interface LevelTemplate (CoreDataGeneratedAccessors)
@@ -36,13 +36,13 @@
 - (void)addInstances:(NSSet *)values;
 - (void)removeInstances:(NSSet *)values;
 
-- (void)addPortalsIncomingObject:(Portal *)value;
-- (void)removePortalsIncomingObject:(Portal *)value;
+- (void)addPortalsIncomingObject:(PortalTemplate *)value;
+- (void)removePortalsIncomingObject:(PortalTemplate *)value;
 - (void)addPortalsIncoming:(NSSet *)values;
 - (void)removePortalsIncoming:(NSSet *)values;
 
-- (void)addPortalsOutgoingObject:(Portal *)value;
-- (void)removePortalsOutgoingObject:(Portal *)value;
+- (void)addPortalsOutgoingObject:(PortalTemplate *)value;
+- (void)removePortalsOutgoingObject:(PortalTemplate *)value;
 - (void)addPortalsOutgoing:(NSSet *)values;
 - (void)removePortalsOutgoing:(NSSet *)values;
 

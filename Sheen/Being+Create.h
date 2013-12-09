@@ -14,7 +14,6 @@
 
 + (Being *)blankBeingInManagedObjectContext:(NSManagedObjectContext *)context;
 
-+ (Being *)cloneCoreOf:(Being *)original
-inManagedObjectContext:(NSManagedObjectContext *)context;
++ (Being *)twinBeing:(Being *)original;
 
 @end

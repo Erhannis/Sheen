@@ -80,6 +80,8 @@
 
 + (Savegame *)twinSavegame:(Savegame *)original
 {
+    if (!original) return nil;
+    
     Savegame *savegame = nil;
     savegame = [NSEntityDescription insertNewObjectForEntityForName:@"Savegame"
                                              inManagedObjectContext:original.managedObjectContext];

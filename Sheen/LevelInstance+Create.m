@@ -21,9 +21,7 @@
                                                       inManagedObjectContext:context];
         levelInstance.template = levelTemplate;
         for (Being *beingTemplate in levelTemplate.beings) {
-            Being *newBeing = [Being cloneCoreOf:beingTemplate
-                          inManagedObjectContext:context];
-            // I believe this adds the being to `levelInstance.beings`.
+            Being *newBeing = [Being twinBeing:beingTemplate];
             newBeing.levelInstance = levelInstance;
         }
     }
@@ -32,16 +30,20 @@
 }
 
 + (LevelInstance *)twinLevelInstance:(LevelInstance *)original
+                        withSavegame:(Savegame *)savegame
 {
+    if (!original) return nil;
+    
     LevelInstance *levelInstance = [NSEntityDescription insertNewObjectForEntityForName:@"LevelInstance"
                                                                  inManagedObjectContext:original.managedObjectContext];
     levelInstance.template = original.template;
     
     for (Being *being in original.beings) {
-        Being *newBeing = [Being cloneCoreOf:being
-                      inManagedObjectContext:being.managedObjectContext];
+        Being *newBeing = [Being twinBeing:being];
         newBeing.levelInstance = levelInstance;
     }
+    
+    levelInstance.savegame = savegame;
     
     return levelInstance;
 }
