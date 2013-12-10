@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define DEBUGGING NO
+#define DEBUGGING YES
 
 @interface Debugging : NSObject
 

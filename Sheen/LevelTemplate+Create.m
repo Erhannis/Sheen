@@ -199,9 +199,9 @@
     levelTemplate.name = @"Test Level Connected 0";
     levelTemplate.song = @"djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_)";
     levelTemplate.bgColor = [Color colorInManagedObjectContext:context
-                                                       withRed:0.6
-                                                         green:0.3
-                                                          blue:0.1
+                                                       withRed:0.9
+                                                         green:0.6
+                                                          blue:0.2
                                                          alpha:1.0];
     
     Being *drop = [Being blankBeingInManagedObjectContext:context];

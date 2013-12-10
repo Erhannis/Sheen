@@ -18,7 +18,7 @@
                                       withSavegame:(Savegame *)savegame
                             inManagedObjectContext:(NSManagedObjectContext *)context;
 
-+ (LevelInstance *)twinLevelInstance:(LevelInstance *)original
-                        withSavegame:(Savegame *)savegame;
++ (LevelInstance *)twinLevelInstanceSetStartingFrom:(LevelInstance *)original
+                                       withSavegame:(Savegame *)savegame;
 
 @end

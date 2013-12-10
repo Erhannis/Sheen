@@ -75,21 +75,70 @@
     return levelInstance;
 }
 
-+ (LevelInstance *)twinLevelInstance:(LevelInstance *)original
-                        withSavegame:(Savegame *)savegame
++ (LevelInstance *)twinLevelInstanceSetStartingFrom:(LevelInstance *)original
+                                       withSavegame:(Savegame *)savegame
 {
-    if (!original) return nil;
-    
-    LevelInstance *levelInstance = [NSEntityDescription insertNewObjectForEntityForName:@"LevelInstance"
-                                                                 inManagedObjectContext:original.managedObjectContext];
-    levelInstance.template = original.template;
-    
-    for (Being *being in original.beings) {
-        Being *newBeing = [Being twinBeing:being];
-        newBeing.levelInstance = levelInstance;
+    LevelInstance *levelInstance = nil;
+
+    if (original) {
+        NSMutableArray *levelInstancesA = [[NSMutableArray alloc] init];
+        NSMutableArray *levelInstancesB = [[NSMutableArray alloc] init];
+        
+        levelInstance = [LevelInstance recurseThroughPortalsFromInstance:original
+                                                     withLevelInstancesA:levelInstancesA
+                                         andCorrespondingLevelInstancesB:levelInstancesB
+                                                            withSavegame:savegame];
     }
     
-    levelInstance.savegame = savegame;
+    return levelInstance;
+}
+
++ (LevelInstance *)recurseThroughPortalsFromInstance:(LevelInstance *)original
+                                 withLevelInstancesA:(NSMutableArray *)levelInstancesA
+                     andCorrespondingLevelInstancesB:(NSMutableArray *)levelInstancesB
+                                        withSavegame:(Savegame *)savegame
+{
+    LevelInstance *levelInstance = nil;
+    
+    if (original) {
+        levelInstance = [NSEntityDescription insertNewObjectForEntityForName:@"LevelInstance"
+                                                                     inManagedObjectContext:original.managedObjectContext];
+        levelInstance.template = original.template;
+        levelInstance.savegame = savegame;
+        
+        for (Being *being in original.beings) {
+            Being *newBeing = [Being twinBeing:being];
+            newBeing.levelInstance = levelInstance;
+        }
+        
+        [levelInstancesA addObject:original];
+        [levelInstancesB addObject:levelInstance];
+        
+        for (PortalInstance *portalInstance in original.portalsOutgoing) {
+            if (![levelInstancesA containsObject:portalInstance.toLevelInstance]) {
+                LevelInstance *toLevelInstance = [LevelInstance recurseThroughPortalsFromInstance:portalInstance.toLevelInstance
+                                                                              withLevelInstancesA:levelInstancesA
+                                                                  andCorrespondingLevelInstancesB:levelInstancesB
+                                                                                     withSavegame:savegame];
+                [PortalInstance createPortalInstanceWithTemplate:portalInstance.template
+                                               fromLevelInstance:levelInstance
+                                                 toLevelInstance:toLevelInstance];
+            } else {
+                LevelInstance *toLevelInstance = [levelInstancesB objectAtIndex:[levelInstancesA indexOfObject:portalInstance.toLevelInstance]];
+                [PortalInstance createPortalInstanceWithTemplate:portalInstance.template
+                                               fromLevelInstance:levelInstance
+                                                 toLevelInstance:toLevelInstance];
+            }
+        }
+        for (PortalInstance *portalInstance in original.portalsIncoming) {
+            if (![levelInstancesA containsObject:portalInstance.fromLevelInstance]) {
+                [LevelInstance recurseThroughPortalsFromInstance:portalInstance.fromLevelInstance
+                                             withLevelInstancesA:levelInstancesA
+                                 andCorrespondingLevelInstancesB:levelInstancesB
+                                                    withSavegame:savegame];
+            }
+        }
+    }
     
     return levelInstance;
 }

@@ -10,7 +10,7 @@
 
 @implementation PortalTemplate (Create)
 
-#define DEFAULT_PORTAL_RADIUS (50.0)
+#define DEFAULT_PORTAL_RADIUS (75.0)
 
 + (PortalTemplate *)blankPortalTemplateInManagedObjectContext:(NSManagedObjectContext *)context
 {

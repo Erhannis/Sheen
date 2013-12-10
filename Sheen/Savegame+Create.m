@@ -89,15 +89,9 @@
     savegame.thumbnail = original.thumbnail;
     savegame.player = [Player twinPlayer:original.player];
     
-    //TODO This was/is showing a bunch of extras.  Why?
-    for (LevelInstance *levelInstance in original.levels) {
-        LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance
-                                                              withSavegame:savegame];
-        //TODO Move this into the twin function?
-        if (levelInstance == original.player.curLevel) {
-            savegame.player.curLevel = newLevelInstance;
-        }
-    }
+    LevelInstance *newLevelInstance = [LevelInstance twinLevelInstanceSetStartingFrom:original.player.curLevel
+                                                                         withSavegame:savegame];
+    savegame.player.curLevel = newLevelInstance;
     
     return savegame;
 }
@@ -112,14 +106,9 @@
     autosave.thumbnail = [savegameToUse.thumbnail copy];
     autosave.player = [Player twinPlayer:savegameToUse.player];
     [autosave removeLevels:autosave.levels];
-    for (LevelInstance *levelInstance in savegameToUse.levels) {
-        LevelInstance *newLevelInstance = [LevelInstance twinLevelInstance:levelInstance
-                                                              withSavegame:autosave];
-        //TODO Move this into the twin function?
-        if (levelInstance == savegameToUse.player.curLevel) {
-            autosave.player.curLevel = newLevelInstance;
-        }
-    }
+    LevelInstance *newLevelInstance = [LevelInstance twinLevelInstanceSetStartingFrom:savegameToUse.player.curLevel
+                                                                         withSavegame:autosave];
+    autosave.player.curLevel = newLevelInstance;
 }
 
 @end

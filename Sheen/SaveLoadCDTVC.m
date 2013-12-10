@@ -80,11 +80,20 @@
     if (self.saveMode) {
         //TODO Expand this.
         if ([savegame.savegameID isEqualToString:SAVEGAME_ID_NEW_SAVEGAME]) {
-            [Savegame twinSavegame:[Savegame getAutosaveInManagedObjectContext:self.managedObjectContext]];
+            Savegame *autosave = [Savegame getAutosaveInManagedObjectContext:self.managedObjectContext];
+            NSLog(@"saving game %@", autosave);
+            NSLog(@"cur level %@", autosave.player.curLevel);
+            Savegame *savedgame = [Savegame twinSavegame:autosave];
+            NSLog(@"saved game %@", savedgame);
+            NSLog(@"cur level %@", savedgame.player.curLevel);
         }
         [self performSegueWithIdentifier:@"Unwind to game page" sender:self];
     } else {
-        [Savegame setAsAutosave:savegame];
+        NSLog(@"loading game %@", savegame);
+        NSLog(@"cur level %@", savegame.player.curLevel);
+       [Savegame setAsAutosave:savegame];
+        NSLog(@"loaded game %@", [Savegame getAutosaveInManagedObjectContext:self.managedObjectContext]);
+        NSLog(@"cur level %@", [Savegame getAutosaveInManagedObjectContext:self.managedObjectContext].player.curLevel);
         if (self.fromTitlePage) {
             [self performSegueWithIdentifier:@"Load To Game Page" sender:self];
         } else {

@@ -110,7 +110,7 @@
 {
     self.skView.paused = YES;
     if ([segue.identifier isEqualToString:@"Go New Game"]) {
-        ((GamePageVC *)segue.destinationViewController).levelInstance = [LevelInstance createLevelInstanceWithTemplate:[LevelTemplate levelTemplateWithID:DEFAULT_LEVEL_TEST_1
+        ((GamePageVC *)segue.destinationViewController).levelInstance = [LevelInstance createLevelInstanceWithTemplate:[LevelTemplate levelTemplateWithID:DEFAULT_CONNECTED_LEVEL_TEST_0
                                                                                                                                    inManagedObjectContext:self.context]
                                                                                                           withSavegame:[Savegame overwriteWithBlankAutosaveInManagedObjectContext:self.context]
                                                                                                 inManagedObjectContext:self.context];

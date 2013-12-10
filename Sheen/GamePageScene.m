@@ -35,6 +35,7 @@
 @property (nonatomic) CGFloat lastWidth;
 @property (strong, nonatomic) LevelInstance *levelInstance;
 @property (strong, nonatomic) Player *player;
+@property (nonatomic) int cycle;
 @end
 
 @implementation GamePageScene
@@ -51,6 +52,7 @@
 
 #define PLAYER_VELOCITY_FACTOR (5)
 
+#define DEFAULT_ZOOM (0.75)
 #define SIDE_SPACE (1.0)
 #define MIN_ZOOM (1/2.5)
 
@@ -150,6 +152,10 @@
 
 - (void)update:(NSTimeInterval)currentTime
 {
+    if ((self.cycle % (60 * 5)) == 0) {
+        NSLog(@"location %f,%f", self.focus.position.x, self.focus.position.y);
+    }
+    self.cycle++;
 }
 
 - (void)didSimulatePhysics
@@ -193,7 +199,7 @@
 - (void)didPinch:(UIPinchGestureRecognizer *)sender {
     [self scaleBy:sender.scale];
     sender.scale = 1.0;
-    NSLog(@"recognized pinch");
+//    NSLog(@"recognized pinch");
 }
 
 - (void)didRotation:(UIRotationGestureRecognizer *)sender {
@@ -216,10 +222,14 @@
 }
 
 - (void)didLongPress:(UILongPressGestureRecognizer *)sender {
-    NSLog(@"recognized long press %li", sender.state);
     if (sender.state == UIGestureRecognizerStateBegan) {
+        //TODO UGGGH.  This took way too long, and is kinda hacky.
         CGPoint loc = [sender locationInView:self.view];
         loc = [self convertPointFromView:loc];
+        CGFloat c = MIN(self.view.frame.size.height / 2, self.view.frame.size.width / 2);
+        CGFloat d = MAX(self.view.frame.size.height / 2, self.view.frame.size.width / 2);
+        loc = CGPointMake(loc.x - (c * (1 - (1 / self.xScaleTrue))), loc.y - (d * (1 - (1 / self.yScaleTrue))));
+        NSLog(@"off %f,%f", loc.x - self.focus.position.x, loc.y - self.focus.position.y);
         //TODO This seems inefficient.
         for (PortalInstance *portalInstance in self.levelInstance.portalsOutgoing) {
             if (CGPathContainsPoint([MathUtils circleOfRadius:portalInstance.template.radius.floatValue
@@ -253,7 +263,8 @@
     self.player.curLevel = levelInstance;
     [self loadLevelInstance:levelInstance
                   andPlayer:self.player
-               withViewSize:self.view.frame.size];
+               withViewSize:self.view.frame.size
+                    atScale:self.xScaleTrue];
 }
 
 - (void)updateDatabase
@@ -299,6 +310,14 @@
 - (void)loadLevelInstance:(LevelInstance *)levelInstance
                 andPlayer:(Player *)player
              withViewSize:(CGSize)size
+{
+    [self loadLevelInstance:levelInstance andPlayer:player withViewSize:size atScale:DEFAULT_ZOOM];
+}
+
+- (void)loadLevelInstance:(LevelInstance *)levelInstance
+                andPlayer:(Player *)player
+             withViewSize:(CGSize)size
+                  atScale:(CGFloat)scale
 {
     [self removeAllChildren];
     [self.beings removeAllObjects];
@@ -395,7 +414,8 @@
         portalNode.glowWidth = DEFAULT_PORTAL_GLOW_WIDTH;
         [self addChild:portalNode];
     }
-    
+//    self.xScaleTrue = 1.0;
+//    self.yScaleTrue = 1.0;
     [self scaleTo:0.75];
     self.focus = drop;
     self.anchorPoint = CGPointMake((0.5 / self.xScaleTrue) - (self.xScaleTrue * self.focus.position.x / self.frame.size.width), (0.5 / self.yScaleTrue) - (self.yScaleTrue * self.focus.position.y / self.frame.size.height));
