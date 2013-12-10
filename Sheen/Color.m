@@ -16,14 +16,14 @@
 
 @implementation Color
 
-@dynamic red;
-@dynamic green;
-@dynamic blue;
 @dynamic alpha;
-@dynamic levelTemplate;
-@dynamic item;
-@dynamic wall;
+@dynamic blue;
+@dynamic green;
+@dynamic red;
 @dynamic being;
+@dynamic item;
+@dynamic levelTemplate;
 @dynamic player;
+@dynamic wall;
 
 @end

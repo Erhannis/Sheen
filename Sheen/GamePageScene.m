@@ -21,6 +21,9 @@
 #import "LevelTemplate+Create.h"
 #import "Savegame+Create.h"
 #import "MusicManager.h"
+#import "Color+Create.h"
+#import "PortalInstance+Create.h"
+#import "PortalTemplate+Create.h"
 
 @interface GamePageScene ()
 @property (strong, nonatomic) NSMutableArray *motes; // of Mote
@@ -213,7 +216,44 @@
 }
 
 - (void)didLongPress:(UILongPressGestureRecognizer *)sender {
-    NSLog(@"recognized long press");
+    NSLog(@"recognized long press %li", sender.state);
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        CGPoint loc = [sender locationInView:self.view];
+        loc = [self convertPointFromView:loc];
+        //TODO This seems inefficient.
+        for (PortalInstance *portalInstance in self.levelInstance.portalsOutgoing) {
+            if (CGPathContainsPoint([MathUtils circleOfRadius:portalInstance.template.radius.floatValue
+                                                  centeredOnX:portalInstance.template.fromPlace.xPos.floatValue
+                                                       andOnY:portalInstance.template.fromPlace.yPos.floatValue],
+                                    NULL, loc, YES)) {
+                [self portToLevelInstance:portalInstance.toLevelInstance
+                               atPosition:CGPointMake(portalInstance.template.toPlace.xPos.floatValue, portalInstance.template.toPlace.yPos.floatValue)];
+                return;
+            }
+        }
+        for (PortalInstance *portalInstance in self.levelInstance.portalsIncoming) {
+            if (CGPathContainsPoint([MathUtils circleOfRadius:portalInstance.template.radius.floatValue
+                                                  centeredOnX:portalInstance.template.toPlace.xPos.floatValue
+                                                       andOnY:portalInstance.template.toPlace.yPos.floatValue],
+                                    NULL, loc, YES)) {
+                [self portToLevelInstance:portalInstance.fromLevelInstance
+                               atPosition:CGPointMake(portalInstance.template.fromPlace.xPos.floatValue, portalInstance.template.fromPlace.yPos.floatValue)];
+                return;
+            }
+        }
+    }
+}
+
+- (void)portToLevelInstance:(LevelInstance *)levelInstance
+                 atPosition:(CGPoint)position
+{
+    [self updateDatabase];
+    self.player.spatial.xPos = [NSNumber numberWithFloat:position.x];
+    self.player.spatial.yPos = [NSNumber numberWithFloat:position.y];
+    self.player.curLevel = levelInstance;
+    [self loadLevelInstance:levelInstance
+                  andPlayer:self.player
+               withViewSize:self.view.frame.size];
 }
 
 - (void)updateDatabase
@@ -251,6 +291,11 @@
     [self loadLevelInstance:levelInstance andPlayer:player withViewSize:self.view.frame.size];
 }
 
+#define DEFAULT_BG_COLOR_RED     (0x00 / 255.0)
+#define DEFAULT_BG_COLOR_GREEN   (0x20 / 255.0)
+#define DEFAULT_BG_COLOR_BLUE    (0x60 / 255.0)
+#define DEFAULT_BG_COLOR_ALPHA   (0xFF / 255.0)
+
 - (void)loadLevelInstance:(LevelInstance *)levelInstance
                 andPlayer:(Player *)player
              withViewSize:(CGSize)size
@@ -265,17 +310,25 @@
     self.xScaleTrue = 1;
     self.yScaleTrue = 1;
     self.scaleMode = SKSceneScaleModeAspectFill;
-    self.backgroundColor = [SKColor colorWithRed:BG_COLOR_RED green:BG_COLOR_GREEN blue:BG_COLOR_BLUE alpha:BG_COLOR_ALPHA];
+    if (!levelInstance.template.bgColor) {
+        self.backgroundColor = [SKColor colorWithRed:DEFAULT_BG_COLOR_RED green:DEFAULT_BG_COLOR_GREEN blue:DEFAULT_BG_COLOR_BLUE alpha:DEFAULT_BG_COLOR_ALPHA];
+    } else {
+        self.backgroundColor = [SKColor colorWithRed:levelInstance.template.bgColor.red.floatValue
+                                               green:levelInstance.template.bgColor.green.floatValue
+                                                blue:levelInstance.template.bgColor.blue.floatValue
+                                               alpha:levelInstance.template.bgColor.alpha.floatValue];
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:ChangeSongRequestNotification
                                                         object:self
-                                                      userInfo:@{ChangeSongRequestFilename : }];
+                                                      userInfo:@{ChangeSongRequestFilename : levelInstance.template.song}];
     
     //  Whoa!  SKBlendModeAdd is pretty!
     //  Screen similar
     //  SKBlendModeSubtract is kinda like negative world
     SKBlendMode blendMode = SKBlendModeAlpha;
     
+    //TODO Incorporate colors
     Drop *drop = [[Drop alloc] initWithImageNamed:@"drop-9-green"];
     drop.imageFilename = @"drop-9-green";
     drop.radius = drop.frame.size.width / 2;
@@ -290,6 +343,7 @@
     [self addChild:drop];
     
     for (Being *being in levelInstance.beings) {
+        //TODO Incorporate colors
         Drop *d = [[Drop alloc] initWithImageNamed:being.imageFilename];
         d.imageFilename = being.imageFilename;
         d.radius = d.frame.size.width / 2;
@@ -316,6 +370,30 @@
         wallNode.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallNode.path];
         //TODO Consider allowing walls to have velocity.
         [self addChild:wallNode];
+    }
+    
+    //TODO Would it be more efficient or just more complicated to keep track of portals in our own NSArray?
+    for (PortalInstance *portalInstance in levelInstance.portalsOutgoing) {
+        SKShapeNode *portalNode = [[SKShapeNode alloc] init];
+        portalNode.path = [MathUtils circleOfRadius:portalInstance.template.radius.floatValue
+                                        centeredOnX:0.0
+                                             andOnY:0.0];
+        portalNode.position = CGPointMake(portalInstance.template.fromPlace.xPos.floatValue, portalInstance.template.fromPlace.yPos.floatValue);
+        portalNode.strokeColor = DEFAULT_PORTAL_OUTGOING_COLOR;
+        portalNode.lineWidth = DEFAULT_PORTAL_STROKE_WIDTH;
+        portalNode.glowWidth = DEFAULT_PORTAL_GLOW_WIDTH;
+        [self addChild:portalNode];
+    }
+    for (PortalInstance *portalInstance in levelInstance.portalsIncoming) {
+        SKShapeNode *portalNode = [[SKShapeNode alloc] init];
+        portalNode.path = [MathUtils circleOfRadius:portalInstance.template.radius.floatValue
+                                        centeredOnX:0.0
+                                             andOnY:0.0];
+        portalNode.position = CGPointMake(portalInstance.template.toPlace.xPos.floatValue, portalInstance.template.toPlace.yPos.floatValue);
+        portalNode.strokeColor = DEFAULT_PORTAL_INCOMING_COLOR;
+        portalNode.lineWidth = DEFAULT_PORTAL_STROKE_WIDTH;
+        portalNode.glowWidth = DEFAULT_PORTAL_GLOW_WIDTH;
+        [self addChild:portalNode];
     }
     
     [self scaleTo:0.75];

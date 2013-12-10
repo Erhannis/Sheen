@@ -18,11 +18,11 @@
 @property (nonatomic, retain) NSNumber * exp;
 @property (nonatomic, retain) NSNumber * maxHealth;
 @property (nonatomic, retain) NSNumber * maxWill;
+@property (nonatomic, retain) Color *color;
 @property (nonatomic, retain) LevelInstance *curLevel;
 @property (nonatomic, retain) NSSet *items;
 @property (nonatomic, retain) Savegame *savegame;
 @property (nonatomic, retain) SpatialEntity *spatial;
-@property (nonatomic, retain) Color *color;
 @end
 
 @interface Player (CoreDataGeneratedAccessors)

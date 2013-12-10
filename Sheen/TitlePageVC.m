@@ -112,8 +112,8 @@
     if ([segue.identifier isEqualToString:@"Go New Game"]) {
         ((GamePageVC *)segue.destinationViewController).levelInstance = [LevelInstance createLevelInstanceWithTemplate:[LevelTemplate levelTemplateWithID:DEFAULT_LEVEL_TEST_1
                                                                                                                                    inManagedObjectContext:self.context]
+                                                                                                          withSavegame:[Savegame overwriteWithBlankAutosaveInManagedObjectContext:self.context]
                                                                                                 inManagedObjectContext:self.context];
-        ((GamePageVC *)segue.destinationViewController).levelInstance.savegame = [Savegame overwriteWithBlankAutosaveInManagedObjectContext:self.context];
         ((GamePageVC *)segue.destinationViewController).player = [Player defaultPlayerInManagedObjectContext:self.context];
         ((GamePageVC *)segue.destinationViewController).player.savegame = ((GamePageVC *)segue.destinationViewController).levelInstance.savegame;
         ((GamePageVC *)segue.destinationViewController).player.curLevel = ((GamePageVC *)segue.destinationViewController).levelInstance;

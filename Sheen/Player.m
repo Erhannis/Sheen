@@ -21,10 +21,10 @@
 @dynamic exp;
 @dynamic maxHealth;
 @dynamic maxWill;
+@dynamic color;
 @dynamic curLevel;
 @dynamic items;
 @dynamic savegame;
 @dynamic spatial;
-@dynamic color;
 
 @end

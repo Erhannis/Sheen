@@ -10,6 +10,11 @@
 
 @interface PortalTemplate (Create)
 
+#define DEFAULT_PORTAL_OUTGOING_COLOR [SKColor redColor]
+#define DEFAULT_PORTAL_INCOMING_COLOR [SKColor greenColor]
+#define DEFAULT_PORTAL_STROKE_WIDTH (2.0)
+#define DEFAULT_PORTAL_GLOW_WIDTH (5.0)
+
 + (PortalTemplate *)defaultPortalTemplateInManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

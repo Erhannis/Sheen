@@ -20,10 +20,10 @@
 @dynamic name;
 @dynamic song;
 @dynamic beings;
+@dynamic bgColor;
 @dynamic instances;
 @dynamic portalsIncoming;
 @dynamic portalsOutgoing;
 @dynamic walls;
-@dynamic bgColor;
 
 @end

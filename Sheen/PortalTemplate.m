@@ -17,8 +17,8 @@
 @dynamic radius;
 @dynamic fromLevel;
 @dynamic fromPlace;
+@dynamic instances;
 @dynamic toLevel;
 @dynamic toPlace;
-@dynamic instances;
 
 @end

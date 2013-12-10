@@ -13,14 +13,14 @@
 
 @interface Color : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * red;
-@property (nonatomic, retain) NSNumber * green;
-@property (nonatomic, retain) NSNumber * blue;
 @property (nonatomic, retain) NSNumber * alpha;
-@property (nonatomic, retain) LevelTemplate *levelTemplate;
-@property (nonatomic, retain) Item *item;
-@property (nonatomic, retain) Wall *wall;
+@property (nonatomic, retain) NSNumber * blue;
+@property (nonatomic, retain) NSNumber * green;
+@property (nonatomic, retain) NSNumber * red;
 @property (nonatomic, retain) Being *being;
+@property (nonatomic, retain) Item *item;
+@property (nonatomic, retain) LevelTemplate *levelTemplate;
 @property (nonatomic, retain) Player *player;
+@property (nonatomic, retain) Wall *wall;
 
 @end

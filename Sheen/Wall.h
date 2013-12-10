@@ -14,9 +14,9 @@
 @interface Wall : NSManagedObject
 
 @property (nonatomic, retain) NSData * shape;
+@property (nonatomic, retain) Color *color;
 @property (nonatomic, retain) NSSet *levels;
 @property (nonatomic, retain) SpatialEntity *location;
-@property (nonatomic, retain) Color *color;
 @end
 
 @interface Wall (CoreDataGeneratedAccessors)

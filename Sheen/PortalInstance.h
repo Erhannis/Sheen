@@ -14,7 +14,7 @@
 @interface PortalInstance : NSManagedObject
 
 @property (nonatomic, retain) LevelInstance *fromLevelInstance;
-@property (nonatomic, retain) LevelInstance *toLevelInstance;
 @property (nonatomic, retain) PortalTemplate *template;
+@property (nonatomic, retain) LevelInstance *toLevelInstance;
 
 @end

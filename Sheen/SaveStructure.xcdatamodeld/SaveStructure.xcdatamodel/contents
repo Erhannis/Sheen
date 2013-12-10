@@ -30,9 +30,9 @@
     </entity>
     <entity name="LevelInstance" representedClassName="LevelInstance" syncable="YES">
         <relationship name="beings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Being" inverseName="levelInstance" inverseEntity="Being" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortalInstance" inverseName="fromLevelInstance" inverseEntity="PortalInstance" syncable="YES"/>
-        <relationship name="newRelationship1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortalInstance" inverseName="toLevelInstance" inverseEntity="PortalInstance" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="curLevel" inverseEntity="Player" syncable="YES"/>
+        <relationship name="portalsIncoming" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortalInstance" inverseName="toLevelInstance" inverseEntity="PortalInstance" syncable="YES"/>
+        <relationship name="portalsOutgoing" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortalInstance" inverseName="fromLevelInstance" inverseEntity="PortalInstance" syncable="YES"/>
         <relationship name="savegame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Savegame" inverseName="levels" inverseEntity="Savegame" syncable="YES"/>
         <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelTemplate" inverseName="instances" inverseEntity="LevelTemplate" syncable="YES"/>
     </entity>
@@ -60,9 +60,9 @@
         <relationship name="spatial" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpatialEntity" inverseName="player" inverseEntity="SpatialEntity" syncable="YES"/>
     </entity>
     <entity name="PortalInstance" representedClassName="PortalInstance" syncable="YES">
-        <relationship name="fromLevelInstance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="newRelationship" inverseEntity="LevelInstance" syncable="YES"/>
+        <relationship name="fromLevelInstance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="portalsOutgoing" inverseEntity="LevelInstance" syncable="YES"/>
         <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortalTemplate" inverseName="instances" inverseEntity="PortalTemplate" syncable="YES"/>
-        <relationship name="toLevelInstance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="newRelationship1" inverseEntity="LevelInstance" syncable="YES"/>
+        <relationship name="toLevelInstance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelInstance" inverseName="portalsIncoming" inverseEntity="LevelInstance" syncable="YES"/>
     </entity>
     <entity name="PortalTemplate" representedClassName="PortalTemplate" syncable="YES">
         <attribute name="radius" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -97,15 +97,15 @@
     </entity>
     <elements>
         <element name="Being" positionX="106" positionY="24" width="128" height="133"/>
+        <element name="Color" positionX="97" positionY="227" width="128" height="178"/>
         <element name="Item" positionX="531" positionY="81" width="128" height="148"/>
         <element name="LevelInstance" positionX="-299" positionY="21" width="128" height="133"/>
         <element name="LevelTemplate" positionX="-99" positionY="27" width="128" height="178"/>
         <element name="Player" positionX="261" positionY="54" width="128" height="193"/>
+        <element name="PortalInstance" positionX="511" positionY="-214" width="128" height="88"/>
         <element name="PortalTemplate" positionX="331" positionY="-216" width="128" height="133"/>
         <element name="Savegame" positionX="-90" positionY="-135" width="128" height="105"/>
         <element name="SpatialEntity" positionX="99" positionY="-261" width="128" height="180"/>
         <element name="Wall" positionX="369" positionY="-54" width="128" height="103"/>
-        <element name="Color" positionX="97" positionY="227" width="128" height="178"/>
-        <element name="PortalInstance" positionX="511" positionY="-214" width="128" height="88"/>
     </elements>
 </model>

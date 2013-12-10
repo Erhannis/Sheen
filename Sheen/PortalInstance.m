@@ -14,7 +14,7 @@
 @implementation PortalInstance
 
 @dynamic fromLevelInstance;
-@dynamic toLevelInstance;
 @dynamic template;
+@dynamic toLevelInstance;
 
 @end

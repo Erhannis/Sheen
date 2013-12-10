@@ -7,7 +7,7 @@
 //
 
 #import "PortalInstance+Create.h"
-#import "Por"
+#import "PortalTemplate+Create.h"
 
 @implementation PortalInstance (Create)
 

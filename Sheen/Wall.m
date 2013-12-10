@@ -15,8 +15,8 @@
 @implementation Wall
 
 @dynamic shape;
+@dynamic color;
 @dynamic levels;
 @dynamic location;
-@dynamic color;
 
 @end

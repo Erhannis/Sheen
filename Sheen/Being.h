@@ -15,9 +15,9 @@
 
 @property (nonatomic, retain) NSString * imageFilename;
 @property (nonatomic, retain) NSNumber * type;
+@property (nonatomic, retain) Color *color;
 @property (nonatomic, retain) LevelInstance *levelInstance;
 @property (nonatomic, retain) LevelTemplate *levelTemplate;
 @property (nonatomic, retain) SpatialEntity *spatial;
-@property (nonatomic, retain) Color *color;
 
 @end

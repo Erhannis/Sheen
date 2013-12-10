@@ -8,17 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C70A00661856766C0093D8E0 /* Color+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A00651856766C0093D8E0 /* Color+Create.m */; };
-		C70A006C185684DD0093D8E0 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A006B185684DD0093D8E0 /* Wall.m */; };
-		C70A006F185684DE0093D8E0 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A006E185684DE0093D8E0 /* Item.m */; };
-		C70A0072185684DE0093D8E0 /* Savegame.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A0071185684DE0093D8E0 /* Savegame.m */; };
-		C70A0075185684DE0093D8E0 /* PortalInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A0074185684DE0093D8E0 /* PortalInstance.m */; };
-		C70A0078185684DE0093D8E0 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A0077185684DE0093D8E0 /* Player.m */; };
-		C70A007B185684DE0093D8E0 /* PortalTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A007A185684DE0093D8E0 /* PortalTemplate.m */; };
-		C70A007E185684DE0093D8E0 /* LevelInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A007D185684DE0093D8E0 /* LevelInstance.m */; };
-		C70A0081185684DE0093D8E0 /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A0080185684DE0093D8E0 /* SpatialEntity.m */; };
-		C70A0084185684DE0093D8E0 /* Being.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A0083185684DE0093D8E0 /* Being.m */; };
-		C70A0087185684DE0093D8E0 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A0086185684DE0093D8E0 /* Color.m */; };
-		C70A008A185684DE0093D8E0 /* LevelTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A0089185684DE0093D8E0 /* LevelTemplate.m */; };
 		C70A008D185684F80093D8E0 /* PortalInstance+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A008C185684F80093D8E0 /* PortalInstance+Create.m */; };
 		C70A75CF18467FE4005F3680 /* SaveStructure.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C70A75CD18467FE4005F3680 /* SaveStructure.xcdatamodeld */; };
 		C70A75ED18468F18005F3680 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75EC18468F18005F3680 /* DatabaseManager.m */; };
@@ -63,6 +52,17 @@
 		C794E897183B5E2E00019BF2 /* Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = C794E896183B5E2E00019BF2 /* Debugging.m */; };
 		C7B26B8C184FF88500ECB600 /* Item+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B26B8B184FF88500ECB600 /* Item+Create.m */; };
 		C7B675AF1856882E009FB924 /* PortalTemplate+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675AD1856882E009FB924 /* PortalTemplate+Create.m */; };
+		C7B675B218569119009FB924 /* LevelTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675B118569119009FB924 /* LevelTemplate.m */; };
+		C7B675B518569119009FB924 /* Savegame.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675B418569119009FB924 /* Savegame.m */; };
+		C7B675B818569119009FB924 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675B718569119009FB924 /* Item.m */; };
+		C7B675BB18569119009FB924 /* LevelInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675BA18569119009FB924 /* LevelInstance.m */; };
+		C7B675BE18569119009FB924 /* SpatialEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675BD18569119009FB924 /* SpatialEntity.m */; };
+		C7B675C118569119009FB924 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675C018569119009FB924 /* Player.m */; };
+		C7B675C418569119009FB924 /* PortalTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675C318569119009FB924 /* PortalTemplate.m */; };
+		C7B675C71856911A009FB924 /* Being.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675C61856911A009FB924 /* Being.m */; };
+		C7B675CA1856911A009FB924 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675C91856911A009FB924 /* Color.m */; };
+		C7B675CD1856911A009FB924 /* PortalInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675CC1856911A009FB924 /* PortalInstance.m */; };
+		C7B675D01856911A009FB924 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675CF1856911A009FB924 /* Wall.m */; };
 		C7C98DDE1847D13C008C2B0D /* Wall+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C98DDD1847D13C008C2B0D /* Wall+Create.m */; };
 		C7DED2F0182F468200F953A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2EF182F468200F953A5 /* Foundation.framework */; };
 		C7DED2F2182F468200F953A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2F1182F468200F953A5 /* CoreGraphics.framework */; };
@@ -94,28 +94,6 @@
 /* Begin PBXFileReference section */
 		C70A00641856766C0093D8E0 /* Color+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Color+Create.h"; sourceTree = "<group>"; };
 		C70A00651856766C0093D8E0 /* Color+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Color+Create.m"; sourceTree = "<group>"; };
-		C70A006A185684DD0093D8E0 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
-		C70A006B185684DD0093D8E0 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
-		C70A006D185684DE0093D8E0 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
-		C70A006E185684DE0093D8E0 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		C70A0070185684DE0093D8E0 /* Savegame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Savegame.h; sourceTree = "<group>"; };
-		C70A0071185684DE0093D8E0 /* Savegame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Savegame.m; sourceTree = "<group>"; };
-		C70A0073185684DE0093D8E0 /* PortalInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalInstance.h; sourceTree = "<group>"; };
-		C70A0074185684DE0093D8E0 /* PortalInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalInstance.m; sourceTree = "<group>"; };
-		C70A0076185684DE0093D8E0 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		C70A0077185684DE0093D8E0 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		C70A0079185684DE0093D8E0 /* PortalTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalTemplate.h; sourceTree = "<group>"; };
-		C70A007A185684DE0093D8E0 /* PortalTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalTemplate.m; sourceTree = "<group>"; };
-		C70A007C185684DE0093D8E0 /* LevelInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelInstance.h; sourceTree = "<group>"; };
-		C70A007D185684DE0093D8E0 /* LevelInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelInstance.m; sourceTree = "<group>"; };
-		C70A007F185684DE0093D8E0 /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpatialEntity.h; sourceTree = "<group>"; };
-		C70A0080185684DE0093D8E0 /* SpatialEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpatialEntity.m; sourceTree = "<group>"; };
-		C70A0082185684DE0093D8E0 /* Being.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Being.h; sourceTree = "<group>"; };
-		C70A0083185684DE0093D8E0 /* Being.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Being.m; sourceTree = "<group>"; };
-		C70A0085185684DE0093D8E0 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
-		C70A0086185684DE0093D8E0 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
-		C70A0088185684DE0093D8E0 /* LevelTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTemplate.h; sourceTree = "<group>"; };
-		C70A0089185684DE0093D8E0 /* LevelTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTemplate.m; sourceTree = "<group>"; };
 		C70A008B185684F80093D8E0 /* PortalInstance+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PortalInstance+Create.h"; sourceTree = "<group>"; };
 		C70A008C185684F80093D8E0 /* PortalInstance+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PortalInstance+Create.m"; sourceTree = "<group>"; };
 		C70A75CE18467FE4005F3680 /* SaveStructure.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveStructure.xcdatamodel; sourceTree = "<group>"; };
@@ -190,6 +168,28 @@
 		C7B26B8B184FF88500ECB600 /* Item+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+Create.m"; sourceTree = "<group>"; };
 		C7B675AD1856882E009FB924 /* PortalTemplate+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PortalTemplate+Create.m"; sourceTree = "<group>"; };
 		C7B675AE1856882E009FB924 /* PortalTemplate+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PortalTemplate+Create.h"; sourceTree = "<group>"; };
+		C7B675B018569119009FB924 /* LevelTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTemplate.h; sourceTree = "<group>"; };
+		C7B675B118569119009FB924 /* LevelTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTemplate.m; sourceTree = "<group>"; };
+		C7B675B318569119009FB924 /* Savegame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Savegame.h; sourceTree = "<group>"; };
+		C7B675B418569119009FB924 /* Savegame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Savegame.m; sourceTree = "<group>"; };
+		C7B675B618569119009FB924 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		C7B675B718569119009FB924 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		C7B675B918569119009FB924 /* LevelInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelInstance.h; sourceTree = "<group>"; };
+		C7B675BA18569119009FB924 /* LevelInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelInstance.m; sourceTree = "<group>"; };
+		C7B675BC18569119009FB924 /* SpatialEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpatialEntity.h; sourceTree = "<group>"; };
+		C7B675BD18569119009FB924 /* SpatialEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpatialEntity.m; sourceTree = "<group>"; };
+		C7B675BF18569119009FB924 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		C7B675C018569119009FB924 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		C7B675C218569119009FB924 /* PortalTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalTemplate.h; sourceTree = "<group>"; };
+		C7B675C318569119009FB924 /* PortalTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalTemplate.m; sourceTree = "<group>"; };
+		C7B675C51856911A009FB924 /* Being.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Being.h; sourceTree = "<group>"; };
+		C7B675C61856911A009FB924 /* Being.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Being.m; sourceTree = "<group>"; };
+		C7B675C81856911A009FB924 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		C7B675C91856911A009FB924 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
+		C7B675CB1856911A009FB924 /* PortalInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalInstance.h; sourceTree = "<group>"; };
+		C7B675CC1856911A009FB924 /* PortalInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalInstance.m; sourceTree = "<group>"; };
+		C7B675CE1856911A009FB924 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		C7B675CF1856911A009FB924 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
 		C7C98DDC1847D13C008C2B0D /* Wall+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Wall+Create.h"; sourceTree = "<group>"; };
 		C7C98DDD1847D13C008C2B0D /* Wall+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Wall+Create.m"; sourceTree = "<group>"; };
 		C7DED2EC182F468200F953A5 /* Sheen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sheen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,35 +246,35 @@
 		C70A75CC18467FB0005F3680 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				C7B675B018569119009FB924 /* LevelTemplate.h */,
+				C7B675CE1856911A009FB924 /* Wall.h */,
+				C7B675CF1856911A009FB924 /* Wall.m */,
+				C7B675CB1856911A009FB924 /* PortalInstance.h */,
+				C7B675CC1856911A009FB924 /* PortalInstance.m */,
+				C7B675C81856911A009FB924 /* Color.h */,
+				C7B675C91856911A009FB924 /* Color.m */,
+				C7B675C51856911A009FB924 /* Being.h */,
+				C7B675C61856911A009FB924 /* Being.m */,
+				C7B675C218569119009FB924 /* PortalTemplate.h */,
+				C7B675C318569119009FB924 /* PortalTemplate.m */,
+				C7B675BF18569119009FB924 /* Player.h */,
+				C7B675C018569119009FB924 /* Player.m */,
+				C7B675BC18569119009FB924 /* SpatialEntity.h */,
+				C7B675BD18569119009FB924 /* SpatialEntity.m */,
+				C7B675B918569119009FB924 /* LevelInstance.h */,
+				C7B675BA18569119009FB924 /* LevelInstance.m */,
+				C7B675B618569119009FB924 /* Item.h */,
+				C7B675B718569119009FB924 /* Item.m */,
+				C7B675B318569119009FB924 /* Savegame.h */,
+				C7B675B418569119009FB924 /* Savegame.m */,
+				C7B675B118569119009FB924 /* LevelTemplate.m */,
 				C70A75CD18467FE4005F3680 /* SaveStructure.xcdatamodeld */,
-				C70A0088185684DE0093D8E0 /* LevelTemplate.h */,
-				C70A0089185684DE0093D8E0 /* LevelTemplate.m */,
-				C70A0085185684DE0093D8E0 /* Color.h */,
-				C70A0086185684DE0093D8E0 /* Color.m */,
-				C70A0082185684DE0093D8E0 /* Being.h */,
-				C70A0083185684DE0093D8E0 /* Being.m */,
-				C70A007F185684DE0093D8E0 /* SpatialEntity.h */,
-				C70A0080185684DE0093D8E0 /* SpatialEntity.m */,
-				C70A007C185684DE0093D8E0 /* LevelInstance.h */,
-				C70A007D185684DE0093D8E0 /* LevelInstance.m */,
-				C70A0079185684DE0093D8E0 /* PortalTemplate.h */,
-				C70A007A185684DE0093D8E0 /* PortalTemplate.m */,
-				C70A0076185684DE0093D8E0 /* Player.h */,
-				C70A0077185684DE0093D8E0 /* Player.m */,
-				C70A0073185684DE0093D8E0 /* PortalInstance.h */,
-				C70A0074185684DE0093D8E0 /* PortalInstance.m */,
-				C70A0070185684DE0093D8E0 /* Savegame.h */,
-				C70A0071185684DE0093D8E0 /* Savegame.m */,
-				C70A006D185684DE0093D8E0 /* Item.h */,
-				C70A006E185684DE0093D8E0 /* Item.m */,
-				C70A006A185684DD0093D8E0 /* Wall.h */,
-				C70A006B185684DD0093D8E0 /* Wall.m */,
 				C70A00641856766C0093D8E0 /* Color+Create.h */,
 				C70A00651856766C0093D8E0 /* Color+Create.m */,
 				C70A008B185684F80093D8E0 /* PortalInstance+Create.h */,
 				C70A008C185684F80093D8E0 /* PortalInstance+Create.m */,
-				C7B675AD1856882E009FB924 /* PortalTemplate+Create.m */,
 				C7B675AE1856882E009FB924 /* PortalTemplate+Create.h */,
+				C7B675AD1856882E009FB924 /* PortalTemplate+Create.m */,
 				C7B26B8A184FF88500ECB600 /* Item+Create.h */,
 				C7B26B8B184FF88500ECB600 /* Item+Create.m */,
 				C7FD898A184A7B15008CFA0F /* Savegame+Create.h */,
@@ -615,6 +615,7 @@
 				C740696E18375E5700817BE2 /* Mote.m in Sources */,
 				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
 				C70A75ED18468F18005F3680 /* DatabaseManager.m in Sources */,
+				C7B675B518569119009FB924 /* Savegame.m in Sources */,
 				C786FADA185443200084F21C /* AboutVC.m in Sources */,
 				C76817E91845509A0069F170 /* OptionsManager.m in Sources */,
 				C70A76021846B399005F3680 /* Being+Create.m in Sources */,
@@ -623,33 +624,32 @@
 				C70A75FC1846B016005F3680 /* LevelInstance+Create.m in Sources */,
 				C71183831854025E00DCAF62 /* SmileyView.m in Sources */,
 				C70A008D185684F80093D8E0 /* PortalInstance+Create.m in Sources */,
-				C70A0075185684DE0093D8E0 /* PortalInstance.m in Sources */,
 				C759EC16183C7312009A0D60 /* MusicManager.m in Sources */,
 				C7DED300182F468200F953A5 /* SheenAppDelegate.m in Sources */,
-				C70A0072185684DE0093D8E0 /* Savegame.m in Sources */,
+				C7B675B818569119009FB924 /* Item.m in Sources */,
 				C76817E618454E840069F170 /* OptionsTVC.m in Sources */,
-				C70A006C185684DD0093D8E0 /* Wall.m in Sources */,
+				C7B675CA1856911A009FB924 /* Color.m in Sources */,
 				C75E139F1838789A0032048E /* PauseMenuNavigationController.m in Sources */,
-				C70A0087185684DE0093D8E0 /* Color.m in Sources */,
 				C710315618383EF900C7CB91 /* SaveLoadCDTVC.m in Sources */,
 				C71031501838366500C7CB91 /* CoreDataTableViewController.m in Sources */,
-				C70A007B185684DE0093D8E0 /* PortalTemplate.m in Sources */,
-				C70A0084185684DE0093D8E0 /* Being.m in Sources */,
+				C7B675C71856911A009FB924 /* Being.m in Sources */,
 				C7B26B8C184FF88500ECB600 /* Item+Create.m in Sources */,
+				C7B675C418569119009FB924 /* PortalTemplate.m in Sources */,
 				C710314A18382B3200C7CB91 /* PauseMenuVC.m in Sources */,
-				C70A008A185684DE0093D8E0 /* LevelTemplate.m in Sources */,
+				C7B675B218569119009FB924 /* LevelTemplate.m in Sources */,
+				C7B675C118569119009FB924 /* Player.m in Sources */,
 				C7DED2FC182F468200F953A5 /* main.m in Sources */,
-				C70A0078185684DE0093D8E0 /* Player.m in Sources */,
 				C74069711837665100817BE2 /* MathUtils.m in Sources */,
+				C7B675D01856911A009FB924 /* Wall.m in Sources */,
+				C7B675CD1856911A009FB924 /* PortalInstance.m in Sources */,
+				C7B675BB18569119009FB924 /* LevelInstance.m in Sources */,
 				C7B675AF1856882E009FB924 /* PortalTemplate+Create.m in Sources */,
-				C70A007E185684DE0093D8E0 /* LevelInstance.m in Sources */,
+				C7B675BE18569119009FB924 /* SpatialEntity.m in Sources */,
 				C70A76051846B5F5005F3680 /* Player+Create.m in Sources */,
 				C710314D18382B9400C7CB91 /* GamePageVC.m in Sources */,
-				C70A0081185684DE0093D8E0 /* SpatialEntity.m in Sources */,
 				C70A75FF1846B2D7005F3680 /* SpatialEntity+Create.m in Sources */,
 				C70A75F91846A731005F3680 /* BeingNode.m in Sources */,
 				C740697418376B2100817BE2 /* Drop.m in Sources */,
-				C70A006F185684DE0093D8E0 /* Item.m in Sources */,
 				C756E62D183884830015A240 /* GamePageScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

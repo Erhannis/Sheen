@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSString * imageFilename;
 @property (nonatomic, retain) NSString * itemID;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) Player *player;
 @property (nonatomic, retain) Color *color;
+@property (nonatomic, retain) Player *player;
 
 @end

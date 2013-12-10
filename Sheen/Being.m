@@ -17,9 +17,9 @@
 
 @dynamic imageFilename;
 @dynamic type;
+@dynamic color;
 @dynamic levelInstance;
 @dynamic levelTemplate;
 @dynamic spatial;
-@dynamic color;
 
 @end

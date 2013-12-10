@@ -16,9 +16,9 @@
 @property (nonatomic, retain) NSNumber * radius;
 @property (nonatomic, retain) LevelTemplate *fromLevel;
 @property (nonatomic, retain) SpatialEntity *fromPlace;
+@property (nonatomic, retain) NSSet *instances;
 @property (nonatomic, retain) LevelTemplate *toLevel;
 @property (nonatomic, retain) SpatialEntity *toPlace;
-@property (nonatomic, retain) NSSet *instances;
 @end
 
 @interface PortalTemplate (CoreDataGeneratedAccessors)

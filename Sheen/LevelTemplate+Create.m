@@ -11,7 +11,7 @@
 #import "SpatialEntity+Create.h"
 #import "Wall+Create.h"
 #import "Color+Create.h"
-#import "Portal+Create.h"
+#import "PortalTemplate+Create.h"
 
 @implementation LevelTemplate (Create)
 
@@ -35,7 +35,10 @@
                 levelTemplate = [self createDefaultLevelTest0InContext:context];
             } else if ([levelID isEqualToString:DEFAULT_LEVEL_TEST_1]) {
                 levelTemplate = [self createDefaultLevelTest1InContext:context];
+            } else if ([levelID isEqualToString:DEFAULT_CONNECTED_LEVEL_TEST_0]) {
+                levelTemplate = [self createDefaultConnectedLevelSetTest0InContext:context];
             } else {
+                // Uhhh...for now, I'm going to ignore the branches of the connected level set.
                 NSLog(@"Error - unknown level template \"%@\"", levelID);
             }
         } else {
@@ -142,6 +145,51 @@
 
 #pragma mark - Connected level test 1
 
+// Generates the level set, connects them, and returns the root.
++ (LevelTemplate *)createDefaultConnectedLevelSetTest0InContext:(NSManagedObjectContext *)context
+{
+    LevelTemplate *level0 = [LevelTemplate createDefaultConnectedLevelTest0InContext:context];
+    LevelTemplate *level0_0 = [LevelTemplate createDefaultConnectedLevelTest0_0InContext:context];
+    LevelTemplate *level0_1 = [LevelTemplate createDefaultConnectedLevelTest0_1InContext:context];
+    
+    // from level 0
+    {
+        PortalTemplate *portalTemplate = nil;
+        
+        portalTemplate = [PortalTemplate defaultPortalTemplateInManagedObjectContext:context];
+        portalTemplate.fromLevel = level0;
+        portalTemplate.fromPlace = [SpatialEntity createZeroInManagedObjectContext:context];
+        portalTemplate.fromPlace.xPos = [NSNumber numberWithFloat:-300.0];
+        portalTemplate.fromPlace.yPos = [NSNumber numberWithFloat:0.0];
+        portalTemplate.toLevel = level0_0;
+        portalTemplate.toPlace = [SpatialEntity createZeroInManagedObjectContext:context];
+        portalTemplate.toPlace.xPos = [NSNumber numberWithFloat:0.0];
+        portalTemplate.toPlace.yPos = [NSNumber numberWithFloat:300.0];
+        
+        portalTemplate = [PortalTemplate defaultPortalTemplateInManagedObjectContext:context];
+        portalTemplate.fromLevel = level0;
+        portalTemplate.fromPlace = [SpatialEntity createZeroInManagedObjectContext:context];
+        portalTemplate.fromPlace.xPos = [NSNumber numberWithFloat:300.0];
+        portalTemplate.fromPlace.yPos = [NSNumber numberWithFloat:0.0];
+        portalTemplate.toLevel = level0_1;
+        portalTemplate.toPlace = [SpatialEntity createZeroInManagedObjectContext:context];
+        portalTemplate.toPlace.xPos = [NSNumber numberWithFloat:0.0];
+        portalTemplate.toPlace.yPos = [NSNumber numberWithFloat:0.0];
+    }
+    
+    // from level 1
+    {
+        // No outgoing portals, yet.
+    }
+
+    // from level 2
+    {
+        // No outgoing portals, yet.
+    }
+    
+    return level0;
+}
+
 + (LevelTemplate *)createDefaultConnectedLevelTest0InContext:(NSManagedObjectContext *)context
 {
     LevelTemplate *levelTemplate = nil;
@@ -189,31 +237,6 @@
 //    wall.location = [SpatialEntity createZeroInManagedObjectContext:context];
 //    wall.color = nil;
 //    [wall addLevelsObject:levelTemplate];
-    
-    // for portalsOutgoing
-    Portal *portal = nil;
-    
-    portal = [Portal defaultPortalInManagedObjectContext:context];
-    portal.fromLevel = levelTemplate;
-    portal.fromPlace = [SpatialEntity createZeroInManagedObjectContext:context];
-    portal.fromPlace.xPos = [NSNumber numberWithFloat:-300.0];
-    portal.fromPlace.yPos = [NSNumber numberWithFloat:0.0];
-    portal.toLevel = [LevelTemplate levelTemplateWithID:DEFAULT_CONNECTED_LEVEL_TEST_0_0
-                                 inManagedObjectContext:context];
-    portal.toPlace = [SpatialEntity createZeroInManagedObjectContext:context];
-    portal.toPlace.xPos = [NSNumber numberWithFloat:0.0];
-    portal.toPlace.yPos = [NSNumber numberWithFloat:0.0];
-
-    portal = [Portal defaultPortalInManagedObjectContext:context];
-    portal.fromLevel = levelTemplate;
-    portal.fromPlace = [SpatialEntity createZeroInManagedObjectContext:context];
-    portal.fromPlace.xPos = [NSNumber numberWithFloat:300.0];
-    portal.fromPlace.yPos = [NSNumber numberWithFloat:0.0];
-    portal.toLevel = [LevelTemplate levelTemplateWithID:DEFAULT_CONNECTED_LEVEL_TEST_0_1
-                                 inManagedObjectContext:context];
-    portal.toPlace = [SpatialEntity createZeroInManagedObjectContext:context];
-    portal.toPlace.xPos = [NSNumber numberWithFloat:0.0];
-    portal.toPlace.yPos = [NSNumber numberWithFloat:0.0];
 
     return levelTemplate;
 }
@@ -249,8 +272,6 @@
     wall.location = [SpatialEntity createZeroInManagedObjectContext:context];
     wall.color = nil;
     [wall addLevelsObject:levelTemplate];
-    
-    // No outgoing portals, yet.
     
     return levelTemplate;
 }
@@ -343,21 +364,38 @@
     wall.color = nil;
     [wall addLevelsObject:levelTemplate];
     
-    // for portalsOutgoing
-    Portal *portal = [Portal defaultPortalInManagedObjectContext:context];
-    portal.fromLevel = levelTemplate;
-    portal.fromPlace = [SpatialEntity createZeroInManagedObjectContext:context];
-    portal.fromPlace.xPos = [NSNumber numberWithFloat:0.0];
-    portal.fromPlace.yPos = [NSNumber numberWithFloat:0.0];
-    portal.toLevel = nil;
-    portal.toPlace = [SpatialEntity createZeroInManagedObjectContext:context];
-    portal.toPlace.xPos = [NSNumber numberWithFloat:0.0];
-    portal.toPlace.yPos = [NSNumber numberWithFloat:0.0];
-    
     // for portalsIncoming
     // Do nothing; we're not responsible for incoming portals.  I think.
     
     return levelTemplate;
 }
+
++ (void)templateCreationTemplateDoPortalsInContext:(NSManagedObjectContext *)context
+                                         fromLevel:(LevelTemplate *)fromLevel
+                                          toLevel1:(LevelTemplate *)toLevel1
+                                          toLevel2:(LevelTemplate *)toLevel2
+{
+    // for portalsOutgoing
+    PortalTemplate *portalTemplate = [PortalTemplate defaultPortalTemplateInManagedObjectContext:context];
+    portalTemplate.fromLevel = fromLevel;
+    portalTemplate.fromPlace = [SpatialEntity createZeroInManagedObjectContext:context];
+    portalTemplate.fromPlace.xPos = [NSNumber numberWithFloat:0.0];
+    portalTemplate.fromPlace.yPos = [NSNumber numberWithFloat:0.0];
+    portalTemplate.toLevel = toLevel1;
+    portalTemplate.toPlace = [SpatialEntity createZeroInManagedObjectContext:context];
+    portalTemplate.toPlace.xPos = [NSNumber numberWithFloat:0.0];
+    portalTemplate.toPlace.yPos = [NSNumber numberWithFloat:0.0];
+
+    portalTemplate = [PortalTemplate defaultPortalTemplateInManagedObjectContext:context];
+    portalTemplate.fromLevel = fromLevel;
+    portalTemplate.fromPlace = [SpatialEntity createZeroInManagedObjectContext:context];
+    portalTemplate.fromPlace.xPos = [NSNumber numberWithFloat:0.0];
+    portalTemplate.fromPlace.yPos = [NSNumber numberWithFloat:0.0];
+    portalTemplate.toLevel = toLevel2;
+    portalTemplate.toPlace = [SpatialEntity createZeroInManagedObjectContext:context];
+    portalTemplate.toPlace.xPos = [NSNumber numberWithFloat:0.0];
+    portalTemplate.toPlace.yPos = [NSNumber numberWithFloat:0.0];
+}
+
 
 @end

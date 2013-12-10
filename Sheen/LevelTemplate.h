@@ -17,11 +17,11 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * song;
 @property (nonatomic, retain) NSSet *beings;
+@property (nonatomic, retain) Color *bgColor;
 @property (nonatomic, retain) NSSet *instances;
 @property (nonatomic, retain) NSSet *portalsIncoming;
 @property (nonatomic, retain) NSSet *portalsOutgoing;
 @property (nonatomic, retain) NSSet *walls;
-@property (nonatomic, retain) Color *bgColor;
 @end
 
 @interface LevelTemplate (CoreDataGeneratedAccessors)

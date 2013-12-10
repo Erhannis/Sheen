@@ -47,8 +47,9 @@
     
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%ix %@", item.count.integerValue, item.name];
+    cell.textLabel.text = [NSString stringWithFormat:@"%lx %@", item.count.integerValue, item.name];
     cell.detailTextLabel.text = item.descriptionText;
+    //TODO Incorporate colors
     cell.imageView.image = [UIImage imageNamed:item.imageFilename];
     
     return cell;

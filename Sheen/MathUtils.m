@@ -18,4 +18,17 @@
     return fmodf(fmodf(value - min, max - min) + (max - min), max - min) + min;
 }
 
++ (CGPathRef)circleOfRadius:(CGFloat)radius
+                   centeredOn:(CGPoint)center
+{
+    return [MathUtils circleOfRadius:radius centeredOnX:center.x andOnY:center.y];
+}
+
++ (CGPathRef)circleOfRadius:(CGFloat)radius
+                  centeredOnX:(CGFloat)x
+                       andOnY:(CGFloat)y
+{
+    return CGPathCreateWithEllipseInRect(CGRectMake(x - radius, y - radius, 2 * radius, 2 * radius), NULL);
+}
+
 @end

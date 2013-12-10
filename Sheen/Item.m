@@ -18,7 +18,7 @@
 @dynamic imageFilename;
 @dynamic itemID;
 @dynamic name;
-@dynamic player;
 @dynamic color;
+@dynamic player;
 
 @end

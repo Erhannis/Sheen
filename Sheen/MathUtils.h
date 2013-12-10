@@ -14,4 +14,10 @@
        between:(CGFloat)min
            and:(CGFloat)max;
 
++ (CGPathRef)circleOfRadius:(CGFloat)radius
+                 centeredOn:(CGPoint)center;
++ (CGPathRef)circleOfRadius:(CGFloat)radius
+                centeredOnX:(CGFloat)centerX
+                     andOnY:(CGFloat)centerY;
+
 @end

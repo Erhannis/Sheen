@@ -17,10 +17,10 @@
 @implementation LevelInstance
 
 @dynamic beings;
+@dynamic portalsOutgoing;
+@dynamic portalsIncoming;
 @dynamic player;
 @dynamic savegame;
 @dynamic template;
-@dynamic newRelationship;
-@dynamic newRelationship1;
 
 @end
