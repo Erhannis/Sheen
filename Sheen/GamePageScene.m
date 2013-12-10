@@ -7,12 +7,12 @@
 //
 
 #import "GamePageScene.h"
-#import "Mote.h"
-#import "Drop.h"
+#import "MoteNode.h"
+#import "DropNode.h"
 #import "MathUtils.h"
 #import "Debugging.h"
 #import "OptionsManager.h"
-#import "BeingNode.h"
+#import "BaseNode.h"
 #import "Player+Create.h"
 #import "SpatialEntity+Create.h"
 #import "Being+Create.h"
@@ -24,11 +24,13 @@
 #import "Color+Create.h"
 #import "PortalInstance+Create.h"
 #import "PortalTemplate+Create.h"
+#import "PortalNode.h"
 
 @interface GamePageScene ()
-@property (strong, nonatomic) NSMutableArray *motes; // of Mote
-@property (strong, nonatomic) NSMutableArray *beings; // of BeingNode
-@property (strong, nonatomic) BeingNode *focus;
+@property (strong, nonatomic) NSMutableArray *moteNodes; // of MoteNode
+@property (strong, nonatomic) NSMutableArray *beingNodes; // of BeingNode
+@property (strong, nonatomic) NSMutableArray *portalNodes; // of PortalNode
+@property (strong, nonatomic) BaseNode *focus;
 @property (nonatomic) CGFloat xScaleTrue;
 @property (nonatomic) CGFloat yScaleTrue;
 @property (nonatomic) CGFloat angleTrue;
@@ -56,16 +58,22 @@
 #define SIDE_SPACE (1.0)
 #define MIN_ZOOM (1/2.5)
 
-- (NSMutableArray *)motes
+- (NSMutableArray *)moteNodes
 {
-    if (!_motes) _motes = [[NSMutableArray alloc] init];
-    return _motes;
+    if (!_moteNodes) _moteNodes = [[NSMutableArray alloc] init];
+    return _moteNodes;
 }
 
-- (NSMutableArray *)beings
+- (NSMutableArray *)beingNodes
 {
-    if (!_beings) _beings = [[NSMutableArray alloc] init];
-    return _beings;
+    if (!_beingNodes) _beingNodes = [[NSMutableArray alloc] init];
+    return _beingNodes;
+}
+
+- (NSMutableArray *)portalNodes
+{
+    if (!_portalNodes) _portalNodes = [[NSMutableArray alloc] init];
+    return _portalNodes;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -90,32 +98,33 @@
     SKTexture *white = [SKTexture textureWithCGImage:image.CGImage];
     
     for (int i = 0; i < MOTE_COUNT; i++) {
-        Mote *mote = [[Mote alloc] initWithTexture:white
-                                             color:[SKColor colorWithRed:drand48()
-                                                                   green:drand48()
-                                                                    blue:drand48()
-                                                                   alpha:1]
-                                              size:image.size];
-        mote.colorBlendFactor = 1.0;
-        mote.radius = (drand48() * (MOTE_MAX_RADIUS - MOTE_MIN_RADIUS)) + MOTE_MIN_RADIUS;
-        mote.radius = 15.0;
-        mote.zPosition = (drand48() * (MOTE_MAX_HEIGHT - MOTE_MIN_HEIGHT)) + MOTE_MIN_HEIGHT;
-        CGFloat dist = CAMERA_HEIGHT - mote.zPosition;
-        mote.scale = CAMERA_HEIGHT / dist;
-        mote.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:(mote.radius * mote.scale)];
-        mote.size = CGSizeMake(mote.radius * mote.scale, mote.radius * mote.scale);
-        mote.position = CGPointMake(((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.width, ((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.height);
-        mote.lastPosition = mote.position;
-        mote.physicsBody.affectedByGravity = NO;
-        mote.physicsBody.friction = 0.0;
-        mote.physicsBody.linearDamping = 0.0;
-        mote.physicsBody.collisionBitMask = 0x0;
-        mote.physicsBody.categoryBitMask = 0x0;
-        mote.physicsBody.contactTestBitMask = 0x0;
-        mote.physicsBody.velocity = CGVectorMake(mote.scale * ((drand48() - 0.5) * MOTE_MAX_VELOCITY + MOTE_BASE_VELOCITY), -(mote.scale) * ((drand48() - 0.5) * MOTE_MAX_VELOCITY + MOTE_BASE_VELOCITY));
-        mote.blendMode = blendMode;
-        [self.motes addObject:mote];
-        [self addChild:mote];
+        MoteNode *moteNode = [[MoteNode alloc] initWithTexture:white
+                                                         color:[SKColor colorWithRed:drand48()
+                                                                               green:drand48()
+                                                                                blue:drand48()
+                                                                               alpha:1]
+                                                          size:image.size];
+        moteNode.colorBlendFactor = 1.0;
+        //TODO I could possibly change this back.
+        moteNode.radius = (drand48() * (MOTE_MAX_RADIUS - MOTE_MIN_RADIUS)) + MOTE_MIN_RADIUS;
+        moteNode.radius = 15.0;
+        moteNode.zPosition = (drand48() * (MOTE_MAX_HEIGHT - MOTE_MIN_HEIGHT)) + MOTE_MIN_HEIGHT;
+        CGFloat dist = CAMERA_HEIGHT - moteNode.zPosition;
+        moteNode.scale = CAMERA_HEIGHT / dist;
+        moteNode.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:(moteNode.radius * moteNode.scale)];
+        moteNode.size = CGSizeMake(moteNode.radius * moteNode.scale, moteNode.radius * moteNode.scale);
+        moteNode.position = CGPointMake(((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.width, ((drand48() * (1 + 2*SIDE_SPACE)) - SIDE_SPACE) * size.height);
+        moteNode.lastPosition = moteNode.position;
+        moteNode.physicsBody.affectedByGravity = NO;
+        moteNode.physicsBody.friction = 0.0;
+        moteNode.physicsBody.linearDamping = 0.0;
+        moteNode.physicsBody.collisionBitMask = 0x0;
+        moteNode.physicsBody.categoryBitMask = 0x0;
+        moteNode.physicsBody.contactTestBitMask = 0x0;
+        moteNode.physicsBody.velocity = CGVectorMake(moteNode.scale * ((drand48() - 0.5) * MOTE_MAX_VELOCITY + MOTE_BASE_VELOCITY), -(moteNode.scale) * ((drand48() - 0.5) * MOTE_MAX_VELOCITY + MOTE_BASE_VELOCITY));
+        moteNode.blendMode = blendMode;
+        [self.moteNodes addObject:moteNode];
+        [self addChild:moteNode];
     }
 }
 
@@ -168,21 +177,25 @@
     }
     self.anchorPoint = CGPointMake((0.5 / self.xScaleTrue) - (self.xScaleTrue * self.focus.position.x / self.frame.size.width), (0.5 / self.yScaleTrue) - (self.yScaleTrue * self.focus.position.y / self.frame.size.height));
     CGRect viewport = CGRectMake(self.focus.position.x - ((1 + (2 * SIDE_SPACE)) * self.size.width / 2), self.focus.position.y - ((1 + (2 * SIDE_SPACE)) * self.size.height / 2), (1 + (2 * SIDE_SPACE)) * self.size.width, (1 + (2 * SIDE_SPACE)) * self.size.height);
-    for (Mote *mote in self.motes) {
-        mote.position = CGPointMake(mote.position.x + ((1 - mote.scale) * (self.focus.position.x - self.focus.lastPosition.x)), mote.position.y + ((1 - mote.scale) * (self.focus.position.y - self.focus.lastPosition.y)));
-        if (mote.position.x > (viewport.origin.x + viewport.size.width) ||
-            mote.position.x < viewport.origin.x ||
-            mote.position.y > (viewport.origin.y + viewport.size.height) ||
-            mote.position.y < viewport.origin.y) {
+    for (MoteNode *moteNode in self.moteNodes) {
+        moteNode.position = CGPointMake(moteNode.position.x + ((1 - moteNode.scale) * (self.focus.position.x - self.focus.lastPosition.x)), moteNode.position.y + ((1 - moteNode.scale) * (self.focus.position.y - self.focus.lastPosition.y)));
+        if (moteNode.position.x > (viewport.origin.x + viewport.size.width) ||
+            moteNode.position.x < viewport.origin.x ||
+            moteNode.position.y > (viewport.origin.y + viewport.size.height) ||
+            moteNode.position.y < viewport.origin.y) {
             //TODO Change color and maybe height:velocity, to add to the illusion
-            mote.position = CGPointMake([MathUtils mod:mote.position.x
+            moteNode.position = CGPointMake([MathUtils mod:moteNode.position.x
                                                between:(viewport.origin.x + viewport.size.width)
                                                    and:viewport.origin.x],
-                                        [MathUtils mod:mote.position.y
+                                        [MathUtils mod:moteNode.position.y
                                                between:(viewport.origin.y + viewport.size.height)
                                                    and:viewport.origin.y]);
         }
-        mote.lastPosition = mote.position;
+        moteNode.lastPosition = moteNode.position;
+    }
+    for (PortalNode *portalNode in self.portalNodes) {
+        CGFloat scale = (CAMERA_HEIGHT / (CAMERA_HEIGHT - portalNode.zPosition));
+        portalNode.position = CGPointMake(portalNode.truePosition.x + ((scale - 1) * (portalNode.truePosition.x - self.focus.position.x)), portalNode.truePosition.y + ((scale - 1) * (portalNode.truePosition.y - self.focus.position.y)));
     }
     self.focus.lastPosition = self.focus.position;
 }
@@ -221,31 +234,36 @@
     }
 }
 
+- (CGPoint)convertProperlyToScene:(CGPoint)point
+{
+    //TODO UGGGH.  This took way too long, and is kinda hacky.
+    point = [self convertPointFromView:point];
+    CGFloat c = MIN(self.view.frame.size.height / 2, self.view.frame.size.width / 2);
+    CGFloat d = MAX(self.view.frame.size.height / 2, self.view.frame.size.width / 2);
+    point = CGPointMake(point.x - (c * (1 - (1 / self.xScaleTrue))), point.y - (d * (1 - (1 / self.yScaleTrue))));
+    return point;
+}
+
 - (void)didLongPress:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
-        //TODO UGGGH.  This took way too long, and is kinda hacky.
         CGPoint loc = [sender locationInView:self.view];
-        loc = [self convertPointFromView:loc];
-        CGFloat c = MIN(self.view.frame.size.height / 2, self.view.frame.size.width / 2);
-        CGFloat d = MAX(self.view.frame.size.height / 2, self.view.frame.size.width / 2);
-        loc = CGPointMake(loc.x - (c * (1 - (1 / self.xScaleTrue))), loc.y - (d * (1 - (1 / self.yScaleTrue))));
-        NSLog(@"off %f,%f", loc.x - self.focus.position.x, loc.y - self.focus.position.y);
+        loc = [self convertProperlyToScene:loc];
         //TODO This seems inefficient.
         for (PortalInstance *portalInstance in self.levelInstance.portalsOutgoing) {
-            if (CGPathContainsPoint([MathUtils circleOfRadius:portalInstance.template.radius.floatValue
-                                                  centeredOnX:portalInstance.template.fromPlace.xPos.floatValue
-                                                       andOnY:portalInstance.template.fromPlace.yPos.floatValue],
-                                    NULL, loc, YES)) {
+            CGPathRef circle =[MathUtils circleOfRadius:portalInstance.template.radius.floatValue
+                                            centeredOnX:portalInstance.template.fromPlace.xPos.floatValue
+                                                 andOnY:portalInstance.template.fromPlace.yPos.floatValue];
+            if (CGPathContainsPoint(circle, NULL, loc, YES) && CGPathContainsPoint(circle, NULL, self.focus.position, YES)) {
                 [self portToLevelInstance:portalInstance.toLevelInstance
                                atPosition:CGPointMake(portalInstance.template.toPlace.xPos.floatValue, portalInstance.template.toPlace.yPos.floatValue)];
                 return;
             }
         }
         for (PortalInstance *portalInstance in self.levelInstance.portalsIncoming) {
-            if (CGPathContainsPoint([MathUtils circleOfRadius:portalInstance.template.radius.floatValue
-                                                  centeredOnX:portalInstance.template.toPlace.xPos.floatValue
-                                                       andOnY:portalInstance.template.toPlace.yPos.floatValue],
-                                    NULL, loc, YES)) {
+            CGPathRef circle =[MathUtils circleOfRadius:portalInstance.template.radius.floatValue
+                                            centeredOnX:portalInstance.template.fromPlace.xPos.floatValue
+                                                 andOnY:portalInstance.template.fromPlace.yPos.floatValue];
+            if (CGPathContainsPoint(circle, NULL, loc, YES) && CGPathContainsPoint(circle, NULL, self.focus.position, YES)) {
                 [self portToLevelInstance:portalInstance.fromLevelInstance
                                atPosition:CGPointMake(portalInstance.template.fromPlace.xPos.floatValue, portalInstance.template.fromPlace.yPos.floatValue)];
                 return;
@@ -273,12 +291,12 @@
     [self.levelInstance removeBeings:self.levelInstance.beings];
     
     // Update beings
-    for (BeingNode *being in self.beings) {
+    for (BaseNode *beingNode in self.beingNodes) {
         Being *newBeing = [Being blankBeingInManagedObjectContext:self.levelInstance.managedObjectContext];
         newBeing.type = [NSNumber numberWithInt:BEING_TYPE_NPC]; //TODO Make better.
-        newBeing.imageFilename = being.imageFilename;
+        newBeing.imageFilename = beingNode.imageFilename;
         newBeing.levelInstance = self.levelInstance;
-        newBeing.spatial = [SpatialEntity createFromSKNode:being
+        newBeing.spatial = [SpatialEntity createFromSKNode:beingNode
                                     inManagedObjectContext:self.levelInstance.managedObjectContext];
     }
     
@@ -314,14 +332,16 @@
     [self loadLevelInstance:levelInstance andPlayer:player withViewSize:size atScale:DEFAULT_ZOOM];
 }
 
+// Note that because of weird bugs, this ignores `scale`.
 - (void)loadLevelInstance:(LevelInstance *)levelInstance
                 andPlayer:(Player *)player
              withViewSize:(CGSize)size
                   atScale:(CGFloat)scale
 {
     [self removeAllChildren];
-    [self.beings removeAllObjects];
-    [self.motes removeAllObjects];
+    [self.beingNodes removeAllObjects];
+    [self.moteNodes removeAllObjects];
+    [self.portalNodes removeAllObjects];
     
     self.levelInstance = levelInstance;
     self.player = player;
@@ -338,6 +358,8 @@
                                                alpha:levelInstance.template.bgColor.alpha.floatValue];
     }
     
+    NSLog(@"bgColor %@", self.backgroundColor);
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:ChangeSongRequestNotification
                                                         object:self
                                                       userInfo:@{ChangeSongRequestFilename : levelInstance.template.song}];
@@ -348,22 +370,24 @@
     SKBlendMode blendMode = SKBlendModeAlpha;
     
     //TODO Incorporate colors
-    Drop *drop = [[Drop alloc] initWithImageNamed:@"drop-9-green"];
-    drop.imageFilename = @"drop-9-green";
-    drop.radius = drop.frame.size.width / 2;
-    drop.position = CGPointMake(player.spatial.xPos.doubleValue, player.spatial.yPos.doubleValue);
-    drop.lastPosition = drop.position;
-    drop.zPosition = 0.0;
-    drop.blendMode = blendMode;
-    drop.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:drop.radius];
-    drop.physicsBody.affectedByGravity = NO;
-    drop.physicsBody.allowsRotation = NO;
-    drop.physicsBody.velocity = CGVectorMake(player.spatial.xVelocity.doubleValue, player.spatial.yVelocity.doubleValue);
-    [self addChild:drop];
+    DropNode *dropNode = [[DropNode alloc] initWithImageNamed:@"drop-9-green"];
+    dropNode.imageFilename = @"drop-9-green";
+    dropNode.radius = dropNode.frame.size.width / 2;
+    dropNode.position = CGPointMake(player.spatial.xPos.doubleValue, player.spatial.yPos.doubleValue);
+    dropNode.lastPosition = dropNode.position;
+    dropNode.zPosition = 0.0;
+    dropNode.blendMode = blendMode;
+    dropNode.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:dropNode.radius];
+    dropNode.physicsBody.affectedByGravity = NO;
+    dropNode.physicsBody.allowsRotation = NO;
+    dropNode.physicsBody.velocity = CGVectorMake(player.spatial.xVelocity.doubleValue, player.spatial.yVelocity.doubleValue);
+    [self addChild:dropNode];
+    
+    self.focus = dropNode;
     
     for (Being *being in levelInstance.beings) {
         //TODO Incorporate colors
-        Drop *d = [[Drop alloc] initWithImageNamed:being.imageFilename];
+        DropNode *d = [[DropNode alloc] initWithImageNamed:being.imageFilename];
         d.imageFilename = being.imageFilename;
         d.radius = d.frame.size.width / 2;
         d.position = CGPointMake(being.spatial.xPos.doubleValue,
@@ -375,7 +399,7 @@
         d.physicsBody.affectedByGravity = NO;
         d.physicsBody.allowsRotation = NO;
         d.physicsBody.velocity = CGVectorMake(being.spatial.xVelocity.doubleValue, being.spatial.yVelocity.doubleValue);
-        [self.beings addObject:d];
+        [self.beingNodes addObject:d];
         [self addChild:d];
     }
     
@@ -393,7 +417,7 @@
     
     //TODO Would it be more efficient or just more complicated to keep track of portals in our own NSArray?
     for (PortalInstance *portalInstance in levelInstance.portalsOutgoing) {
-        SKShapeNode *portalNode = [[SKShapeNode alloc] init];
+        PortalNode *portalNode = [[PortalNode alloc] init];
         portalNode.path = [MathUtils circleOfRadius:portalInstance.template.radius.floatValue
                                         centeredOnX:0.0
                                              andOnY:0.0];
@@ -401,23 +425,35 @@
         portalNode.strokeColor = DEFAULT_PORTAL_OUTGOING_COLOR;
         portalNode.lineWidth = DEFAULT_PORTAL_STROKE_WIDTH;
         portalNode.glowWidth = DEFAULT_PORTAL_GLOW_WIDTH;
+        portalNode.zPosition = -DEFAULT_PORTAL_Z_OFFSET;
+        portalNode.truePosition = portalNode.position;
+        CGFloat scale = (CAMERA_HEIGHT / (CAMERA_HEIGHT - portalNode.zPosition));
+        portalNode.position = CGPointMake(portalNode.truePosition.x + ((scale - 1) * (portalNode.truePosition.x - self.focus.position.x)), portalNode.truePosition.y + ((scale - 1) * (portalNode.truePosition.y - self.focus.position.y)));
+        portalNode.path = [MathUtils circleOfRadius:portalInstance.template.radius.floatValue * scale
+                                        centeredOnX:0.0
+                                             andOnY:0.0];
+        [self.portalNodes addObject:portalNode];
         [self addChild:portalNode];
     }
     for (PortalInstance *portalInstance in levelInstance.portalsIncoming) {
-        SKShapeNode *portalNode = [[SKShapeNode alloc] init];
-        portalNode.path = [MathUtils circleOfRadius:portalInstance.template.radius.floatValue
-                                        centeredOnX:0.0
-                                             andOnY:0.0];
+        PortalNode *portalNode = [[PortalNode alloc] init];
         portalNode.position = CGPointMake(portalInstance.template.toPlace.xPos.floatValue, portalInstance.template.toPlace.yPos.floatValue);
         portalNode.strokeColor = DEFAULT_PORTAL_INCOMING_COLOR;
         portalNode.lineWidth = DEFAULT_PORTAL_STROKE_WIDTH;
         portalNode.glowWidth = DEFAULT_PORTAL_GLOW_WIDTH;
+        portalNode.zPosition = DEFAULT_PORTAL_Z_OFFSET;
+        portalNode.truePosition = portalNode.position;
+        CGFloat scale = (CAMERA_HEIGHT / (CAMERA_HEIGHT - portalNode.zPosition));
+        portalNode.position = CGPointMake(portalNode.truePosition.x + ((scale - 1) * (portalNode.truePosition.x - self.focus.position.x)), portalNode.truePosition.y + ((scale - 1) * (portalNode.truePosition.y - self.focus.position.y)));
+        portalNode.path = [MathUtils circleOfRadius:portalInstance.template.radius.floatValue * scale
+                                        centeredOnX:0.0
+                                             andOnY:0.0];
+        [self.portalNodes addObject:portalNode];
         [self addChild:portalNode];
     }
 //    self.xScaleTrue = 1.0;
 //    self.yScaleTrue = 1.0;
-    [self scaleTo:0.75];
-    self.focus = drop;
+    [self scaleTo:DEFAULT_ZOOM];
     self.anchorPoint = CGPointMake((0.5 / self.xScaleTrue) - (self.xScaleTrue * self.focus.position.x / self.frame.size.width), (0.5 / self.yScaleTrue) - (self.yScaleTrue * self.focus.position.y / self.frame.size.height));
 }
 

@@ -34,6 +34,17 @@
     return color;
 }
 
++ (Color *)colorInManagedObjectContext:(NSManagedObjectContext *)context
+                           withSKColor:(SKColor *)color
+{
+    CGFloat red = 0.0;
+    CGFloat green = 0.0;
+    CGFloat blue = 0.0;
+    CGFloat alpha = 0.0;
+    [color getRed:&red green:&green blue:&blue alpha:&alpha];
+    return [Color colorInManagedObjectContext:context withRed:red green:green blue:blue alpha:alpha];
+}
+
 + (Color *)twinColor:(Color *)original
 {
     if (!original) {

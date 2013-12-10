@@ -7,6 +7,7 @@
 //
 
 #import "Color.h"
+#import <SpriteKit/SpriteKit.h>
 
 @interface Color (Create)
 
@@ -16,6 +17,8 @@
                                  green:(CGFloat)green
                                   blue:(CGFloat)blue
                                  alpha:(CGFloat)alpha;
++ (Color *)colorInManagedObjectContext:(NSManagedObjectContext *)context
+                           withSKColor:(SKColor *)color;
 
 + (Color *)twinColor:(Color *)original;
 

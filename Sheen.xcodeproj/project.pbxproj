@@ -12,7 +12,7 @@
 		C70A75CF18467FE4005F3680 /* SaveStructure.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C70A75CD18467FE4005F3680 /* SaveStructure.xcdatamodeld */; };
 		C70A75ED18468F18005F3680 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75EC18468F18005F3680 /* DatabaseManager.m */; };
 		C70A75F318469EAB005F3680 /* LevelTemplate+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75F218469EAB005F3680 /* LevelTemplate+Create.m */; };
-		C70A75F91846A731005F3680 /* BeingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75F81846A731005F3680 /* BeingNode.m */; };
+		C70A75F91846A731005F3680 /* BaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75F81846A731005F3680 /* BaseNode.m */; };
 		C70A75FC1846B016005F3680 /* LevelInstance+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75FB1846B016005F3680 /* LevelInstance+Create.m */; };
 		C70A75FF1846B2D7005F3680 /* SpatialEntity+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A75FE1846B2D7005F3680 /* SpatialEntity+Create.m */; };
 		C70A76021846B399005F3680 /* Being+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C70A76011846B399005F3680 /* Being+Create.m */; };
@@ -39,9 +39,9 @@
 		C74069661837598100817BE2 /* onlymeith_-_Truth_.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C740695F1837598100817BE2 /* onlymeith_-_Truth_.mp3 */; };
 		C74069671837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C74069601837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 */; };
 		C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C740696918375A3F00817BE2 /* TitlePageScene.m */; };
-		C740696E18375E5700817BE2 /* Mote.m in Sources */ = {isa = PBXBuildFile; fileRef = C740696D18375E5700817BE2 /* Mote.m */; };
+		C740696E18375E5700817BE2 /* MoteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C740696D18375E5700817BE2 /* MoteNode.m */; };
 		C74069711837665100817BE2 /* MathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C74069701837665100817BE2 /* MathUtils.m */; };
-		C740697418376B2100817BE2 /* Drop.m in Sources */ = {isa = PBXBuildFile; fileRef = C740697318376B2100817BE2 /* Drop.m */; };
+		C740697418376B2100817BE2 /* DropNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C740697318376B2100817BE2 /* DropNode.m */; };
 		C74069761837834E00817BE2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74069751837834E00817BE2 /* AVFoundation.framework */; };
 		C756E62D183884830015A240 /* GamePageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C756E62C183884830015A240 /* GamePageScene.m */; };
 		C759EC16183C7312009A0D60 /* MusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C759EC15183C7312009A0D60 /* MusicManager.m */; };
@@ -63,6 +63,8 @@
 		C7B675CA1856911A009FB924 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675C91856911A009FB924 /* Color.m */; };
 		C7B675CD1856911A009FB924 /* PortalInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675CC1856911A009FB924 /* PortalInstance.m */; };
 		C7B675D01856911A009FB924 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675CF1856911A009FB924 /* Wall.m */; };
+		C7B675D31856D704009FB924 /* PortalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675D21856D704009FB924 /* PortalNode.m */; };
+		C7B675D71856E209009FB924 /* LevelSetTestTube1.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B675D61856E209009FB924 /* LevelSetTestTube1.m */; };
 		C7C98DDE1847D13C008C2B0D /* Wall+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C98DDD1847D13C008C2B0D /* Wall+Create.m */; };
 		C7DED2F0182F468200F953A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2EF182F468200F953A5 /* Foundation.framework */; };
 		C7DED2F2182F468200F953A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DED2F1182F468200F953A5 /* CoreGraphics.framework */; };
@@ -101,8 +103,8 @@
 		C70A75EC18468F18005F3680 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		C70A75F118469EAB005F3680 /* LevelTemplate+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LevelTemplate+Create.h"; sourceTree = "<group>"; };
 		C70A75F218469EAB005F3680 /* LevelTemplate+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LevelTemplate+Create.m"; sourceTree = "<group>"; };
-		C70A75F71846A731005F3680 /* BeingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeingNode.h; sourceTree = "<group>"; };
-		C70A75F81846A731005F3680 /* BeingNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeingNode.m; sourceTree = "<group>"; };
+		C70A75F71846A731005F3680 /* BaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNode.h; sourceTree = "<group>"; };
+		C70A75F81846A731005F3680 /* BaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNode.m; sourceTree = "<group>"; };
 		C70A75FA1846B016005F3680 /* LevelInstance+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LevelInstance+Create.h"; sourceTree = "<group>"; };
 		C70A75FB1846B016005F3680 /* LevelInstance+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LevelInstance+Create.m"; sourceTree = "<group>"; };
 		C70A75FD1846B2D7005F3680 /* SpatialEntity+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpatialEntity+Create.h"; sourceTree = "<group>"; };
@@ -142,12 +144,12 @@
 		C74069601837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "flatwound_-_The_Long_Goodbye.mp3"; sourceTree = "<group>"; };
 		C740696818375A3F00817BE2 /* TitlePageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlePageScene.h; sourceTree = "<group>"; };
 		C740696918375A3F00817BE2 /* TitlePageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlePageScene.m; sourceTree = "<group>"; };
-		C740696C18375E5700817BE2 /* Mote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mote.h; sourceTree = "<group>"; };
-		C740696D18375E5700817BE2 /* Mote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mote.m; sourceTree = "<group>"; };
+		C740696C18375E5700817BE2 /* MoteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoteNode.h; sourceTree = "<group>"; };
+		C740696D18375E5700817BE2 /* MoteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoteNode.m; sourceTree = "<group>"; };
 		C740696F1837665100817BE2 /* MathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
 		C74069701837665100817BE2 /* MathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathUtils.m; sourceTree = "<group>"; };
-		C740697218376B2100817BE2 /* Drop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drop.h; sourceTree = "<group>"; };
-		C740697318376B2100817BE2 /* Drop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drop.m; sourceTree = "<group>"; };
+		C740697218376B2100817BE2 /* DropNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropNode.h; sourceTree = "<group>"; };
+		C740697318376B2100817BE2 /* DropNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropNode.m; sourceTree = "<group>"; };
 		C74069751837834E00817BE2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C756E62B183884830015A240 /* GamePageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePageScene.h; sourceTree = "<group>"; };
 		C756E62C183884830015A240 /* GamePageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePageScene.m; sourceTree = "<group>"; };
@@ -190,6 +192,10 @@
 		C7B675CC1856911A009FB924 /* PortalInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalInstance.m; sourceTree = "<group>"; };
 		C7B675CE1856911A009FB924 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
 		C7B675CF1856911A009FB924 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
+		C7B675D11856D704009FB924 /* PortalNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalNode.h; sourceTree = "<group>"; };
+		C7B675D21856D704009FB924 /* PortalNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalNode.m; sourceTree = "<group>"; };
+		C7B675D51856E209009FB924 /* LevelSetTestTube1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSetTestTube1.h; sourceTree = "<group>"; };
+		C7B675D61856E209009FB924 /* LevelSetTestTube1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelSetTestTube1.m; sourceTree = "<group>"; };
 		C7C98DDC1847D13C008C2B0D /* Wall+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Wall+Create.h"; sourceTree = "<group>"; };
 		C7C98DDD1847D13C008C2B0D /* Wall+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Wall+Create.m"; sourceTree = "<group>"; };
 		C7DED2EC182F468200F953A5 /* Sheen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sheen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,13 +324,13 @@
 			children = (
 				C740695A1837598100817BE2 /* djlang59_-_Drops_of_H2O_(_The_Filtered_Water_Treatment_).mp3 */,
 				C740695B1837598100817BE2 /* Pitx_-_Chords_For_David.mp3 */,
-				C740695C1837598100817BE2 /* gurdonark_-_Restless_Sleep.mp3 */,
-				C740695D1837598100817BE2 /* gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve.mp3 */,
 				C740695E1837598100817BE2 /* gurdonark_-_Homework.mp3 */,
-				C740695F1837598100817BE2 /* onlymeith_-_Truth_.mp3 */,
-				C74069601837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 */,
 				C74069581837594200817BE2 /* _ghost_-_Reverie_(small_theme).mp3 */,
+				C74069601837598100817BE2 /* flatwound_-_The_Long_Goodbye.mp3 */,
 				C7406956183758E600817BE2 /* _ghost_-_Empty_rooms_(small_theme).mp3 */,
+				C740695C1837598100817BE2 /* gurdonark_-_Restless_Sleep.mp3 */,
+				C740695F1837598100817BE2 /* onlymeith_-_Truth_.mp3 */,
+				C740695D1837598100817BE2 /* gurdonark_-_Snow_Geese_at_Hagerman_Wildlife_Preserve.mp3 */,
 			);
 			name = Music;
 			sourceTree = "<group>";
@@ -344,17 +350,19 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
-		C740696B18375DDA00817BE2 /* Beings */ = {
+		C740696B18375DDA00817BE2 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				C740696C18375E5700817BE2 /* Mote.h */,
-				C740696D18375E5700817BE2 /* Mote.m */,
-				C740697218376B2100817BE2 /* Drop.h */,
-				C740697318376B2100817BE2 /* Drop.m */,
-				C70A75F71846A731005F3680 /* BeingNode.h */,
-				C70A75F81846A731005F3680 /* BeingNode.m */,
+				C740696C18375E5700817BE2 /* MoteNode.h */,
+				C740696D18375E5700817BE2 /* MoteNode.m */,
+				C740697218376B2100817BE2 /* DropNode.h */,
+				C740697318376B2100817BE2 /* DropNode.m */,
+				C70A75F71846A731005F3680 /* BaseNode.h */,
+				C70A75F81846A731005F3680 /* BaseNode.m */,
+				C7B675D11856D704009FB924 /* PortalNode.h */,
+				C7B675D21856D704009FB924 /* PortalNode.m */,
 			);
-			name = Beings;
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 		C76817EA184571CD0069F170 /* Managers */ = {
@@ -409,6 +417,15 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
+		C7B675D41856E1C2009FB924 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				C7B675D51856E209009FB924 /* LevelSetTestTube1.h */,
+				C7B675D61856E209009FB924 /* LevelSetTestTube1.m */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
 		C7DED2E3182F468200F953A5 = {
 			isa = PBXGroup;
 			children = (
@@ -454,10 +471,11 @@
 				C7DED30A182F468200F953A5 /* Images.xcassets */,
 				C76817EC1845721A0069F170 /* Scenes */,
 				C76817EB184572100069F170 /* ViewControllers */,
-				C740696B18375DDA00817BE2 /* Beings */,
+				C740696B18375DDA00817BE2 /* Nodes */,
 				C74069541837589A00817BE2 /* Media */,
 				C76817EA184571CD0069F170 /* Managers */,
 				C70A75CC18467FB0005F3680 /* Database */,
+				C7B675D41856E1C2009FB924 /* Levels */,
 				C71183841854027600DCAF62 /* Silly Things */,
 				C7DED2F6182F468200F953A5 /* Supporting Files */,
 			);
@@ -612,7 +630,7 @@
 				C7C98DDE1847D13C008C2B0D /* Wall+Create.m in Sources */,
 				C794E897183B5E2E00019BF2 /* Debugging.m in Sources */,
 				C70A75CF18467FE4005F3680 /* SaveStructure.xcdatamodeld in Sources */,
-				C740696E18375E5700817BE2 /* Mote.m in Sources */,
+				C740696E18375E5700817BE2 /* MoteNode.m in Sources */,
 				C740696A18375A3F00817BE2 /* TitlePageScene.m in Sources */,
 				C70A75ED18468F18005F3680 /* DatabaseManager.m in Sources */,
 				C7B675B518569119009FB924 /* Savegame.m in Sources */,
@@ -630,6 +648,7 @@
 				C76817E618454E840069F170 /* OptionsTVC.m in Sources */,
 				C7B675CA1856911A009FB924 /* Color.m in Sources */,
 				C75E139F1838789A0032048E /* PauseMenuNavigationController.m in Sources */,
+				C7B675D31856D704009FB924 /* PortalNode.m in Sources */,
 				C710315618383EF900C7CB91 /* SaveLoadCDTVC.m in Sources */,
 				C71031501838366500C7CB91 /* CoreDataTableViewController.m in Sources */,
 				C7B675C71856911A009FB924 /* Being.m in Sources */,
@@ -639,6 +658,7 @@
 				C7B675B218569119009FB924 /* LevelTemplate.m in Sources */,
 				C7B675C118569119009FB924 /* Player.m in Sources */,
 				C7DED2FC182F468200F953A5 /* main.m in Sources */,
+				C7B675D71856E209009FB924 /* LevelSetTestTube1.m in Sources */,
 				C74069711837665100817BE2 /* MathUtils.m in Sources */,
 				C7B675D01856911A009FB924 /* Wall.m in Sources */,
 				C7B675CD1856911A009FB924 /* PortalInstance.m in Sources */,
@@ -648,8 +668,8 @@
 				C70A76051846B5F5005F3680 /* Player+Create.m in Sources */,
 				C710314D18382B9400C7CB91 /* GamePageVC.m in Sources */,
 				C70A75FF1846B2D7005F3680 /* SpatialEntity+Create.m in Sources */,
-				C70A75F91846A731005F3680 /* BeingNode.m in Sources */,
-				C740697418376B2100817BE2 /* Drop.m in Sources */,
+				C70A75F91846A731005F3680 /* BaseNode.m in Sources */,
+				C740697418376B2100817BE2 /* DropNode.m in Sources */,
 				C756E62D183884830015A240 /* GamePageScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,7 @@
 #import "Wall+Create.h"
 #import "Color+Create.h"
 #import "PortalTemplate+Create.h"
+#import "LevelSetTestTube1.h"
 
 @implementation LevelTemplate (Create)
 
@@ -32,11 +33,14 @@
             NSLog(@"Error dbFetching levelTemplate - err: %@", error.localizedDescription);
         } else if (!matches.count) {
             if ([levelID isEqualToString:DEFAULT_LEVEL_TEST_0]) {
+                // Oh, uh, apparently `self` works as a class in static method.  I did not even notice that.
                 levelTemplate = [self createDefaultLevelTest0InContext:context];
             } else if ([levelID isEqualToString:DEFAULT_LEVEL_TEST_1]) {
                 levelTemplate = [self createDefaultLevelTest1InContext:context];
             } else if ([levelID isEqualToString:DEFAULT_CONNECTED_LEVEL_TEST_0]) {
                 levelTemplate = [self createDefaultConnectedLevelSetTest0InContext:context];
+            } else if ([levelID isEqualToString:DEFAULT_CONNECTED_LEVEL_TEST_1_0]) {
+                levelTemplate = [LevelSetTestTube1 createDefaultConnectedLevelSetTest1InContext:context];
             } else {
                 // Uhhh...for now, I'm going to ignore the branches of the connected level set.
                 NSLog(@"Error - unknown level template \"%@\"", levelID);

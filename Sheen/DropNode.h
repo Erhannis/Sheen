@@ -7,9 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "BeingNode.h"
+#import "BaseNode.h"
 
-@interface Drop : BeingNode
+@interface DropNode : BaseNode
 
 #define DEFAULT_DROP_RADIUS (50.0)
 

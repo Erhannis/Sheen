@@ -7,8 +7,8 @@
 //
 
 #import "TitlePageScene.h"
-#import "Mote.h"
-#import "Drop.h"
+#import "MoteNode.h"
+#import "DropNode.h"
 #import "MathUtils.h"
 
 @interface TitlePageScene ()
@@ -51,7 +51,7 @@
         //  SKBlendModeSubtract is kinda like negative world
         SKBlendMode blendMode = SKBlendModeAlpha;
         
-        Drop *drop = [[Drop alloc] initWithImageNamed:@"drop-9-green"];
+        DropNode *drop = [[DropNode alloc] initWithImageNamed:@"drop-9-green"];
         drop.position = CGPointMake(CGRectGetMidX(self.frame),
                                     CGRectGetMidY(self.frame));
         drop.zPosition = 0.0;
@@ -59,7 +59,7 @@
         [self addChild:drop];
         
         for (int i = 0; i < MOTE_COUNT; i++) {
-            Mote *mote = [[Mote alloc] initWithImageNamed:@"mote-purple"];
+            MoteNode *mote = [[MoteNode alloc] initWithImageNamed:@"mote-purple"];
             mote.radius = (drand48() * (MOTE_MAX_RADIUS - MOTE_MIN_RADIUS)) + MOTE_MIN_RADIUS;
             mote.zPosition = (drand48() * (MOTE_MAX_HEIGHT - MOTE_MIN_HEIGHT)) + MOTE_MIN_HEIGHT;
             CGFloat dist = CAMERA_HEIGHT - mote.zPosition;
@@ -85,7 +85,7 @@
 
 - (void)update:(NSTimeInterval)currentTime
 {
-    for (Mote *mote in self.motes) {
+    for (MoteNode *mote in self.motes) {
         if (mote.position.x > (1 + SIDE_SPACE) * self.size.width ||
             mote.position.x < -SIDE_SPACE * self.size.width ||
             mote.position.y > (1 + SIDE_SPACE) * self.size.height ||

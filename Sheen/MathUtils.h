@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
 
 @interface MathUtils : NSObject
 
@@ -19,5 +20,9 @@
 + (CGPathRef)circleOfRadius:(CGFloat)radius
                 centeredOnX:(CGFloat)centerX
                      andOnY:(CGFloat)centerY;
+
++ (SKColor *)colorInterpolateFromColor:(SKColor *)colorA
+                               toColor:(SKColor *)colorB
+                               atValue:(CGFloat)value;
 
 @end

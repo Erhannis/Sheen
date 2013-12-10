@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface BeingNode : SKSpriteNode
+@interface BaseNode : SKSpriteNode
 
 @property (nonatomic) CGPoint lastPosition;
 @property (strong, nonatomic) NSString *imageFilename; //TODO Not really applicable for Mote?

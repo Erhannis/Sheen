@@ -7,9 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "BeingNode.h"
+#import "BaseNode.h"
 
-@interface Mote : BeingNode
+@interface MoteNode : BaseNode
 
 @property (nonatomic) CGFloat radius;
 

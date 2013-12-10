@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 CS193P - Matthew Ewer. All rights reserved.
 //
 
-#import "BeingNode.h"
+#import "BaseNode.h"
 
-@implementation BeingNode
+@implementation BaseNode
 
 @end

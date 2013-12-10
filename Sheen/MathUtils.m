@@ -31,4 +31,26 @@
     return CGPathCreateWithEllipseInRect(CGRectMake(x - radius, y - radius, 2 * radius, 2 * radius), NULL);
 }
 
++ (SKColor *)colorInterpolateFromColor:(SKColor *)colorA
+                               toColor:(SKColor *)colorB
+                               atValue:(CGFloat)value
+{
+    CGFloat ARed = 0.0;
+    CGFloat AGreen = 0.0;
+    CGFloat ABlue = 0.0;
+    CGFloat AAlpha = 0.0;
+    CGFloat BRed = 0.0;
+    CGFloat BGreen = 0.0;
+    CGFloat BBlue = 0.0;
+    CGFloat BAlpha = 0.0;
+    [colorA getRed:&ARed green:&AGreen blue:&ABlue alpha:&AAlpha];
+    [colorB getRed:&BRed green:&BGreen blue:&BBlue alpha:&BAlpha];
+    SKColor *result = [SKColor colorWithRed:(ARed * (1 - value)) + (BRed * value)
+                           green:(AGreen * (1 - value)) + (BGreen * value)
+                            blue:(ABlue * (1 - value)) + (BBlue * value)
+                           alpha:(AAlpha * (1 - value)) + (BAlpha * value)];
+    NSLog(@"interpolate %@", result);
+    return result;
+}
+
 @end
