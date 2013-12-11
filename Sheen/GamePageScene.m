@@ -94,6 +94,7 @@
 - (void)addMotesWithViewSize:(CGSize)size
                 andBlendMode:(SKBlendMode)blendMode
 {
+    //TODO Make motes fade with distance?
     UIImage *image = [UIImage imageNamed:@"mote-white"];
     SKTexture *white = [SKTexture textureWithCGImage:image.CGImage];
     
