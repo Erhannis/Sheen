@@ -1,0 +1,22 @@
+Hey, I'm releasing this game under the Apache License 2.0.  I made it (the game) for my iOS programming class: CS193P, Autumn Quarter 2013, at Stanford.  I also intend to release this on the app store at some point for like $1, but I'll still update the source code here.  Speaking of which, I'm probably going to be hesitant to accept any pull requests, since any changes would end up on the app store, and I don't want to have to deal with anybody wanting money.
+
+In its current state (as of Dec. 11 2013, 2:22 AM), it's not much of a game yet, but it shouldn't take much to get it there.
+
+I made all the graphics with a program I wrote for that purpose; I'll be putting that on Github shortly, too.
+
+The music came from ccMixter.org; I used 9 songs, all licensed under Creative Commons Attribution.  The artists whose works I've currently included are as follows:
+
+J. Lang
+Pitx
+Gurdonark
+onlymeith
+John Pazdan
+_ghost
+
+Many thanks.
+
+Oh, be aware that currently there's a number of "easter eggs" that were basically included just to showcase an understanding of a given set of iOS programming principles, since it was written as a class project.  I'll probably get rid of them at some point.
+
+Let's see, what else...oh, a note on the license: from what I understand, the Apache License 2.0 does not require you to release the source code of derivative works.  I would LIKE it if you did, but I won't require it of you.  Just don't sue me or each other - everyone please be civil.  Thank you.
+
+-Erhannis
