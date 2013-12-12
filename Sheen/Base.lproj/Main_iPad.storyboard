@@ -516,7 +516,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">About game, yo!  Done got made by Matthew Ewer.
+                                <mutableString key="text">About game, yo!  Done got made by Matthew Ewer.
 
 Art by Matthew Ewer
 
@@ -529,9 +529,10 @@ Pitx
 Gurdonark
 onlymeith
 John Pazdan
-_ghost</string>
+_ghost   The source code to Sheen can be found at https://github.com/Erhannis/Sheen</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcE-NJ-7TY">
                                 <rect key="frame" x="20" y="986" width="728" height="30"/>
